@@ -20,6 +20,7 @@ public class HeadDialog extends  android.app.Dialog {
 
     private TextView title;
     private EditText info;
+
     private Button yes;
     private Button no;
 
@@ -106,10 +107,31 @@ public class HeadDialog extends  android.app.Dialog {
 
     }
 
-    public void setName(String name) {
+    public String getPersonalName(){
+        return info.getText().toString();
+    }
+
+    public void setPersonalName(String name) {
         info.setText(name);
         info.setSelection(name.length());
         info.setFocusable(false);
         info.setFocusableInTouchMode(false);
+    }
+
+
+    /**
+     *
+     * @param listener
+     */
+    public void setYesListener (onYesOnclickListener listener){
+        this.yesListener = listener;
+    }
+
+    /**
+     *
+     * @param listener
+     */
+    public void setNoListener (onNoOnclickListener listener){
+        this.noListener = listener;
     }
 }

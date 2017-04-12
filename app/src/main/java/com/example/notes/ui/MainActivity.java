@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.baoyz.swipemenulistview.*;
 import com.example.notes.Dialog.HeadDialog;
+import com.example.notes.Interface.onYesOnclickListener;
 import com.example.notes.Manager.DBManager;
 
 import com.example.notes.Manager.NoteManager;
@@ -29,6 +30,7 @@ import com.example.notes.util.MsgToast;
 import com.example.notes.util.ComparatorUtil;
 import com.example.notes.util.Note;
 
+import com.example.notes.util.PersonalInfoUtil;
 import com.example.notes.util.StringUtil;
 import com.example.notes.Adapter.SwipeAdapter;
 import com.example.ui.R;
@@ -198,22 +200,33 @@ public class MainActivity extends AppCompatActivity {
     private void useNameSet(View view){
 
 
-        TextView useName = (TextView) view.findViewById(R.id.useName_nav);
-
-        SharedPreferences reader = getSharedPreferences("useName", MODE_PRIVATE);
+        final TextView useName = (TextView) view.findViewById(R.id.useName_nav);
 
 
-        final String name = reader.getString("useName","Your Notes");
-
-
-
+        final PersonalInfoUtil personal = new PersonalInfoUtil(this);
+        final String name = personal.getPersonName();
         useName.setText(name);
+
+
         useName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HeadDialog dialog = new HeadDialog (MainActivity.this);
+                final HeadDialog dialog = new HeadDialog(MainActivity.this);
                 dialog.show();
-                dialog.setName(name);
+
+                dialog.setPersonalName(useName.getText().toString());
+
+                dialog.setYesListener(new onYesOnclickListener() {
+                    @Override
+                    public void onYesClick() {
+                        String newName = dialog.getPersonalName();
+                        if(! newName.equals(name)){
+                            personal.savePersonName(newName);
+                            useName.setText(newName);
+                        }
+                        dialog.dismiss();
+                    }
+                });
                 mDrawer.closeDrawers();
             }
         });
@@ -335,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
             tv.setVisibility(View.VISIBLE);
 
 
-            str.append("没有记录");
+            str.append("无备忘录");
         }else{
             //hide and show
             mListView.setVisibility(View.VISIBLE);
@@ -344,7 +357,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             str.append(number);
-            str.append(" 条记录");
+            str.append(" 个备忘录");
         }
 
 

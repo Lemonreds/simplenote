@@ -18,7 +18,6 @@
             adroid:layout_marginRight="2dp"
             />
         <Button
-
             adroid:id="@+id/btn_orange"
             adroid:background="@drawable/radius_orange"
             adroid:layout_width="18dp"

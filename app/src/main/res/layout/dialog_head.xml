@@ -41,32 +41,31 @@
             android:layout_marginTop="15dp"
             android:background="#E4E4E4" />
 
-
         <EditText
             android:id="@+id/edit_dialog"
             android:background="@null"
             android:textColor="@color/black"
             android:layout_width="232dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_weight="0.19"
+            android:layout_height="20dp"
+            android:layout_margin="20dp"
             android:gravity="center_horizontal"
             android:maxLength="20"
-            android:lines="1"
-            android:layout_weight="0.19" />
+            android:lines="1" />
 
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginTop="15dp"
-            android:background="#E4E4E4" />
 
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="1px"
+             android:layout_marginTop="15dp"
+             android:background="#E4E4E4" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            >
 
             <Button
                 android:id="@+id/no_dialog"
@@ -98,6 +97,8 @@
                 android:textColor="#38ADFF"
                 android:textSize="16sp" />
         </LinearLayout>
-    </LinearLayout>
+
+        </LinearLayout>
+
 
 </RelativeLayout>

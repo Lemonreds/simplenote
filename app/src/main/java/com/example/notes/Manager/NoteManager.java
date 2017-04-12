@@ -138,7 +138,6 @@ public class NoteManager{
                             dialog.dismiss();
                         }
                     });
-
                 }else {
                     MsgToast.showToast(mContext,"不能为空哟");
                 }
