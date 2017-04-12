@@ -180,7 +180,11 @@ public class NoteManager{
 
     public void update(Note note,String newName){
 
-        Note newNote = new Note(newName.trim(),note.getDate(),currentFolderName);
+        Note newNote = note.getClone();
+        newNote.setName(newName);
+
+
+
         dbManager.upDate(currentFolderName,note,newNote);
 
         int index = list.indexOf(note);
@@ -192,11 +196,10 @@ public class NoteManager{
 
     public Note updateContent(Note note ,String content){
 
-        Note newNote = new Note(note.getName(),note.getDate(),note.getLocation(),
-                note.getText(),currentFolderName,
-                note.getLevel());
-
+        Note newNote = note.getClone();
         newNote.setText(content);
+
+
         dbManager.upDate(currentFolderName,note,newNote);
         return newNote;
     }
@@ -206,20 +209,17 @@ public class NoteManager{
 
 
 
-        Note newNote = new Note(note.getName(),note.getDate(),location,
-                note.getText(),currentFolderName,
-                note.getLevel());
+        Note newNote = note.getClone();
 
+        newNote.setLocation(location);
         dbManager.upDate(currentFolderName,note,newNote);
         return newNote;
     }
 
      public Note updateLevel(Note note ,int level){
 
-        Note newNote = new Note(note.getName(),note.getDate(),note.getLocation(),
-                note.getText(),currentFolderName,
-                level
-        );
+        Note newNote =note.getClone();
+        newNote.setLevel(level);
 
         dbManager.upDate(currentFolderName,note,newNote);
          return  newNote;

@@ -17,7 +17,7 @@ public class Note extends Item implements Serializable ,Comparable{
     private String text;
     private String location;
 
-    private Date delteDate;
+    private Date deleteDate;
 
     private int level;
 
@@ -47,6 +47,12 @@ public class Note extends Item implements Serializable ,Comparable{
         this.level = level;
         this.location = location;
         this.text = text;
+    }
+
+    public Note getClone(){
+
+        return  new Note(getName(),getDate(),getLocation(),getText(),getFolderName(),getLevel());
+
     }
 
     @Override
@@ -100,11 +106,11 @@ public class Note extends Item implements Serializable ,Comparable{
     }
 
     public Date getDelteDate() {
-        return delteDate;
+        return deleteDate;
     }
 
-    public void setDelteDate(Date delteDate) {
-        this.delteDate = delteDate;
+    public void setDeleteDate(Date delteDate) {
+        this.deleteDate = delteDate;
     }
 
     public int getLevel() {

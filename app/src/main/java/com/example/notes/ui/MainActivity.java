@@ -2,7 +2,6 @@ package com.example.notes.ui;
 
 import android.content.Intent;
 
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.support.design.widget.NavigationView;
@@ -24,7 +23,7 @@ import com.example.notes.Interface.onYesOnclickListener;
 import com.example.notes.Manager.DBManager;
 
 import com.example.notes.Manager.NoteManager;
-import com.example.notes.View.DefaultCreator;
+import com.example.notes.View.MainCreator;
 
 import com.example.notes.util.MsgToast;
 import com.example.notes.util.ComparatorUtil;
@@ -32,12 +31,14 @@ import com.example.notes.util.Note;
 
 import com.example.notes.util.PersonalInfoUtil;
 import com.example.notes.util.StringUtil;
-import com.example.notes.Adapter.SwipeAdapter;
+import com.example.notes.Adapter.MainSwipeAdapter;
 import com.example.ui.R;
 
 
 import java.util.Collections;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -130,7 +131,9 @@ public class MainActivity extends AppCompatActivity {
                        overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
                      break;
                     case R.id.nav_about:
-
+                        Intent intent3 = new Intent(MainActivity.this,AboutActivity.class);
+                        startActivity(intent3);
+                        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                         break;
                     case R.id.nav_exit:
                         System.exit(0);
@@ -146,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setItemTextColor(csl);
 
         View view = navigation.inflateHeaderView(R.layout.nav_head);
-        useNameSet(view);
+        personalSet(view);
     }
 
 
@@ -197,24 +200,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void useNameSet(View view){
+    private void personalSet(View view){
 
 
-        final TextView useName = (TextView) view.findViewById(R.id.useName_nav);
+        final TextView userName = (TextView) view.findViewById(R.id.useName_nav);
 
+        final CircleImageView userImg = (CircleImageView) view.findViewById(R.id.useImg_nav);
 
         final PersonalInfoUtil personal = new PersonalInfoUtil(this);
         final String name = personal.getPersonName();
-        useName.setText(name);
+        userName.setText(name);
 
 
-        useName.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final HeadDialog dialog = new HeadDialog(MainActivity.this);
                 dialog.show();
 
-                dialog.setPersonalName(useName.getText().toString());
+                dialog.setPersonalName(userName.getText().toString());
 
                 dialog.setYesListener(new onYesOnclickListener() {
                     @Override
@@ -222,14 +226,18 @@ public class MainActivity extends AppCompatActivity {
                         String newName = dialog.getPersonalName();
                         if(! newName.equals(name)){
                             personal.savePersonName(newName);
-                            useName.setText(newName);
+                            userName.setText(newName);
                         }
                         dialog.dismiss();
                     }
                 });
                 mDrawer.closeDrawers();
             }
-        });
+        };
+
+
+        userImg.setOnClickListener(listener);
+        userName.setOnClickListener(listener);
 
     }
 
@@ -266,14 +274,14 @@ public class MainActivity extends AppCompatActivity {
 
         Collections.sort(mData, new ComparatorUtil());
 
-        SwipeAdapter adapter = new SwipeAdapter(this,mData);
+        MainSwipeAdapter adapter = new MainSwipeAdapter(this,mData);
 
         noteManager = new NoteManager(this, currentFolderName,mData,adapter);
 
-        DefaultCreator defaultCreator = new DefaultCreator(this);
+        MainCreator mainCreator = new MainCreator(this);
 
         mListView =(SwipeMenuListView)findViewById(R.id.list_view);
-        mListView.setMenuCreator(defaultCreator);
+        mListView.setMenuCreator(mainCreator);
         mListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
         mListView.setAdapter(adapter);
 
@@ -306,6 +314,18 @@ public class MainActivity extends AppCompatActivity {
                         noteManager.editClick(position);
                         break;
                     case 1:
+                        Intent intent = new Intent(MainActivity.this,FilesActivity.class);
+                        intent.putExtra("move",true);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("note",mData.get(position));
+                        intent.putExtras(bundle);
+                       // startActivityForResult(intent,1);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+                        //move
+                        break;
+                    case 2:
                         noteManager.deleteClick(position);
                     default:
                         break;

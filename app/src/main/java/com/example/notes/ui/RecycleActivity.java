@@ -146,7 +146,7 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
             TextView tv = (TextView) findViewById(R.id.empty_view);
             tv.setVisibility(View.VISIBLE);
 
-            str.append("无丢弃的备忘录");
+            str.append("无备忘录");
         }else{
 
             //hide and show
@@ -155,7 +155,7 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
             tv.setVisibility(View.GONE);
             str.append(number);
 
-            str.append(" 个丢弃的备忘录");
+            str.append(" 个备忘录");
         }
 
 

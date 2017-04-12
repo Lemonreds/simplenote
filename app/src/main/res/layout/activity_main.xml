@@ -67,7 +67,7 @@
                     adroid:text="@string/empty_info"/>
 
                 <com.baoyz.swipemenulistview.SwipeMenuListView
-                    adroid:layout_marginLeft="10dp"
+
                     adroid:id="@+id/list_view"
                     adroid:layout_width="match_parent"
                     adroid:layout_height="match_parent"

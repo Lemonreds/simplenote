@@ -39,17 +39,12 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
 
     private EditText content;
 
-   // private ImageView editOrSave ;
-
-   // private ImageView reback;
-
     private Note note;
 
     private String currentFolderName;
 
     private boolean edit; //用于保存右上角 编辑（false）或完成(true) 的状态
 
-    private LocationManager mLocationMag;
 
     private NoteManager mNoteManager;
 
@@ -183,7 +178,7 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
         final  ProDialog proDialog = new ProDialog(this,"正在获取定位...");
         proDialog.show();
 
-        mLocationMag = new LocationManager(getApplicationContext());
+        LocationManager mLocationMag = new LocationManager(getApplicationContext());
 
         final TextView location  = (TextView) findViewById(R.id.locate_content);
         location.setVisibility(View.VISIBLE);
@@ -282,15 +277,10 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
                         mToolbar.getMenu().getItem(1).setIcon(R.drawable.pic_edit);
                         break;
 
-
-
-
-
                 }
                 return false;
             }
         });
-
 
 
         mToolbar.setNavigationIcon(R.drawable.pic_back);

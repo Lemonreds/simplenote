@@ -7,6 +7,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="gray">#969696</color>
     <color name="black">#000000</color>
 
     <color name="white">#ffffff</color>
@@ -15,4 +16,6 @@
     <color name="green">#5cb85c</color>
     <color name="orange">#f0ad4e</color>
     <color name="red">#d9534f</color>
+
+    <color name="deep_red">#FF4040</color>
 </resources>

@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:adroid="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
-</LinearLayout>
+    adroid:layout_width="match_parent"
+    adroid:layout_height="match_parent">
+
+
+    <android.support.v7.widget.Toolbar
+        adroid:id="@+id/toolbar"
+        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="56dp"
+        adroid:background="@drawable/border_bottom">
+
+        <TextView
+            adroid:id="@+id/title_toolbar"
+            adroid:layout_centerInParent="true"
+            adroid:layout_width="match_parent"
+            adroid:layout_height="match_parent"
+            adroid:textColor="@color/text_color"
+            adroid:textSize="@dimen/tool_bar_text_size"
+            adroid:gravity="center"/>
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+</RelativeLayout>

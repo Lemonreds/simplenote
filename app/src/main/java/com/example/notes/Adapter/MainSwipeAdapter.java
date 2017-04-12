@@ -17,13 +17,13 @@ import java.util.List;
  * Created by 阿买 on 2017/3/27.
  */
 
-public class SwipeAdapter extends BaseAdapter {
+public class MainSwipeAdapter extends BaseAdapter {
 
 
     private List<Note> mData ;
     private Context mContext;
 
-    public SwipeAdapter(Context mContext, List<Note> mData) {
+    public MainSwipeAdapter(Context mContext, List<Note> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -65,11 +65,11 @@ public class SwipeAdapter extends BaseAdapter {
             content.setVisibility(View.VISIBLE);
 
 
-            if(note.getText().length() < 25){
+            if(note.getText().length() < 22){
                 sb.append(note.getText());
             }
-            else if(note.getText().length() > 25){
-                sb.append(note.getText().substring(0,24));
+            else if(note.getText().length() > 22){
+                sb.append(note.getText().substring(0,21));
                 sb.append("...");
             }
         }

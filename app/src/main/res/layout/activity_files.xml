@@ -45,9 +45,6 @@
 
 
 
-
-
-
         <LinearLayout
             adroid:layout_width="match_parent"
             adroid:layout_height="match_parent"
@@ -60,6 +57,7 @@
                 adroid:layout_width="match_parent"
                 adroid:layout_height="20dp"
                 adroid:text="@string/text_files"
+                adroid:layout_marginLeft="40dp"
                 adroid:gravity="start"
                 />
 

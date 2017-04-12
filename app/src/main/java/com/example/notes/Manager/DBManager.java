@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.notes.util.Date;
+import com.example.notes.util.MsgToast;
 import com.example.notes.util.Note;
 
 import java.io.ByteArrayInputStream;
@@ -26,9 +27,10 @@ public class DBManager {
     }
 
 
-    public void insert(String folderName ,Note note) {
+    public void insert(String folderName,Note note) {
 
 
+        note.setFolderName(folderName);
 
         ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
         try {
@@ -56,6 +58,8 @@ public class DBManager {
 
     public void delete(String folderName,Note note){
 
+
+
         SQLiteDatabase database = DBHelper.getInstance(mContext).getWritableDatabase();
 
 
@@ -69,10 +73,10 @@ public class DBManager {
 
             objectOutputStream.close();
             arrayOutputStream.close();
-            database.execSQL("delete from "+ folderName+ " where item = ?",new Object[] {data});
+            database.execSQL("delete from "+ folderName + " where item = ?",new Object[] {data});
 
-            if( !folderName.equals("recycle")){
-                note.setDelteDate(new Date());
+            if( !folderName.equals("recycle") && !folderName.equals(note.getFolderName())){
+                note.setDeleteDate(new Date());
                 insert("recycle",(note));
             }
 
@@ -86,6 +90,15 @@ public class DBManager {
     }
 
 
+    public void moveToFolder(String toFolder,Note note){
+
+        Note notClone = note.getClone();
+
+        delete(note.getFolderName(),note);
+
+        insert(toFolder,notClone);
+
+    }
 
     public ArrayList<Note> search(String folderName) {
 

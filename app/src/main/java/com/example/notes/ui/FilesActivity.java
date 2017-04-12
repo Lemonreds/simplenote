@@ -18,6 +18,7 @@ import com.example.notes.Manager.DBHelper;
 import com.example.notes.Manager.DBManager;
 import com.example.notes.View.FileCreator;
 import com.example.notes.util.MsgToast;
+import com.example.notes.util.Note;
 import com.example.notes.util.StringUtil;
 import com.example.ui.R;
 
@@ -43,87 +44,65 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
         viewUpdate();
     }
 
-    private void init(){
+    private void init() {
 
 
-            Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setNavigationIcon(R.drawable.pic_back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
-            mToolbar.setNavigationIcon(R.drawable.pic_back);
+        //right
+        TextView right = (TextView) findViewById(R.id.right_bottom);
+        right.setText("新建文件夹");
+        right.setOnClickListener(this);
+        viewUpdate();
 
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+        boolean isMove = getIntent().getBooleanExtra("move", false);
+
+        if (isMove) {
+            final Note moveNote = (Note) getIntent().getSerializableExtra("note");
+
+            TextView title = (TextView) findViewById(R.id.title_toolbar);
+            title.setText("选择类别");
+            TextView text = (TextView) findViewById(R.id.text_files);
+            text.setText("将备忘录 " + moveNote.getName() + " 移动到...");
+
+
+            // list 的点击监听
+            mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onClick(View v) {
-                    onBackPressed();
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    String chooseFolder = folderName.get(position);
+
+                    DBManager dbManager = new DBManager(FilesActivity.this);
+                    dbManager.moveToFolder(chooseFolder,moveNote);
+                    finish();
                 }
             });
 
 
+        } else {
+
+            mListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+
+                @Override
+                public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {//具体实现
 
 
-        //right
-        TextView right =(TextView) findViewById(R.id.right_bottom);
+                    final int postin = position;
 
-        right.setText("新建文件夹");
-        right.setOnClickListener(this);
-
-        viewUpdate();
-
-        //list的长按监听
-       // mListView.setOnItemLongClickListener(
-
-
-        mListView.setOnMenuItemClickListener( new SwipeMenuListView.OnMenuItemClickListener(){
-
-            @Override
-            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {//具体实现
-
-
-                final int postin = position;
-
-                if (postin == 0){
-                    final InfoDialog info = new InfoDialog(FilesActivity.this);
-                    info.show();
-                    info.setTitle("消息提示");
-                    info.setInfo("确认清空默认Notes?");
-                    info.setEnableEdit(false);
-                    info.setYesListener(new onYesOnclickListener() {
-                        @Override
-                        public void onYesClick() {
-                            dropFolder(postin);
-                            info.dismiss();
-                        }
-                    });
-                    return true;
-                }
-
-                switch (index){
-                    //edit
-                    case 0:
-                        final InfoDialog dialog = new InfoDialog(FilesActivity.this);
-                        dialog.show();
-
-                        final String select_item = folderName.get(position);
-
-                        dialog.setEnableEdit(true);
-                        dialog.setTitle("重命名这个类别");
-                        dialog.setInfo(select_item);
-                        dialog.setYesListener(new onYesOnclickListener() {
-                            @Override
-                            public void onYesClick() {
-                                String newName = dialog.getInfo();
-                                if(! newName.isEmpty() ){
-                                    updateFolder(folderName.get(postin),newName);
-                                }
-                                dialog.dismiss();
-
-                            }
-                        });
-                        break;
-                    case 1:
+                    if (postin == 0) {
                         final InfoDialog info = new InfoDialog(FilesActivity.this);
                         info.show();
-                        info.setTitle("警告");
-                        info.setInfo("确认删除这个类别?");
+                        info.setTitle("消息提示");
+                        info.setInfo("确认清空默认Notes?");
                         info.setEnableEdit(false);
                         info.setYesListener(new onYesOnclickListener() {
                             @Override
@@ -132,31 +111,70 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
                                 info.dismiss();
                             }
                         });
-                    default:
-                        break;
+                        return true;
+                    }
+
+                    switch (index) {
+                        //edit
+                        case 0:
+                            final InfoDialog dialog = new InfoDialog(FilesActivity.this);
+                            dialog.show();
+
+                            final String select_item = folderName.get(position);
+
+                            dialog.setEnableEdit(true);
+                            dialog.setTitle("重命名这个类别");
+                            dialog.setInfo(select_item);
+                            dialog.setYesListener(new onYesOnclickListener() {
+                                @Override
+                                public void onYesClick() {
+                                    String newName = dialog.getInfo();
+                                    if (!newName.isEmpty()) {
+                                        updateFolder(folderName.get(postin), newName);
+                                    }
+                                    dialog.dismiss();
+
+                                }
+                            });
+                            break;
+                        case 1:
+                            final InfoDialog info = new InfoDialog(FilesActivity.this);
+                            info.show();
+                            info.setTitle("警告");
+                            info.setInfo("确认删除这个类别?");
+                            info.setEnableEdit(false);
+                            info.setYesListener(new onYesOnclickListener() {
+                                @Override
+                                public void onYesClick() {
+                                    dropFolder(postin);
+                                    info.dismiss();
+                                }
+                            });
+                        default:
+                            break;
+                    }
+                    return true;
                 }
-                return true;
-            }
-        });
+            });
 
-        // list 的点击监听
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent,View view,int position,long id){
+            // list 的点击监听
+            mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                //获取点击的文件夹名字返回给主界面
-                Intent intent = new Intent();
-                String  returnData=folderName.get(position);
+                    //获取点击的文件夹名字返回给主界面
+                    Intent intent = new Intent();
+                    String returnData = folderName.get(position);
 
-                intent.putExtra("currentFolderName",returnData);
-                setResult(RESULT_OK,intent);
-                finish();
-            }
-        });
+                    intent.putExtra("currentFolderName", returnData);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
+            });
+        }
 
 
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){

@@ -9,14 +9,14 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.example.ui.R;
 
 
-public class DefaultCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator {
+public class MainCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator {
 
 
     private Context mContext;
 
 
 
-    public DefaultCreator(Context mContext) {
+    public MainCreator(Context mContext) {
         this.mContext = mContext;
     }
 
@@ -24,21 +24,33 @@ public class DefaultCreator implements com.baoyz.swipemenulistview.SwipeMenuCrea
     public void create(SwipeMenu menu) {
 
         SwipeMenuItem openItem = new SwipeMenuItem(mContext.getApplicationContext());
-        openItem.setBackground(R.color.light_blue);
-        openItem.setWidth(dp2px(60));
-        // openItem.setTitle("编辑");
-        openItem.setIcon(R.drawable.pic_edit);
-        openItem.setTitleSize(18);
+
+        openItem.setBackground(R.color.orange);
+        openItem.setWidth(dp2px(55));
+        openItem.setTitle("编辑");
+       // openItem.setIcon(R.drawable.pic_edit);
+        openItem.setTitleSize(16);
         openItem.setTitleColor(Color.WHITE);
         menu.addMenuItem(openItem);
 
-        SwipeMenuItem deleteItem = new SwipeMenuItem(mContext.getApplicationContext());
-        deleteItem.setBackground(R.color.red);
-        deleteItem.setWidth(dp2px(60));
-        deleteItem.setIcon(R.drawable.pic_delete);
-        //  deleteItem.setTitle("删除");
 
-        deleteItem.setTitleSize(18);
+        SwipeMenuItem moveItem = new SwipeMenuItem(mContext.getApplicationContext());
+        moveItem.setBackground(R.color.gray);
+        moveItem.setWidth(dp2px(55));
+        moveItem.setTitle("移动");
+       // moveItem.setIcon(R.drawable.pic_move);
+        moveItem.setTitleSize(16);
+        moveItem.setTitleColor(Color.WHITE);
+        menu.addMenuItem(moveItem);
+
+
+        SwipeMenuItem deleteItem = new SwipeMenuItem(mContext.getApplicationContext());
+        deleteItem.setBackground(R.color.deep_red);
+        deleteItem.setWidth(dp2px(55));
+       // deleteItem.setIcon(R.drawable.pic_delete);
+        deleteItem.setTitle("删除");
+
+        deleteItem.setTitleSize(16);
         deleteItem.setTitleColor(Color.WHITE);
         menu.addMenuItem(deleteItem);
 
