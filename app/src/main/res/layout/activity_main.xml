@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+        xmlns:adroid="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        adroid:id="@+id/drawer_layout"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="match_parent">
+
+
+
+        <FrameLayout
+            adroid:layout_width="match_parent"
+            adroid:layout_height="46dp"
+            >
+            <android.support.v7.widget.Toolbar
+                adroid:id="@+id/toolbar"
+                app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                adroid:layout_width="match_parent"
+                adroid:layout_height="56dp"
+                adroid:background="@drawable/border_bottom">
+
+                <TextView
+                    adroid:id="@+id/title_toolbar"
+                    adroid:layout_centerInParent="true"
+                    adroid:layout_width="match_parent"
+                    adroid:layout_height="match_parent"
+                    adroid:textColor="@color/text_color"
+                    adroid:textSize="@dimen/tool_bar_text_size"
+                    adroid:gravity="center" />
+            </android.support.v7.widget.Toolbar>
+
+        </FrameLayout>
+
+
+        <RelativeLayout
+            adroid:layout_width="match_parent"
+            adroid:layout_height="match_parent"
+            adroid:layout_marginTop="56dp"
+
+            >
+            <LinearLayout
+                adroid:id="@+id/tab_main"
+                adroid:layout_width="match_parent"
+                adroid:layout_height="56dp"
+                adroid:orientation="horizontal"
+                adroid:layout_alignParentBottom="true"
+                >
+                <include layout="@layout/bottom"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                adroid:layout_width="match_parent"
+                adroid:layout_height="match_parent"
+                adroid:layout_above="@id/tab_main"
+                adroid:orientation="vertical">
+
+                <TextView
+                    adroid:id="@+id/empty_view"
+                    adroid:layout_width="match_parent"
+                    adroid:layout_height="match_parent"
+                    adroid:layout_gravity="center_vertical"
+                    adroid:gravity="center"
+                    adroid:textSize="18sp"
+                    adroid:visibility="gone"
+                    adroid:text="@string/empty_info"/>
+
+                <com.baoyz.swipemenulistview.SwipeMenuListView
+                    adroid:id="@+id/list_view"
+                    adroid:layout_width="match_parent"
+                    adroid:layout_height="match_parent"
+                    adroid:layout_margin="5dp"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+
+        <android.support.design.widget.NavigationView
+            adroid:id="@+id/navigation"
+            adroid:layout_width="280dp"
+            adroid:layout_height="match_parent"
+            adroid:layout_gravity="start"
+            adroid:layout_marginBottom="10dp"
+            app:menu="@menu/menu_nav"
+            app:headerLayout="@null"
+
+            />
+</android.support.v4.widget.DrawerLayout>

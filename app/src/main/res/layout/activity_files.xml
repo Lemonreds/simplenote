@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:adroid="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    adroid:layout_width="match_parent"
+    adroid:layout_height="match_parent"
+    adroid:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        adroid:id="@+id/toolbar"
+        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="56dp"
+        adroid:background="@drawable/border_bottom"
+        >
+
+        <TextView
+            adroid:id="@+id/title_toolbar"
+            adroid:layout_centerInParent="true"
+            adroid:layout_width="match_parent"
+            adroid:layout_height="match_parent"
+            adroid:textColor="@color/text_color"
+            adroid:textSize="@dimen/tool_bar_text_size"
+            adroid:text="@string/folder"
+            adroid:gravity="center" />
+    </android.support.v7.widget.Toolbar>
+
+
+
+
+    <RelativeLayout
+        adroid:layout_width="match_parent"
+        adroid:layout_height="match_parent"
+        >
+        <LinearLayout
+            adroid:id="@+id/tab_files"
+            adroid:layout_width="match_parent"
+            adroid:layout_height="56dp"
+            adroid:orientation="horizontal"
+            adroid:layout_alignParentBottom="true"
+            adroid:background="@drawable/border_top"
+            >
+            <include layout="@layout/bottom_file"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            adroid:layout_width="match_parent"
+            adroid:layout_height="match_parent"
+            adroid:layout_above="@id/tab_files"
+            adroid:orientation="vertical"
+            >
+
+            <TextView
+                adroid:id="@+id/text_files"
+                adroid:layout_width="match_parent"
+                adroid:layout_height="20dp"
+                adroid:text="@string/text_files"
+                adroid:gravity="start"
+                />
+
+            <com.baoyz.swipemenulistview.SwipeMenuListView
+                adroid:id="@+id/list_view"
+                adroid:layout_width="match_parent"
+                adroid:layout_height="match_parent"
+                adroid:layout_margin="10dp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

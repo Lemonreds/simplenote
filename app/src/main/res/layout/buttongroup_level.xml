@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:adroid="http://schemas.android.com/apk/res/android"
+    adroid:id="@+id/LevelGroup"
+    adroid:orientation="horizontal"
+    adroid:layout_width="match_parent"
+    adroid:layout_height="20dp"
+    adroid:layout_marginTop="3dp"
+    adroid:layout_marginRight="3dp"
+    adroid:gravity="end">
+
+
+        <Button
+            adroid:id="@+id/btn_red"
+            adroid:background="@drawable/radius_red"
+            adroid:layout_width="18dp"
+            adroid:layout_height="18dp"
+            adroid:layout_marginRight="2dp"
+            />
+        <Button
+            adroid:id="@+id/btn_orange"
+            adroid:background="@drawable/radius_orange"
+            adroid:layout_width="18dp"
+            adroid:layout_height="18dp"
+            adroid:layout_marginLeft="2dp"
+            adroid:layout_marginRight="2dp"
+            />
+        <Button
+            adroid:id="@+id/btn_green"
+            adroid:background="@drawable/radius_green"
+            adroid:layout_width="18dp"
+            adroid:layout_height="18dp"
+            adroid:layout_marginLeft="2dp"
+            />
+
+
+</LinearLayout>

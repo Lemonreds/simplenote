@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:adroid="http://schemas.android.com/apk/res/android"
+    adroid:layout_width="match_parent"
+    adroid:layout_height="match_parent"
+    adroid:orientation="vertical">
+
+
+
+    <LinearLayout
+        adroid:id="@+id/title_content"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content">
+
+    <include layout="@layout/title_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        adroid:id="@+id/bottom_content"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content"
+        adroid:layout_alignParentBottom="true">
+
+    <include layout="@layout/bottom_content"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        adroid:id="@+id/text_area_content"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="match_parent"
+        adroid:layout_below="@id/title_content"
+        adroid:layout_above="@id/bottom_content"
+        adroid:orientation="vertical"
+        >
+
+
+        <RelativeLayout
+            adroid:layout_width="match_parent"
+            adroid:layout_height="wrap_content"
+            >
+        <TextView
+            adroid:id="@+id/date_content"
+            adroid:layout_width="wrap_content"
+            adroid:layout_height="wrap_content"
+            adroid:layout_centerInParent="true"
+
+            />
+
+        </RelativeLayout>
+
+
+        <TextView
+            adroid:id="@+id/locate_content"
+            adroid:layout_width="match_parent"
+            adroid:layout_height="wrap_content"
+            adroid:gravity="center_horizontal"
+            />
+
+
+
+
+
+        <ScrollView
+            adroid:layout_width="match_parent"
+            adroid:layout_height="match_parent">
+        <EditText
+            adroid:id="@+id/edit_content"
+            adroid:layout_width="match_parent"
+            adroid:layout_height="wrap_content"
+            adroid:background="@null"
+            adroid:focusable="true"
+            adroid:inputType="none"
+            adroid:enabled="true"
+            adroid:gravity="top|start"
+            adroid:focusableInTouchMode="true"
+            />
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+

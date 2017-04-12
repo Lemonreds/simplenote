@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/search_item"
+        android:title="@string/search_txv_main"
+        android:icon="@drawable/pic_search"
+        
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/add_item"
+        android:title="@string/add_btn_main"
+        android:icon="@drawable/pic_add"
+        app:showAsAction="ifRoom"/>
+</menu>
