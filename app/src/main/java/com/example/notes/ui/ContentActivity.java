@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.example.notes.Manager.LocationManager;
 import com.example.notes.Manager.NoteManager;
 
+import com.example.notes.View.EditListener;
 import com.example.notes.util.MsgToast;
 import com.example.notes.util.Note;
 import com.example.notes.Dialog.ProDialog;
@@ -43,10 +44,13 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
 
     private String currentFolderName;
 
+    private Toolbar mToolbar;
+
     private boolean edit; //用于保存右上角 编辑（false）或完成(true) 的状态
 
 
     private NoteManager mNoteManager;
+
 
 
 
@@ -131,9 +135,9 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
                 change_level(v);
                 break;
 
-            case R.id.hide_bottom_content:
-                openBottom(false);
-                break;
+            //case R.id.hide_bottom_content:
+            //    openBottom(false);
+              //  break;
             case R.id.delete_bottom_content:
                 deleteNote();
                 break;
@@ -232,11 +236,21 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
         content = (EditText)findViewById(R.id.edit_content);
         content.setFocusable(false);
 
+
         mTitle.setText(note.getName());
         date.setText(note.getDate().getDetailDate());
         content.setText(note.getText());
         content.setSelection(content.getText().length());
 
+        content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editAction();
+                content.setSelection(content.getText().length());
+            }
+        });
+        TextView numberFollow = (TextView)findViewById(R.id.number_bottom_content);
+        content.addTextChangedListener(new EditListener(content,numberFollow));
     }
 
 
@@ -244,7 +258,7 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
 
     private void init_toolbar() {
 
-        final Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+       mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mTitle = (TextView) findViewById(R.id.title_toolbar);
 
         mToolbar.inflateMenu(R.menu.menu_content);
@@ -256,21 +270,8 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.edit_content_menu:
-
-                        edit=!edit;
-                        editOrSave();
-
-                        if(!edit) {//如果是保存
-                            mToolbar.getMenu().getItem(0).setVisible(false);
-                            mToolbar.getMenu().getItem(1).setIcon(R.drawable.pic_edit);
-                        }else{
-                            mToolbar.getMenu().getItem(0).setVisible(true);
-                            mToolbar.getMenu().getItem(1).setIcon(R.drawable.pic_done);
-                        }
-
-
+                        editAction();
                         break;
-
                     case R.id.reBack_content_menu:
                         reBack();
                         mToolbar.getMenu().getItem(0).setVisible(false);
@@ -299,18 +300,31 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
 
 
 
+    private void editAction(){
+        edit=!edit;
+        editOrSave();
 
+        if(!edit) {//如果是保存
+            mToolbar.getMenu().getItem(0).setVisible(false);
+            mToolbar.getMenu().getItem(1).setIcon(R.drawable.pic_edit);
+        }else{
+            mToolbar.getMenu().getItem(0).setVisible(true);
+            mToolbar.getMenu().getItem(1).setIcon(R.drawable.pic_done);
+        }
+    }
 
 
 
     private  void init_bottom(){
 
-        ImageView hide = (ImageView) findViewById(R.id.hide_bottom_content);
-        hide.setOnClickListener(this);
+       // ImageView hide = (ImageView) findViewById(R.id.hide_bottom_content);
+       // hide.setOnClickListener(this);
         ImageView delete = (ImageView) findViewById(R.id.delete_bottom_content);
         delete.setOnClickListener(this);
         ImageView location = (ImageView) findViewById(R.id.location_bottom_content);
         location.setOnClickListener(this);
+
+
 
         Button btn_red = (Button) findViewById(R.id.btn_red);
         btn_red.setOnClickListener(this);

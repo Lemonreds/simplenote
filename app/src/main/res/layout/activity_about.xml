@@ -2,7 +2,6 @@
 <RelativeLayout
     xmlns:adroid="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     adroid:layout_width="match_parent"
     adroid:layout_height="match_parent">
 
@@ -11,20 +10,52 @@
         adroid:id="@+id/toolbar"
         app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         adroid:layout_width="match_parent"
-        adroid:layout_height="56dp"
+        adroid:layout_height="46dp"
         adroid:background="@drawable/border_bottom">
 
         <TextView
-            adroid:id="@+id/title_toolbar"
-            adroid:layout_centerInParent="true"
-            adroid:layout_width="match_parent"
-            adroid:layout_height="match_parent"
-            adroid:textColor="@color/text_color"
-            adroid:textSize="@dimen/tool_bar_text_size"
-            adroid:gravity="center"/>
+
+            adroid:layout_width="wrap_content"
+            adroid:layout_height="wrap_content"
+            adroid:layout_gravity="center"
+            adroid:textColor="@color/black"
+            adroid:text="@string/about"
+            adroid:textSize="20sp" />
 
     </android.support.v7.widget.Toolbar>
 
 
+    <TextView
+        adroid:id="@+id/icon_about"
+        adroid:layout_marginTop="66dp"
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="wrap_content"
+        adroid:text="@string/app_name"
+        adroid:layout_centerInParent="true"
+        adroid:layout_alignParentTop="true"
+        adroid:textColor="@color/black"
+        adroid:textSize="30sp"
+        />
+
+    <TextView
+        adroid:id="@+id/main_about"
+        adroid:layout_marginTop="26dp"
+        adroid:layout_marginBottom="26dp"
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="wrap_content"
+        adroid:text="@string/main_about"
+        adroid:layout_below="@+id/icon_about"
+        adroid:layout_centerHorizontal="true"
+        />
+
+    <TextView
+
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content"
+        adroid:text="@string/text_about"
+        adroid:layout_below="@+id/main_about"
+        adroid:layout_centerHorizontal="true"
+        adroid:layout_alignParentBottom="true"
+        />
 
 </RelativeLayout>

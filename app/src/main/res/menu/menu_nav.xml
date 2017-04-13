@@ -10,12 +10,12 @@
         android:title="@string/folder"
         android:icon="@drawable/pic_folder"
         />
+
     <item
         android:id="@+id/nav_recycle"
         android:title="@string/recycle"
         android:icon="@drawable/pic_recycle"
         />
-
 
     <item
         android:id="@+id/nav_security"

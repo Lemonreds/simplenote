@@ -30,8 +30,6 @@ public class DBManager {
     public void insert(String folderName,Note note) {
 
 
-        note.setFolderName(folderName);
-
         ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(arrayOutputStream);
@@ -75,7 +73,7 @@ public class DBManager {
             arrayOutputStream.close();
             database.execSQL("delete from "+ folderName + " where item = ?",new Object[] {data});
 
-            if( !folderName.equals("recycle") && !folderName.equals(note.getFolderName())){
+            if( !folderName.equals("recycle")){
                 note.setDeleteDate(new Date());
                 insert("recycle",(note));
             }
@@ -95,6 +93,7 @@ public class DBManager {
         Note notClone = note.getClone();
 
         delete(note.getFolderName(),note);
+        delete("recycle",note);
 
         insert(toFolder,notClone);
 
@@ -214,7 +213,8 @@ public class DBManager {
         String belongFolder = note.getFolderName();
 
         DBHelper db = DBHelper.getInstance(mContext);
-        if( !db.tabbleIsExist(belongFolder)){
+
+        if( ! db.tabbleIsExist(belongFolder)){
             db.add_table(belongFolder);
         }
 

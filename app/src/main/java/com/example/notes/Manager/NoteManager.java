@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.BaseAdapter;
 
 import com.example.notes.Dialog.InfoDialog;
+import com.example.notes.Dialog.NoteDialog;
 import com.example.notes.Interface.onYesOnclickListener;
 import com.example.notes.util.MsgToast;
 import com.example.notes.ui.ContentActivity;
@@ -110,38 +111,42 @@ public class NoteManager{
 
     public void add(){
 
-        final InfoDialog addDialog = new InfoDialog(mContext);
-        addDialog.show();
-        addDialog.setTitle("新的备忘录");
-        addDialog.setInfo("为它建立一个名字");
-        addDialog.setEnableEdit(true);
-        addDialog.setYesListener(new onYesOnclickListener() {
+
+        final NoteDialog dialog = new NoteDialog(mContext);
+        dialog.show();
+        dialog.setTitle("新的备忘录");
+        dialog.setInfo("建立一个名字");
+        dialog.setEnableEdit(true);
+
+        dialog.setYesListener(new onYesOnclickListener() {
             @Override
             public void onYesClick() {
-                if(!StringUtil.isEmpty(addDialog.getInfo())){
+                if(!StringUtil.isEmpty(dialog.getInfo())){
 
-                    final Note note = new Note(addDialog.getInfo(), new Date(),currentFolderName);
+                    final Note note = new Note(dialog.getInfo(),
+                            new Date(), null,"",
+                            currentFolderName,dialog.getLevel());
 
                     list.add(note);
                     adapter.notifyDataSetChanged();
                     dbManager.insert(currentFolderName,note);
-                    ((MainActivity)mContext).update_bottom();
 
-                    final InfoDialog dialog =  new InfoDialog(mContext);
-                     dialog.show();
-                     dialog.setInfo("是否打开 "+note.getName()+" ?");
-                     dialog.setEnableEdit(false);
-                     dialog.setYesListener(new onYesOnclickListener() {
+
+                    final InfoDialog confirm =  new InfoDialog(mContext);
+                    confirm.show();
+                    confirm.setInfo("是否打开 "+note.getName()+" ?");
+                    confirm.setEnableEdit(false);
+                    confirm.setYesListener(new onYesOnclickListener() {
                         @Override
                         public void onYesClick() {
                             ItemClick(note);
-                            dialog.dismiss();
+                            confirm.dismiss();
                         }
                     });
                 }else {
                     MsgToast.showToast(mContext,"不能为空哟");
                 }
-                addDialog.dismiss();
+                dialog.dismiss();
             }
         });
 
@@ -153,7 +158,7 @@ public class NoteManager{
 
         adapter.notifyDataSetChanged();
 
-        ((MainActivity)mContext).update_bottom();
+       // ((MainActivity)mContext).update_bottom();
 
         dbManager.delete(currentFolderName,note);
     }

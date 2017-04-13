@@ -9,19 +9,19 @@
         adroid:id="@+id/toolbar"
         app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         adroid:layout_width="match_parent"
-        adroid:layout_height="56dp"
+        adroid:layout_height="46dp"
         adroid:background="@drawable/border_bottom"
         >
 
         <TextView
-            adroid:id="@+id/title_toolbar"
-            adroid:layout_centerInParent="true"
-            adroid:layout_width="match_parent"
-            adroid:layout_height="match_parent"
-            adroid:textColor="@color/text_color"
-            adroid:textSize="@dimen/tool_bar_text_size"
+            adroid:id="@+id/toolbar_title"
+            adroid:layout_width="wrap_content"
+            adroid:layout_height="wrap_content"
+            adroid:layout_gravity="center"
+            adroid:textColor="@color/black"
             adroid:text="@string/folder"
-            adroid:gravity="center" />
+            adroid:textSize="20sp" />
+
     </android.support.v7.widget.Toolbar>
 
 
@@ -37,7 +37,7 @@
             adroid:layout_height="56dp"
             adroid:orientation="horizontal"
             adroid:layout_alignParentBottom="true"
-            adroid:background="@drawable/border_top"
+            adroid:background="@drawable/border"
             >
             <include layout="@layout/bottom_file"/>
 

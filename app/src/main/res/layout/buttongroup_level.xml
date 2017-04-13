@@ -5,9 +5,8 @@
     adroid:orientation="horizontal"
     adroid:layout_width="match_parent"
     adroid:layout_height="20dp"
-    adroid:layout_marginTop="3dp"
-    adroid:layout_marginRight="3dp"
-    adroid:gravity="end">
+    adroid:layout_margin="5dp"
+    adroid:gravity="center">
 
 
         <Button

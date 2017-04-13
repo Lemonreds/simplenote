@@ -67,10 +67,12 @@ public class InfoDialog extends android.app.Dialog {
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setEnableEdit(true);
+                info.setFocusableInTouchMode(true);
+                info.setFocusable(true);
+                info.requestFocus();
+                hideOrOpenKeyBoard();
             }
         });
-
         title = (TextView) findViewById(R.id.title_dialog);
     }
 
@@ -170,7 +172,4 @@ public class InfoDialog extends android.app.Dialog {
 
 
 
-    public Button getNo() {
-        return no;
-    }
 }

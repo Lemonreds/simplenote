@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_content"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/border_top"
+    android:background="@drawable/border"
     android:padding="5dp"
     >
-
 
 
     <TextView
@@ -19,8 +19,6 @@
         android:gravity="center_horizontal"
         android:textColor="@color/black"
         />
-
-
 
 
 </LinearLayout>

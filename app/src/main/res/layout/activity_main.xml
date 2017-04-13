@@ -16,17 +16,18 @@
                 adroid:id="@+id/toolbar"
                 app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
                 adroid:layout_width="match_parent"
-                adroid:layout_height="56dp"
+                adroid:layout_height="46dp"
                 adroid:background="@drawable/border_bottom">
 
                 <TextView
                     adroid:id="@+id/title_toolbar"
-                    adroid:layout_centerInParent="true"
-                    adroid:layout_width="match_parent"
-                    adroid:layout_height="match_parent"
-                    adroid:textColor="@color/text_color"
-                    adroid:textSize="@dimen/tool_bar_text_size"
-                    adroid:gravity="center" />
+
+                    adroid:layout_width="wrap_content"
+                    adroid:layout_height="wrap_content"
+                    adroid:layout_gravity="center"
+                    adroid:textColor="@color/black"
+                    adroid:textSize="20sp"
+                    />
             </android.support.v7.widget.Toolbar>
 
         </FrameLayout>
@@ -38,22 +39,28 @@
             adroid:layout_marginTop="56dp"
 
             >
-            <LinearLayout
-                adroid:id="@+id/tab_main"
-                adroid:layout_width="match_parent"
-                adroid:layout_height="56dp"
-                adroid:orientation="horizontal"
+
+
+
+            <android.support.design.widget.FloatingActionButton
+                adroid:id="@+id/fab"
+                adroid:layout_alignParentRight="true"
                 adroid:layout_alignParentBottom="true"
-                >
-                <include layout="@layout/bottom"/>
-
-            </LinearLayout>
-
+                adroid:layout_width="wrap_content"
+                adroid:layout_height="wrap_content"
+                adroid:layout_gravity="end"
+                adroid:src="@drawable/pic_add"
+                adroid:layout_margin="20dp"
+                app:elevation="6dp"
+                app:pressedTranslationZ="12dp"
+                app:backgroundTint="@null"
+                app:rippleColor="@color/blue"
+                />
 
             <LinearLayout
                 adroid:layout_width="match_parent"
                 adroid:layout_height="match_parent"
-                adroid:layout_above="@id/tab_main"
+                adroid:layout_centerInParent="true"
                 adroid:orientation="vertical">
 
                 <TextView
@@ -66,13 +73,20 @@
                     adroid:visibility="gone"
                     adroid:text="@string/empty_info"/>
 
-                <com.baoyz.swipemenulistview.SwipeMenuListView
 
+                <com.example.notes.View.MainScrollview
+                    adroid:id="@+id/main_scrollView"
+                    adroid:layout_width="match_parent"
+                    adroid:layout_height="wrap_content"
+                    adroid:background="@drawable/border_bottom">
+                <com.example.notes.View.SwipeListView
                     adroid:id="@+id/list_view"
                     adroid:layout_width="match_parent"
                     adroid:layout_height="match_parent"
-                    adroid:layout_margin="5dp"
                     />
+                </com.example.notes.View.MainScrollview>
+
+
             </LinearLayout>
         </RelativeLayout>
 

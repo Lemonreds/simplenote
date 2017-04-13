@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.baoyz.swipemenulistview.*;
@@ -25,6 +27,8 @@ import com.example.notes.Manager.DBManager;
 import com.example.notes.Manager.NoteManager;
 import com.example.notes.View.MainCreator;
 
+import com.example.notes.View.MainScrollview;
+import com.example.notes.View.SwipeListView;
 import com.example.notes.util.MsgToast;
 import com.example.notes.util.ComparatorUtil;
 import com.example.notes.util.Note;
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     private NoteManager noteManager;
 
-    private SwipeMenuListView mListView;
+    private SwipeListView mListView;
     private List<Note> mData;
 
     private DrawerLayout mDrawer;
@@ -99,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView_setting();
         slide_setting();
+        bottom_setting();
     }
 
     private void slide_setting(){
@@ -187,9 +192,10 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent1);
                         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                     break;
-                    case R.id.add_item:
-                        noteManager.add();
-                    break;
+                   // case R.id.add_item:
+                      //  for(int i=0;i<10;i++)
+                    //    noteManager.add();
+                   // break;
                 }
                 return false;
             }
@@ -280,17 +286,52 @@ public class MainActivity extends AppCompatActivity {
 
         MainCreator mainCreator = new MainCreator(this);
 
-        mListView =(SwipeMenuListView)findViewById(R.id.list_view);
+        mListView =(SwipeListView) findViewById(R.id.list_view);
         mListView.setMenuCreator(mainCreator);
         mListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
         mListView.setAdapter(adapter);
 
+        MainScrollview scrollview = (MainScrollview) findViewById(R.id.main_scrollView);
+        scrollview.setOnScrollListener(new MainScrollview.ScrollViewListener() {
+            @Override
+            public void onScroll(int dy) {
+                if (dy > 0) {//下滑
+                    showOrHideFab(false);
+                } else if (dy <= 0 ) {//上滑
+                    showOrHideFab(true);
+                }
+            }
+        });
 
 
         view_Listener();
-        update_bottom();
+        //update_bottom();
     }
 
+
+    private void bottom_setting(){
+
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                noteManager.add();
+            }
+        });
+    }
+    private void showOrHideFab(boolean show){
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+
+        if(show){
+            fab.setVisibility(View.VISIBLE);
+        }else{
+            fab.setVisibility(View.GONE);
+        }
+
+
+    }
     public void view_Listener() {
 
         //点击监听
@@ -338,11 +379,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+/**
 
-
-    /**
-     * 底部栏的更新
-     */
     public void update_bottom(){
 
 
@@ -385,7 +423,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+**/
 
 
     @Override

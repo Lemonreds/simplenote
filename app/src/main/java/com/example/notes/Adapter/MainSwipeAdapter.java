@@ -60,7 +60,7 @@ public class MainSwipeAdapter extends BaseAdapter {
 
         StringBuilder sb= new StringBuilder(25);
         if(StringUtil.isEmpty(note.getText())){
-            sb.append("  ");
+            sb.append(" ");
         }else{
             content.setVisibility(View.VISIBLE);
 

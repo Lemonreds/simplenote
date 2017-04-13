@@ -5,6 +5,8 @@ import android.view.KeyEvent;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
@@ -57,20 +59,20 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
         RecycleSwipeAdapter adapter = new RecycleSwipeAdapter(this,mData);
 
 
-
         RecycleCreator creator = new RecycleCreator(this);
 
         mListView =(SwipeMenuListView) findViewById(R.id.list_view);
         mListView.setMenuCreator(creator);
         mListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
         mListView.setAdapter(adapter);
-        mListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MsgToast.showToast(RecycleActivity.this,"恢复后才能打开");
-                return false;
             }
         });
+
 
         mManager = new RecycleManager(this,mData,adapter);
 
@@ -123,6 +125,7 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
 
 
 
+
     /**
      * 底部栏的更新
      */
@@ -137,16 +140,20 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
         int number = 0;
         if(mData!=null){
             number=mData.size();
+
         }
 
         if(number == 0){
+            text_bottom.setVisibility(View.GONE);
 
             //hide and show
             mListView.setVisibility(View.GONE);
             TextView tv = (TextView) findViewById(R.id.empty_view);
             tv.setVisibility(View.VISIBLE);
 
-            str.append("无备忘录");
+            return ;
+
+          //  str.append("无备忘录");
         }else{
 
             //hide and show

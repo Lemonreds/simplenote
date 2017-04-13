@@ -6,6 +6,8 @@
             <solid android:color="#D3D3D3" />
         </shape>
     </item>
+
+
     <!-- 主体背景颜色值 -->
     <item android:top="1dp">   <!--设置只有顶部有边框-->
         <shape>

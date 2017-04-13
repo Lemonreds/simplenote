@@ -21,8 +21,8 @@ public class AboutActivity extends BaseActivity {
     private void init_toolbar(){
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        TextView mTitle = (TextView) findViewById(R.id.title_toolbar);
-        mTitle.setText("关于");
+        //TextView mTitle = (TextView) findViewById(R.id.title_toolbar);
+        //mTitle.setText("关于");
         //mToolbar.inflateMenu(R.menu.menu_content);
 
         mToolbar.setNavigationIcon(R.drawable.pic_back);

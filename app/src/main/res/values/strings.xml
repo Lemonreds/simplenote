@@ -55,8 +55,7 @@
     <string name="edit_content_menu">编辑</string>
     <string name="reBack_content_menu">撤销</string>
 
-    <string name ="title_about">关于</string>
-    <string name ="main_about">关于Notes</string>
-    <string name ="text_about">3131???131</string>
+    <string name ="main_about">Write what you want</string>
+    <string name ="text_about">内容.....</string>
 
 </resources>
