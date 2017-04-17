@@ -8,8 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.notes.Interface.onNoOnclickListener;
-import com.example.notes.Interface.onYesOnclickListener;
+import com.example.notes.Interface.MyOnClickListener;
 import com.example.ui.R;
 
 /**
@@ -27,8 +26,8 @@ public class HeadDialog extends  android.app.Dialog {
 
     private Context mContext;
 
-    private onNoOnclickListener noListener;//取消按钮被点击了的监听器
-    private onYesOnclickListener yesListener;//确定按钮被点击了的监听器
+    private MyOnClickListener noListener;//取消按钮被点击了的监听器
+    private MyOnClickListener yesListener;//确定按钮被点击了的监听器
 
     /**
      *
@@ -89,7 +88,7 @@ public class HeadDialog extends  android.app.Dialog {
             @Override
             public void onClick(View v) {
                 if (yesListener != null) {
-                    yesListener.onYesClick();
+                    yesListener.onClick();
                 }
             }
         });
@@ -98,7 +97,7 @@ public class HeadDialog extends  android.app.Dialog {
             @Override
             public void onClick(View v) {
                 if (noListener != null) {
-                    noListener.onNoClick();
+                    noListener.onClick();
                 }else{
                     dismiss();//若没有新设置事件,则默认关闭Dialog
                 }
@@ -119,20 +118,12 @@ public class HeadDialog extends  android.app.Dialog {
     }
 
 
-    /**
-     *
-     * @param listener
-     */
-    public void setYesListener (onYesOnclickListener listener){
-        this.yesListener = listener;
+    public void setYesListener(MyOnClickListener yesListener) {
+        this.yesListener = yesListener;
     }
 
-    /**
-     *
-     * @param listener
-     */
-    public void setNoListener (onNoOnclickListener listener){
-        this.noListener = listener;
+    public void setNoListener(MyOnClickListener noListener) {
+        this.noListener = noListener;
     }
 
     private void hideOrOpenKeyBoard(){

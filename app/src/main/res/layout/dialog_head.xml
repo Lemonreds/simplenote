@@ -51,6 +51,7 @@
             android:layout_margin="20dp"
             android:gravity="center_horizontal"
             android:maxLength="20"
+            android:hint=""
             android:lines="1" />
 
 

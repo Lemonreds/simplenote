@@ -14,7 +14,7 @@
         >
 
         <TextView
-            adroid:id="@+id/toolbar_title"
+            adroid:id="@+id/title_toolbar"
             adroid:layout_width="wrap_content"
             adroid:layout_height="wrap_content"
             adroid:layout_gravity="center"
@@ -56,9 +56,8 @@
                 adroid:id="@+id/text_files"
                 adroid:layout_width="match_parent"
                 adroid:layout_height="20dp"
+                adroid:gravity="center"
                 adroid:text="@string/text_files"
-                adroid:layout_marginLeft="40dp"
-                adroid:gravity="start"
                 />
 
             <com.baoyz.swipemenulistview.SwipeMenuListView

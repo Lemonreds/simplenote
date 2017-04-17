@@ -10,6 +10,8 @@ import com.example.notes.util.Date;
 import com.example.notes.util.Note;
 import com.example.ui.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -33,17 +35,22 @@ public class RecycleSwipeAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(null == convertView) {
-            convertView = View.inflate(mContext, R.layout.item, null);
+            convertView = View.inflate(mContext, R.layout.item_recycle, null);
         }
         Note note = ((Note)getItem(position));
 
 
-        TextView txt = (TextView) convertView.findViewById(R.id.text1_item);
-        TextView deleteDate = (TextView) convertView.findViewById(R.id.text2_item);
-        deleteDate.setTextColor(mContext.getResources().getColor(R.color.red));
+       //// TextView txt = (TextView) convertView.findViewById(R.id.text1_item);
+       // TextView deleteDate = (TextView) convertView.findViewById(R.id.text2_item);
+       // deleteDate.setTextColor(mContext.getResources().getColor(R.color.red));
 
+        TextView name =(TextView)convertView.findViewById(R.id.name_item);
+        TextView folder =(TextView)convertView.findViewById(R.id.folder_item);
+        TextView deleteDate = (TextView) convertView.findViewById(R.id.date_item);
 
-        if(txt!=null)txt.setText(note.getName());
+        //if(txt!=null)txt.setText(note.getName());
+        name.setText(note.getName());
+        folder.setText(note.getFolderName());
 
         int days=nowDate.getLeaveDay(note.getDate());
         String leaveDay = Integer.toString(30-days)+"天";

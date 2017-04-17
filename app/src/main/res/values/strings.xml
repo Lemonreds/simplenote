@@ -1,14 +1,15 @@
 <resources>
 
-
     <string name="app_name">SimpleNote</string>
 
+    <string name="note_empty_info">空空如也</string>
+    <string name="recycle_empty_info">回收站似乎空空如也</string>
 
-    <string name="empty_info">似乎空空如也呀</string>
 
     <string name="add_btn_main">+</string>
     <string name="search_txv_main">搜索</string>
     <string name="more_txv_main">更多</string>
+
 
     <string name="home_title_main">H</string>
     <string name="title_title_main">Notes</string>
@@ -20,10 +21,8 @@
 
     <string name="delete_menu_content">删除</string>
 
-
     <string name="input_sv_search">搜索你想要的</string>
     <string name="cancel_btn_search">取消</string>
-
 
     <string name="msg">消息提示</string>
     <string name="hint">something</string>
@@ -38,24 +37,40 @@
     <string name="delete_icon">X</string>
     <string name="clear">清空所有搜索记录</string>
 
-
-    <string name='text_files'>我的类别:</string>
+    <string name='text_files'>SimpleNote</string>
 
     <string name="folder">类别管理</string>
     <string name="recycle">回收站</string>
     <string name="security">安全</string>
-    <string name="setting">设置</string>
+    <string name="setting"></string>
     <string name="about">关于</string>
-    <string name="exit">退出程序</string>
+    <string name="exit">退出SimpleNote</string>
 
     <string name="title_recycle">回收站</string>
-    <string name="info_recycle">最近删除的将会在30天内永久删除</string>
+    <string name="info_recycle">回收的备忘录将会在30天后永久删除</string>
     <string name="clearAll_recycle">清空</string>
 
-    <string name="edit_content_menu">编辑</string>
-    <string name="reBack_content_menu">撤销</string>
+    <string name="share_content_menu">分享</string>
 
-    <string name ="main_about">Write what you want</string>
-    <string name ="text_about">内容.....</string>
+
+    <string name="title_create">标题</string>
+    <string name="content_create">内容</string>
+    <string name="date_create">时间</string>
+    <string name="location_create">位置</string>
+    <string name="done_create">完成</string>
+
+    <string name="hint_quick">快点记下来...</string>
+
+    <string name="main_about">只是随便写点什么.\n</string>
+
+
+    <string name="text_about">更新历史:\n \n\n
+
+        使用到的第三方库:\n\ncom.baoyz.swipemenulistview\n
+		me.imid.swipebacklayout\n
+		de.hdodenhof:circleimageview\n
+		jp.wasabeef:richeditor-android:1.2.2\n
+		com.getbase:floatingactionbutton\n</string>
+
 
 </resources>

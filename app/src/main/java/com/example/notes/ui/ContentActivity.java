@@ -1,44 +1,31 @@
 package com.example.notes.ui;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.notes.Manager.LocationManager;
 import com.example.notes.Manager.NoteManager;
-
-import com.example.notes.View.EditListener;
-import com.example.notes.util.MsgToast;
 import com.example.notes.util.Note;
 import com.example.notes.Dialog.ProDialog;
 import com.example.notes.util.StringUtil;
 import com.example.ui.R;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ContentActivity extends BaseActivity implements View.OnClickListener{
 
+public class ContentActivity extends BaseActivity  {
 
 
     private TextView mTitle;
 
-    private EditText content;
+    private TextView content;
 
     private Note note;
 
@@ -46,211 +33,34 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
 
     private Toolbar mToolbar;
 
-    private boolean edit; //用于保存右上角 编辑（false）或完成(true) 的状态
+    //private ImageView done;
 
+    //private boolean edit;
 
     private NoteManager mNoteManager;
-
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
+
+        //获取mainActivity传来的信息
+        Intent intent = this.getIntent();
+        currentFolderName = intent.getStringExtra("currentFolderName");
+        note = (Note) intent.getSerializableExtra("note");
+        mNoteManager = new NoteManager(this,currentFolderName);
         init();
     }
 
 
-
-    private void editOrSave(){
-
-        if(edit){//如果是编辑状态
-            editContent();
-        }else{//保存状态
-            saveContent(true);
-        }
-    }
-
-    private  void editContent(){
-        content.setFocusableInTouchMode(true);
-        content.setFocusable(true);
-        content.requestFocus();
-        hideOrOpenKeyBoard();
-    }
-
-    private void saveContent(boolean save){
-
-        if(save) {
-            NoteManager mNoteManager = new NoteManager(this, currentFolderName);
-            note = mNoteManager.updateContent(note, content.getText().toString());
-        }
-
-        content.setFocusable(false);
-        content.setFocusableInTouchMode(false);
-        hideOrOpenKeyBoard();
-
-    }
-
-
-    private void hideOrOpenKeyBoard(){
-
-        openBottom(true);
-
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-    }
-
-
-    private void openBottom(boolean b){
-
-        LinearLayout bottom =(LinearLayout) findViewById(R.id.bottom_content);
-        if(b){
-            bottom.setVisibility(View.VISIBLE);
-        }
-        else{
-            bottom.setVisibility(View.GONE);
-        }
-    }
-
-    //reBack按钮监听
-    private void  reBack(){
-
-        content.setText(note.getText());
-        content.setSelection(note.getText().length());
-
-        //更改编辑状态
-        edit=!edit;
-
-        saveContent(false);
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()){
-            case R.id.btn_red:
-            case R.id.btn_green:
-            case R.id.btn_orange:
-                change_level(v);
-                break;
-
-            //case R.id.hide_bottom_content:
-            //    openBottom(false);
-              //  break;
-            case R.id.delete_bottom_content:
-                deleteNote();
-                break;
-            case R.id.location_bottom_content:
-                getLocation();
-                break;
-
-
-            default:
-                break;
-        }
-
-    }
-
-    private void change_level(View v){
-
-        int level = note.getLevel();
-
-        switch (v.getId()){
-            case R.id.btn_red:
-                level = Note.RED_LEVEL;
-                break;
-            case R.id.btn_orange:
-                level = Note.ORA_LEVEL;
-                break;
-            case R.id.btn_green:
-                level = Note.GRE_LEVEL;
-                break;
-        }
-
-
-        mNoteManager = new NoteManager(this, currentFolderName);
-
-        note = mNoteManager.updateLevel(note,level);
-
-        MsgToast.showToast(this,"已成功修改");
-    }
-
-
-    private void getLocation(){
-
-        final  ProDialog proDialog = new ProDialog(this,"正在获取定位...");
-        proDialog.show();
-
-        LocationManager mLocationMag = new LocationManager(getApplicationContext());
-
-        final TextView location  = (TextView) findViewById(R.id.locate_content);
-        location.setVisibility(View.VISIBLE);
-
-
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                proDialog.dismiss();
-            }
-        };
-        Timer timer = new Timer();
-        timer.schedule(task, 1500);
-
-        String address = mLocationMag.getLocation();
-
-
-
-        mNoteManager = new NoteManager(this, currentFolderName);
-
-        note = mNoteManager.updateLocation(note,address);
-
-        location.setText(address);
-
-    }
-
-
     //获取item并打开响应的activity
-    private void init(){
-
+    private void init() {
 
         init_toolbar();
+        init_view();
         init_bottom();
 
-        currentFolderName = getIntent().getStringExtra("currentFolderName");
-
-
-        Intent intent = this.getIntent();
-        note = (Note) intent.getSerializableExtra("note");
-
-
-        TextView date = (TextView) findViewById(R.id.date_content);
-        TextView location  = (TextView) findViewById(R.id.locate_content);
-
-        if(StringUtil.isEmpty(note.getLocation()))
-            location.setVisibility(View.GONE);
-        else {
-            location.setText(note.getLocation());
-        }
-
-        content = (EditText)findViewById(R.id.edit_content);
-        content.setFocusable(false);
-
-
-        mTitle.setText(note.getName());
-        date.setText(note.getDate().getDetailDate());
-        content.setText(note.getText());
-        content.setSelection(content.getText().length());
-
-        content.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editAction();
-                content.setSelection(content.getText().length());
-            }
-        });
-        TextView numberFollow = (TextView)findViewById(R.id.number_bottom_content);
-        content.addTextChangedListener(new EditListener(content,numberFollow));
     }
 
 
@@ -258,26 +68,17 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
 
     private void init_toolbar() {
 
-       mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mTitle = (TextView) findViewById(R.id.title_toolbar);
-
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.inflateMenu(R.menu.menu_content);
 
 
-        mToolbar.getMenu().getItem(0).setVisible(false);
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.edit_content_menu:
-                        editAction();
+                switch (item.getItemId()) {
+                    case R.id.share_content_menu:
+                       // editAction();
                         break;
-                    case R.id.reBack_content_menu:
-                        reBack();
-                        mToolbar.getMenu().getItem(0).setVisible(false);
-                        mToolbar.getMenu().getItem(1).setIcon(R.drawable.pic_edit);
-                        break;
-
                 }
                 return false;
             }
@@ -296,43 +97,398 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
         });
 
 
+        //toolbar上的标题
+        mTitle = (TextView) findViewById(R.id.title_toolbar);
+       // setEditTextEditable(mTitle, false);
+        mTitle.setText(note.getName());
+       // mTitle.setSelection(mTitle.getText().length());
+       /** mTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setEditTextEditable(mTitle, true);
+                done.setVisibility(View.VISIBLE);
+            }
+        });
+
+**/
+
+/**
+        //toolbar上标题编辑是否完成按钮
+        done = (ImageView) findViewById(R.id.done_toolbar);
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //savatitle
+                mNoteManager.update(note, mTitle.getText().toString());
+                MsgToast.showToast(ContentActivity.this, "完成");
+                showToolbarMenu(true);
+                done.setVisibility(View.GONE);
+                setEditTextEditable(mTitle, false);
+            }
+        });
+
+    }
+ **/
     }
 
 
+/**
 
-    private void editAction(){
-        edit=!edit;
-        editOrSave();
+  private void init_NoteEditor(){
 
-        if(!edit) {//如果是保存
-            mToolbar.getMenu().getItem(0).setVisible(false);
-            mToolbar.getMenu().getItem(1).setIcon(R.drawable.pic_edit);
-        }else{
-            mToolbar.getMenu().getItem(0).setVisible(true);
-            mToolbar.getMenu().getItem(1).setIcon(R.drawable.pic_done);
+        mEditor = (RichEditor) findViewById(R.id.editor);
+        mEditor.setFontSize(14);
+
+
+
+       findViewById(R.id.editor_bottom).setVisibility(View.GONE);
+
+        findViewById(R.id.action_hide).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.bottom).setVisibility(View.VISIBLE);
+                findViewById(R.id.editor_bottom).setVisibility(View.GONE);
+            }
+        });
+
+
+        findViewById(R.id.action_bold).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditor.setBold();
+            }
+        });
+        // bold.setOnClickListener(this);
+
+        findViewById(R.id.action_italic).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditor.setItalic();
+            }
+        });
+        //italic.setOnClickListener(this);
+
+        findViewById(R.id.action_underline).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditor.setUnderline();
+            }
+        });
+        //underline.setOnClickListener(this);
+
+        findViewById(R.id.action_font).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //ont.setOnClickListener(this);
+
+
+        // photo.setOnClickListener(this);
+
+        findViewById(R.id.action_checkbox).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditor.insertTodo();
+            }
+        });
+
+        findViewById(R.id.action_menulist).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                mEditor.setNumbers();
+            }
+        });
+        //menuList.setOnClickListener(this);
+
+        findViewById(R.id.action_menubullte).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditor.setBullets();
+            }
+        });
+
+        findViewById(R.id.action_left).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditor.setAlignLeft();
+            }
+        });
+
+
+        findViewById(R.id.action_center).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditor.setAlignCenter();
+            }
+        });
+        findViewById(R.id.action_right).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditor.setAlignRight();
+            }
+        });
+
+    }
+ **/
+    private void init_view(){
+        //设置noteMng
+        mNoteManager = new NoteManager(this, currentFolderName);
+
+        //日期
+        final TextView date = (TextView) findViewById(R.id.date_content);
+        date.setText(note.getDate().getDetailDate());
+
+        //位置
+        final TextView location = (TextView) findViewById(R.id.location_content);
+        //位置信息的判断
+        if (StringUtil.isEmpty(note.getLocation()))
+            location.setVisibility(View.GONE);
+        else {
+            location.setText(note.getLocation());
         }
+
+        content =(TextView)findViewById(R.id.content);
+        content.setText(Html.fromHtml(note.getText()));
+
+        TextView numberFollow = (TextView)findViewById(R.id.numberFollow_content);
+        numberFollow.setText("字数:"+StringUtil.clearHtml(content.getText().toString()).length());
+
+
+        switch (note.getLevel()){
+            case Note.GRE_LEVEL:
+                findViewById(R.id.level_content).setBackgroundResource(R.drawable.radius_green);
+                break;
+            case Note.ORA_LEVEL:
+                findViewById(R.id.level_content).setBackgroundResource(R.drawable.radius_orange);
+                break;
+            case Note.RED_LEVEL:
+                findViewById(R.id.level_content).setBackgroundResource(R.drawable.radius_red);
+                break;
+        }
+
     }
 
+    private void init_bottom() {
 
 
-    private  void init_bottom(){
-
-       // ImageView hide = (ImageView) findViewById(R.id.hide_bottom_content);
-       // hide.setOnClickListener(this);
-        ImageView delete = (ImageView) findViewById(R.id.delete_bottom_content);
-        delete.setOnClickListener(this);
-        ImageView location = (ImageView) findViewById(R.id.location_bottom_content);
-        location.setOnClickListener(this);
-
+        findViewById(R.id.edit_bottom_content).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+                edit();
+            }
+        });
 
 
+        findViewById(R.id.delete_bottom_content).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mNoteManager.deleteNote(note);
+            }
+        });
+
+        findViewById(R.id.move_bottom_content).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+                Intent intent = new Intent(ContentActivity.this,FilesActivity.class);
+                intent.putExtra("move",true);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("note",note);
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+                overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+                //move
+
+            }
+        });
+
+
+        findViewById(R.id.location_bottom_content).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getLocation();
+            }
+        });
+
+
+
+/*
         Button btn_red = (Button) findViewById(R.id.btn_red);
         btn_red.setOnClickListener(this);
         Button btn_orange = (Button) findViewById(R.id.btn_orange);
         btn_orange.setOnClickListener(this);
         Button btn_green = (Button) findViewById(R.id.btn_green);
         btn_green.setOnClickListener(this);
+        **/
     }
+
+
+    private  void edit(){
+
+        Intent intent = new Intent(this,CreateActivity.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("note", note);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
+        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+        finish();
+    }
+
+
+    private void getLocation() {
+
+        final ProDialog proDialog = new ProDialog(this, "正在获取定位...");
+        proDialog.show();
+
+        LocationManager mLocationMag = new LocationManager(getApplicationContext());
+
+        final TextView location = (TextView) findViewById(R.id.location_content);
+        location.setVisibility(View.VISIBLE);
+
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                proDialog.dismiss();
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, 1500);
+
+        String address = mLocationMag.getLocation();
+
+        note = mNoteManager.updateLocation(note, address);
+
+        location.setText(address);
+    }
+
+/**
+
+    private void editAction() {
+
+        //edit 默认是false 记录为编辑状态
+        edit = !edit; //点击修改状态
+        if (edit) {//如果是编辑状态
+            mEditor.setFocusableInTouchMode(true);
+            mEditor.setFocusable(true);
+            mEditor.requestFocus();
+            mToolbar.getMenu().getItem(0).setIcon(R.drawable.pic_done);
+            hideOrOpenKeyBoard();
+
+        } else {//保存状态
+            NoteManager mNoteManager = new NoteManager(this, currentFolderName);
+            note = mNoteManager.updateContent(note, mEditor.getHtml());
+
+            mEditor.setFocusable(false);
+            mEditor.setFocusableInTouchMode(false);
+            mToolbar.getMenu().getItem(0).setIcon(R.drawable.pic_edit);
+        }
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.btn_red:
+            case R.id.btn_green:
+            case R.id.btn_orange:
+                change_level(v);
+                break;
+            case R.id.delete_bottom_content:
+                deleteNote();
+                break;
+            case R.id.location_bottom_content:
+                getLocation();
+                break;
+            default:
+                break;
+        }
+
+    }
+
+
+
+    private void change_level(View v) {
+
+        int level = note.getLevel();
+
+        switch (v.getId()) {
+            case R.id.btn_red:
+                level = Note.RED_LEVEL;
+                break;
+            case R.id.btn_orange:
+                level = Note.ORA_LEVEL;
+                break;
+            case R.id.btn_green:
+                level = Note.GRE_LEVEL;
+                break;
+        }
+
+        note = mNoteManager.updateLevel(note, level);
+
+        MsgToast.showToast(this, "已成功修改");
+    }
+**/
+/**
+
+    private void editContent() {
+        mEditor.setFocusableInTouchMode(true);
+        mEditor.setFocusable(true);
+        mEditor.requestFocus();
+
+    }
+
+
+    private void saveContent(boolean save) {
+
+      //  if (save) {
+            NoteManager mNoteManager = new NoteManager(this, currentFolderName);
+            note = mNoteManager.updateContent(note, mEditor.getHtml());
+       // }
+
+        mEditor.setFocusable(false);
+        mEditor.setFocusableInTouchMode(false);
+
+    }**/
+/**    private void hideOrOpenKeyBoard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+
+
+    private void showToolbarMenu(boolean value) {
+        if (value) {
+            mToolbar.getMenu().getItem(0).setVisible(true);
+
+        } else {
+            mToolbar.getMenu().getItem(0).setVisible(false);
+
+        }
+    }
+
+    private void setEditTextEditable(EditText editText, boolean value) {
+        if (value) {
+            editText.setFocusableInTouchMode(true);
+            editText.requestFocus();
+            showToolbarMenu(false);
+        } else {
+            editText.setFocusableInTouchMode(false);
+            editText.clearFocus();
+            showToolbarMenu(true);
+        }
+        hideOrOpenKeyBoard();
+    }
+
 
 
 
@@ -342,7 +498,7 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
         noteManager.deleteNote(note);
     }
 
-
+**/
 
 
 

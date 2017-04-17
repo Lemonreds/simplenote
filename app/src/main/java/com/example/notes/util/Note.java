@@ -14,12 +14,17 @@ public class Note extends Item implements Serializable ,Comparable{
     public static final  int GRE_LEVEL = 0;
 
 
+
     private String text;
+   // private String simpleText;//不包含html
+
     private String location;
 
     private Date deleteDate;
 
     private int level;
+
+
 
 
     public Note(String name,Date date,String folderName) {
@@ -105,9 +110,6 @@ public class Note extends Item implements Serializable ,Comparable{
         this.text = text;
     }
 
-    public Date getDelteDate() {
-        return deleteDate;
-    }
 
     public void setDeleteDate(Date delteDate) {
         this.deleteDate = delteDate;

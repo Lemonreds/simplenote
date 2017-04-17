@@ -63,15 +63,7 @@
                 />
 
 
-            <TextView
-                adroid:id="@+id/empty_view"
-                adroid:layout_width="match_parent"
-                adroid:layout_height="match_parent"
-                adroid:layout_gravity="center_vertical"
-                adroid:gravity="center"
-                adroid:textSize="18sp"
-                adroid:visibility="gone"
-                adroid:text="@string/empty_info"/>
+            <include layout="@layout/empty_view"/>
 
 
             <com.baoyz.swipemenulistview.SwipeMenuListView

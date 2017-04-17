@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.BaseAdapter;
 
 import com.example.notes.Dialog.InfoDialog;
-import com.example.notes.Interface.onYesOnclickListener;
+import com.example.notes.Interface.MyOnClickListener;
 import com.example.notes.util.MsgToast;
 import com.example.notes.ui.RecycleActivity;
 import com.example.notes.util.Note;
@@ -42,6 +42,7 @@ public class RecycleManager {
 
         Note note = mData.get(position);
 
+
         dbManager.recovery(note);
         update_bottom(position);
     }
@@ -60,9 +61,9 @@ public class RecycleManager {
         warnDialog.setTitle("警告");
         warnDialog.setEnableEdit(false);
         warnDialog.setInfo("删除不可恢复!");
-        warnDialog.setYesListener(new onYesOnclickListener() {
+        warnDialog.setYesListener(new MyOnClickListener() {
             @Override
-            public void onYesClick() {
+            public void onClick() {
                 int number  = dbManager.clearAllFolder(currentFolderName);
                 update_bottom(-1);
                 MsgToast.showToast(mContext,"删除了 "+number+" 条数据");

@@ -1,19 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <item
-        android:id="@+id/reBack_content_menu"
-        android:title="@string/reBack_content_menu"
-        android:icon="@drawable/pic_reback"
+        android:id="@+id/share_content_menu"
+        android:title="@string/share_content_menu"
+        android:icon="@drawable/pic_share"
         android:orderInCategory="100"
         app:showAsAction="always"
         />
-    <item
-        android:id="@+id/edit_content_menu"
-        android:title="@string/edit_content_menu"
-        android:icon="@drawable/pic_edit"
-        android:orderInCategory="100"
-        app:showAsAction="always"
-        />
+
 
 </menu>

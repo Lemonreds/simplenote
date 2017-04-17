@@ -62,14 +62,15 @@ public class MainSwipeAdapter extends BaseAdapter {
         if(StringUtil.isEmpty(note.getText())){
             sb.append(" ");
         }else{
+            String clearContent = StringUtil.clearHtml(note.getText());
             content.setVisibility(View.VISIBLE);
 
 
-            if(note.getText().length() < 22){
-                sb.append(note.getText());
+            if(clearContent.length() <22){
+                sb.append(clearContent);
             }
             else if(note.getText().length() > 22){
-                sb.append(note.getText().substring(0,21));
+                sb.append(clearContent.substring(0,21));
                 sb.append("...");
             }
         }

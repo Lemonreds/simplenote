@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
@@ -40,7 +41,8 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 finish();
-                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+                //overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+                overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
             }
         });
         toolbar.inflateMenu(R.menu.menu_recycle);
@@ -146,20 +148,20 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
         if(number == 0){
             text_bottom.setVisibility(View.GONE);
 
-            //hide and show
             mListView.setVisibility(View.GONE);
-            TextView tv = (TextView) findViewById(R.id.empty_view);
-            tv.setVisibility(View.VISIBLE);
+
+            RelativeLayout empty = (RelativeLayout) findViewById(R.id.empty);
+            empty.setVisibility(View.VISIBLE);
+            TextView info = (TextView) findViewById(R.id.text_empty);
+            info.setText("回收站似乎空空如也");
 
             return ;
-
-          //  str.append("无备忘录");
         }else{
 
-            //hide and show
             mListView.setVisibility(View.VISIBLE);
-            TextView tv = (TextView) findViewById(R.id.empty_view);
-            tv.setVisibility(View.GONE);
+            RelativeLayout empty = (RelativeLayout) findViewById(R.id.empty);
+            empty.setVisibility(View.GONE);
+
             str.append(number);
 
             str.append(" 个备忘录");
@@ -173,11 +175,10 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
 
-        switch(keyCode)
-        {
+        switch(keyCode) {
             case KeyEvent.KEYCODE_BACK:
                 finish();
-                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+                overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                 break;
         }
         return super.onKeyUp(keyCode, event);

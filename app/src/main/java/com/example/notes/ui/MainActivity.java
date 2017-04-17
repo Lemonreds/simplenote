@@ -4,7 +4,6 @@ import android.content.Intent;
 
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,12 +15,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
-import android.widget.ScrollView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baoyz.swipemenulistview.*;
 import com.example.notes.Dialog.HeadDialog;
-import com.example.notes.Interface.onYesOnclickListener;
+import com.example.notes.Dialog.ProDialog;
+import com.example.notes.Interface.MyOnClickListener;
 import com.example.notes.Manager.DBManager;
 
 import com.example.notes.Manager.NoteManager;
@@ -37,6 +38,8 @@ import com.example.notes.util.PersonalInfoUtil;
 import com.example.notes.util.StringUtil;
 import com.example.notes.Adapter.MainSwipeAdapter;
 import com.example.ui.R;
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 
 import java.util.Collections;
@@ -103,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView_setting();
         slide_setting();
-        bottom_setting();
+        fab_setting();
     }
 
     private void slide_setting(){
@@ -130,11 +133,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent1);
                         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                         break;
-                   case R.id.nav_setting:
-                       Intent intent2 = new Intent(MainActivity.this,SettingActivity.class);
-                       startActivity(intent2);
-                       overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
-                     break;
+                 //  case R.id.nav_setting:
+                  //     Intent intent2 = new Intent(MainActivity.this,SettingActivity.class);
+                 //      startActivity(intent2);
+                  //     overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+                  //   break;
                     case R.id.nav_about:
                         Intent intent3 = new Intent(MainActivity.this,AboutActivity.class);
                         startActivity(intent3);
@@ -160,8 +163,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void actionbarReset(){
 
-
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         toolbar.setNavigationIcon(R.drawable.pic_home);//设置导航栏图标
@@ -172,12 +173,8 @@ public class MainActivity extends AppCompatActivity {
            }
         });
 
-        //toolbar.getNavigationIcon().setTint();
-
         toolbar_title = (TextView) findViewById(R.id.title_toolbar) ;
         toolbar_title.setText(currentFolderName);
-
-
 
         toolbar.inflateMenu(R.menu.menu_main);//设置右上角的填充菜单
 
@@ -192,17 +189,10 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent1);
                         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                     break;
-                   // case R.id.add_item:
-                      //  for(int i=0;i<10;i++)
-                    //    noteManager.add();
-                   // break;
                 }
                 return false;
             }
         });
-
-
-
     }
 
 
@@ -213,9 +203,14 @@ public class MainActivity extends AppCompatActivity {
 
         final CircleImageView userImg = (CircleImageView) view.findViewById(R.id.useImg_nav);
 
+        final ImageView userEdit = (ImageView)view.findViewById(R.id.useEdit_nav);
+
         final PersonalInfoUtil personal = new PersonalInfoUtil(this);
         final String name = personal.getPersonName();
         userName.setText(name);
+
+
+
 
 
         View.OnClickListener listener = new View.OnClickListener() {
@@ -226,9 +221,9 @@ public class MainActivity extends AppCompatActivity {
 
                 dialog.setPersonalName(userName.getText().toString());
 
-                dialog.setYesListener(new onYesOnclickListener() {
+                dialog.setYesListener(new MyOnClickListener(){
                     @Override
-                    public void onYesClick() {
+                    public void onClick() {
                         String newName = dialog.getPersonalName();
                         if(! newName.equals(name)){
                             personal.savePersonName(newName);
@@ -244,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
 
         userImg.setOnClickListener(listener);
         userName.setOnClickListener(listener);
+        userEdit.setOnClickListener(listener);
 
     }
 
@@ -270,11 +266,19 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+    private void hide_fabMenu(){
+        //关闭fab菜单
+        FloatingActionsMenu menu = (FloatingActionsMenu)findViewById(R.id.action_menu);
+        if(menu!=null) menu.collapse();
+    }
 
 
     public void listView_setting(){
 
+        hide_fabMenu();
+
+        final ProDialog proDialog = new ProDialog(this, "正在加载...");
+        proDialog.show();
 
         mData = new DBManager(this).search(currentFolderName);
 
@@ -303,26 +307,56 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         view_Listener();
-        //update_bottom();
+        emptyListCheck();
+        proDialog.dismiss();
     }
 
 
-    private void bottom_setting(){
+    private void fab_setting(){
 
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.action_note);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               //noteManager.add();
+                //关闭fab菜单
+                FloatingActionsMenu menu = (FloatingActionsMenu)findViewById(R.id.action_menu);
+                menu.collapse();
 
-                noteManager.add();
+                Intent intent = new Intent(MainActivity.this,CreateActivity.class);
+                intent.putExtra("currentFolderName",currentFolderName);
+                startActivity(intent);
+                overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+
+
+            }
+        });
+
+        FloatingActionButton fab_quick = (FloatingActionButton)findViewById(R.id.action_quick);
+
+        fab_quick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //noteManager.add();
+                //关闭fab菜单
+                FloatingActionsMenu menu = (FloatingActionsMenu)findViewById(R.id.action_menu);
+                menu.collapse();
+
+                Intent intent = new Intent(MainActivity.this,QuickCreateActivity.class);
+                intent.putExtra("currentFolderName",currentFolderName);
+                startActivity(intent);
+                overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
             }
         });
     }
+
+
     private void showOrHideFab(boolean show){
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.action_menu);
 
         if(show){
             fab.setVisibility(View.VISIBLE);
@@ -330,8 +364,8 @@ public class MainActivity extends AppCompatActivity {
             fab.setVisibility(View.GONE);
         }
 
-
     }
+
     public void view_Listener() {
 
         //点击监听
@@ -361,8 +395,8 @@ public class MainActivity extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("note",mData.get(position));
                         intent.putExtras(bundle);
-                       // startActivityForResult(intent,1);
                         startActivity(intent);
+
                         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                         //move
                         break;
@@ -378,8 +412,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void emptyListCheck(){
 
-/**
+
+
+        int number = 0;
+        if(mData!=null){
+            number=mData.size();
+        }
+
+
+        if(number == 0) {
+            //hide and show
+            mListView.setVisibility(View.GONE);
+            RelativeLayout empty = (RelativeLayout) findViewById(R.id.empty);
+            empty.setVisibility(View.VISIBLE);
+
+            TextView info = (TextView) findViewById(R.id.text_empty);
+            info.setText("似乎空空如也");
+        }else{
+            mListView.setVisibility(View.VISIBLE);
+            RelativeLayout empty = (RelativeLayout) findViewById(R.id.empty);
+            empty.setVisibility(View.GONE);
+        }
+    }
+
+
+
+    /**
 
     public void update_bottom(){
 
@@ -432,10 +492,10 @@ public class MainActivity extends AppCompatActivity {
         switch(keyCode)
         {
             case KeyEvent.KEYCODE_BACK:
-                long backpressSecond = System.currentTimeMillis();
-                if (backpressSecond - backpressFirst > 2000) { //如果两次按键时间间隔大于2秒，则不退出
+                long backPressSecond = System.currentTimeMillis();
+                if (backPressSecond - backpressFirst > 2000) { //如果两次按键时间间隔大于2秒，则不退出
                     MsgToast.showToast(this,"再按一次返回键退出应用");
-                    backpressFirst = backpressSecond;//更新firstTime
+                    backpressFirst = backPressSecond;//更新firstTime
 
                     return true;
                 } else {  //两次按键小于2秒时，退出应用

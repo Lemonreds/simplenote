@@ -8,8 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.notes.Interface.onNoOnclickListener;
-import com.example.notes.Interface.onYesOnclickListener;
+import com.example.notes.Interface.MyOnClickListener;
 import com.example.ui.R;
 
 /**
@@ -25,8 +24,8 @@ public class InfoDialog extends android.app.Dialog {
     private Context mContext;
 
 
-    private onNoOnclickListener noListener;//取消按钮被点击了的监听器
-    private onYesOnclickListener yesListener;//确定按钮被点击了的监听器
+    private MyOnClickListener noListener;//取消按钮被点击了的监听器
+    private MyOnClickListener yesListener;//确定按钮被点击了的监听器
 
     /**
      *
@@ -70,7 +69,7 @@ public class InfoDialog extends android.app.Dialog {
                 info.setFocusableInTouchMode(true);
                 info.setFocusable(true);
                 info.requestFocus();
-                hideOrOpenKeyBoard();
+              //  hideOrOpenKeyBoard();
             }
         });
         title = (TextView) findViewById(R.id.title_dialog);
@@ -86,7 +85,7 @@ public class InfoDialog extends android.app.Dialog {
             @Override
             public void onClick(View v) {
                 if (yesListener != null) {
-                    yesListener.onYesClick();
+                    yesListener.onClick();
                 }
             }
         });
@@ -95,7 +94,7 @@ public class InfoDialog extends android.app.Dialog {
             @Override
             public void onClick(View v) {
                 if (noListener != null) {
-                  noListener.onNoClick();
+                  noListener.onClick();
                 }else{
                     dismiss();//若没有新设置事件,则默认关闭Dialog
                 }
@@ -114,7 +113,7 @@ public class InfoDialog extends android.app.Dialog {
      *
      * @param listener
      */
-    public void setYesListener (onYesOnclickListener listener){
+    public void setYesListener (MyOnClickListener listener){
         this.yesListener = listener;
     }
 
@@ -122,7 +121,7 @@ public class InfoDialog extends android.app.Dialog {
      *
      * @param listener
      */
-    public void setNoListener (onNoOnclickListener listener){
+    public void setNoListener (MyOnClickListener listener){
         this.noListener = listener;
     }
 

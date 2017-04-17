@@ -6,14 +6,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.notes.Adapter.FileSwipeAdapter;
+import com.example.notes.Dialog.ChooseDialog;
 import com.example.notes.Dialog.InfoDialog;
-import com.example.notes.Interface.onYesOnclickListener;
+import com.example.notes.Interface.MyOnClickListener;
 import com.example.notes.Manager.DBHelper;
 import com.example.notes.Manager.DBManager;
 import com.example.notes.View.FileCreator;
@@ -30,6 +30,8 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
     private List<String> folderName;
     private SwipeMenuListView mListView;
 
+
+    private boolean addFolder;//记录是否打开了新建窗口 true为打开
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,8 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
                 onBackPressed();
+                // overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+                overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
             }
         });
 
@@ -104,9 +108,9 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
                         info.setTitle("消息提示");
                         info.setInfo("确认清空默认Notes?");
                         info.setEnableEdit(false);
-                        info.setYesListener(new onYesOnclickListener() {
+                        info.setYesListener(new MyOnClickListener() {
                             @Override
-                            public void onYesClick() {
+                            public void onClick() {
                                 dropFolder(postin);
                                 info.dismiss();
                             }
@@ -125,9 +129,9 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
                             dialog.setEnableEdit(true);
                             dialog.setTitle("重命名这个类别");
                             dialog.setInfo(select_item);
-                            dialog.setYesListener(new onYesOnclickListener() {
+                            dialog.setYesListener(new MyOnClickListener() {
                                 @Override
-                                public void onYesClick() {
+                                public void onClick() {
                                     String newName = dialog.getInfo();
                                     if (!newName.isEmpty()) {
                                         updateFolder(folderName.get(postin), newName);
@@ -138,18 +142,33 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
                             });
                             break;
                         case 1:
-                            final InfoDialog info = new InfoDialog(FilesActivity.this);
-                            info.show();
-                            info.setTitle("警告");
-                            info.setInfo("确认删除这个类别?");
-                            info.setEnableEdit(false);
-                            info.setYesListener(new onYesOnclickListener() {
+
+                            final ChooseDialog deleteDialog = new ChooseDialog(FilesActivity.this);
+
+                            deleteDialog.show();
+                            deleteDialog.setTitle("删除分类?");
+                            deleteDialog.setInfo("如果仅删除文件夹,其备忘录将转移到回收站.");
+                            deleteDialog.setChoose1("删除文件夹和备忘录");
+                            deleteDialog.setListener_1(new MyOnClickListener() {
                                 @Override
-                                public void onYesClick() {
-                                    dropFolder(postin);
-                                    info.dismiss();
+                                public void onClick() {
+                                    dropFolderAndNote(postin);
                                 }
                             });
+                            deleteDialog.setChoose2("仅删除文件夹");
+                            deleteDialog.setListener_2(new MyOnClickListener() {
+                                @Override
+                                public void onClick() {
+                                    dropFolder(postin);
+                                }
+                            });
+                            deleteDialog.setChoose3("取消");
+
+
+
+
+                            break;
+
                         default:
                             break;
                     }
@@ -162,6 +181,8 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
+                    if(addFolder)return;
                     //获取点击的文件夹名字返回给主界面
                     Intent intent = new Intent();
                     String returnData = folderName.get(position);
@@ -205,15 +226,20 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
 
     }
 
-    private void dropFolder(int position){
-
+    private void dropFolderAndNote(int position){
 
         String folder= folderName.get(position);
+        DBHelper dbHelper = DBHelper.getInstance(this);
+        dbHelper.drop_table_deep(folder);
+        MsgToast.showToast(this,"删除成功");
+        viewUpdate();
 
+    }
+    private void dropFolder(int position){
 
+        String folder= folderName.get(position);
         DBHelper dbHelper = DBHelper.getInstance(this);
         dbHelper.drop_table(folder);
-
         MsgToast.showToast(this,"删除成功");
         viewUpdate();
     }
@@ -222,14 +248,16 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
 
         final DBHelper dbHelper = DBHelper.getInstance(this);
 
+
+        addFolder=true;
         final InfoDialog info = new InfoDialog(this);
         info.show();
         info.setTitle("新建类别");
         info.setInfo("输入你喜欢的名字");
         info.setEnableEdit(true);
-        info.setYesListener(new onYesOnclickListener() {
+        info.setYesListener(new MyOnClickListener() {
             @Override
-            public void onYesClick() {
+            public void onClick() {
                 String newFolder = info.getInfo().trim();
 
                 if(!StringUtil.isEmpty(newFolder)){
@@ -244,6 +272,7 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
                 info.dismiss();
             }
         });
+        addFolder=false;
     }
 
 

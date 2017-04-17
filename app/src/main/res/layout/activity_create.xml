@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:adroid="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    adroid:id="@+id/activity_create"
+    adroid:layout_width="match_parent"
+    adroid:layout_height="match_parent"
+    adroid:background="@null"
+   >
+
+    <android.support.v7.widget.Toolbar
+        adroid:id="@+id/toolbar"
+        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="46dp"
+        adroid:background="@drawable/border_bottom">
+
+        <TextView
+            adroid:id="@+id/title_toolbar"
+            adroid:layout_width="wrap_content"
+            adroid:layout_height="wrap_content"
+            adroid:layout_gravity="center"
+            adroid:textColor="@color/black"
+            adroid:textSize="20sp"
+            />
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <LinearLayout
+        adroid:id="@+id/second"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content"
+        adroid:layout_marginTop="46dp"
+        adroid:background="@drawable/border_bottom"
+        >
+    <EditText
+        adroid:id="@+id/title_create"
+        adroid:layout_width="0dp"
+        adroid:layout_height="wrap_content"
+        adroid:layout_marginTop="15dp"
+        adroid:layout_marginLeft="10dp"
+        adroid:layout_marginRight="10dp"
+        adroid:textColor="@color/black"
+        adroid:gravity="center|start"
+        adroid:background="@null"
+        adroid:lines="1"
+        adroid:hint="@string/title_create"
+        adroid:textColorHint="@color/gray"
+        adroid:layout_weight="1" />
+
+        <LinearLayout
+            adroid:layout_width="wrap_content"
+            adroid:layout_height="wrap_content"
+            adroid:layout_margin="10dp"
+            adroid:layout_marginTop="5dp"
+            adroid:layout_marginLeft="10dp"
+            adroid:layout_marginRight="10dp"
+            adroid:gravity="center|end"  >
+            <include layout="@layout/buttongroup_level"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        adroid:id="@+id/third"
+        adroid:layout_below="@+id/second"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content"
+        adroid:layout_marginTop="5dp"
+        adroid:layout_marginBottom="5dp"
+        adroid:layout_marginLeft="10dp"
+        adroid:orientation="horizontal"
+        >
+        <TextView
+            adroid:id="@+id/date_create"
+            adroid:layout_width="wrap_content"
+            adroid:layout_height="wrap_content"
+            adroid:hint="@string/date_create"
+            />
+
+        <TextView
+            adroid:id="@+id/location_create"
+            adroid:layout_width="match_parent"
+            adroid:layout_height="wrap_content"
+            adroid:gravity="end"
+            adroid:layout_gravity="end"
+            adroid:layout_marginRight="10dp"
+            adroid:hint="@string/location_create"
+            />
+     </LinearLayout>
+
+
+    <LinearLayout
+        adroid:layout_below="@id/third"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content"
+        >
+        <include  layout="@layout/editor"/>
+    </LinearLayout>
+
+    <LinearLayout
+
+        adroid:id="@+id/bottom_content"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content"
+        adroid:layout_alignParentBottom="true">
+
+        <include layout="@layout/bottom_create"/>
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        adroid:id="@+id/fab_create"
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="wrap_content"
+        adroid:layout_alignParentRight="true"
+        adroid:layout_alignParentBottom="true"
+        adroid:layout_margin="10dp"
+        app:elevation="6dp"
+        adroid:src="@drawable/pic_add"
+        app:backgroundTint="@null"
+        />
+</RelativeLayout>

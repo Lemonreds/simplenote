@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     >
 
     <LinearLayout
@@ -17,7 +18,8 @@
         android:layout_height="wrap_content"
         android:queryHint="@string/input_sv_search"
         android:iconifiedByDefault="false"
-        android:background="@drawable/theme"
+        android:background="@drawable/border_bottom"
+
     />
 
     <Button
@@ -27,8 +29,7 @@
             android:layout_height="wrap_content"
             android:text="@string/cancel_btn_search"
             android:layout_gravity="end"
-            android:background="@drawable/theme"
-
+            android:background="@drawable/border_bottom"
             />
 
     </LinearLayout>

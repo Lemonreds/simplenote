@@ -5,27 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="5dp"
-    android:background="@drawable/border_bottom"
     >
-
-
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tool_bar_height"
+        android:background="@drawable/border_bottom"
         >
 
+
         <TextView
-            android:id="@id/title_toolbar"
+            android:id="@+id/title_toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/black"
-            android:textSize="20sp" /> />
+            android:background="@null"
+            android:focusable="true"
+            android:inputType="none"
+            android:enabled="true"
+            android:focusableInTouchMode="true"
+            android:textSize="18sp" />
+
     </android.support.v7.widget.Toolbar>
+
 
 
 </RelativeLayout>

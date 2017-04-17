@@ -50,9 +50,14 @@
         <activity android:name="com.example.notes.ui.SettingActivity" />
         <activity android:name="com.example.notes.ui.FilesActivity" />
         <activity android:name="com.example.notes.ui.RecycleActivity" />
-        <activity android:name="com.example.notes.ui.AboutActivity"/>
+        <activity android:name="com.example.notes.ui.AboutActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
+
+        <activity
+            android:name="com.example.notes.ui.CreateActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.example.notes.ui.QuickCreateActivity"></activity>
     </application>
 
 </manifest>

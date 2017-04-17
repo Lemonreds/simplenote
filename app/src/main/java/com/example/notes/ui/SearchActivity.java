@@ -1,5 +1,6 @@
 package com.example.notes.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -139,6 +141,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     saveHistory(query);
                     getHistory();
                     update_Bottom();
+                    hideOrOpenKeyBoard();
                     return false;
                 }
 
@@ -415,6 +418,11 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
 
+
+    private void hideOrOpenKeyBoard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {

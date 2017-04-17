@@ -46,7 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_NOTE);
         db.execSQL(CREATE_RECYCLE);
-        MsgToast.showToast(mContext, "Thanks you");
+        MsgToast.showToast(mContext, "谢谢你的使用!");
     }
 
     @Override
@@ -63,6 +63,23 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL(create);
     }
+
+
+    /**
+     * 完全删除
+     * @param name
+     */
+    public void drop_table_deep(String name){
+        String drop =
+                "drop table " + name;
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.execSQL(drop);
+
+    }
+    /**
+     * 部分删除
+     * @param name
+     */
 
     public void drop_table(String name) {
 

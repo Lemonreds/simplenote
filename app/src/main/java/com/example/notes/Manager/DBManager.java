@@ -95,6 +95,8 @@ public class DBManager {
         delete(note.getFolderName(),note);
         delete("recycle",note);
 
+
+        notClone.setFolderName(toFolder);
         insert(toFolder,notClone);
 
     }
@@ -140,7 +142,7 @@ public class DBManager {
 
         SQLiteDatabase database = DBHelper.getInstance(mContext).getWritableDatabase();
 
-        database.execSQL("update "+folderName+" set item = ? where item = ?",
+        database.execSQL("update "+ folderName+ " set item = ? where item = ?",
                 new Object[]{new_data,pre_data});
 
         database.close();
@@ -218,6 +220,8 @@ public class DBManager {
             db.add_table(belongFolder);
         }
 
+
+
         insert(belongFolder,note);
 
         delete("recycle",note);
@@ -230,9 +234,4 @@ public class DBManager {
     }
 
 
-    public  int getFolderLength(String folderName){
-
-        DBManager dbManager= new DBManager(mContext);
-        return  dbManager.getTableLength(folderName);
-    }
 }

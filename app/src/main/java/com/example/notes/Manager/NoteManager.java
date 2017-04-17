@@ -3,16 +3,14 @@ package com.example.notes.Manager;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.widget.BaseAdapter;
 
 import com.example.notes.Dialog.InfoDialog;
 import com.example.notes.Dialog.NoteDialog;
-import com.example.notes.Interface.onYesOnclickListener;
+import com.example.notes.Interface.MyOnClickListener;
 import com.example.notes.util.MsgToast;
 import com.example.notes.ui.ContentActivity;
-import com.example.notes.ui.MainActivity;
 import com.example.notes.util.Date;
 
 import com.example.notes.util.Note;
@@ -84,9 +82,9 @@ public class NoteManager{
         dialog.setTitle("重命名此便签");
         dialog.setInfo(select_item.getName());
 
-        dialog.setYesListener(new onYesOnclickListener() {
+        dialog.setYesListener(new MyOnClickListener() {
             @Override
-            public void onYesClick() {
+            public void onClick() {
                 String newName = dialog.getInfo();
                 if(StringUtil.isEmpty(newName.trim())){
                     MsgToast.showToast(mContext,"名字不能为空");
@@ -108,6 +106,10 @@ public class NoteManager{
 
     }
 
+    public void add(Note note){
+        dbManager.insert(currentFolderName,note);
+
+    }
 
     public void add(){
 
@@ -118,9 +120,9 @@ public class NoteManager{
         dialog.setInfo("建立一个名字");
         dialog.setEnableEdit(true);
 
-        dialog.setYesListener(new onYesOnclickListener() {
+        dialog.setYesListener(new MyOnClickListener() {
             @Override
-            public void onYesClick() {
+            public void onClick() {
                 if(!StringUtil.isEmpty(dialog.getInfo())){
 
                     final Note note = new Note(dialog.getInfo(),
@@ -136,9 +138,9 @@ public class NoteManager{
                     confirm.show();
                     confirm.setInfo("是否打开 "+note.getName()+" ?");
                     confirm.setEnableEdit(false);
-                    confirm.setYesListener(new onYesOnclickListener() {
+                    confirm.setYesListener(new MyOnClickListener() {
                         @Override
-                        public void onYesClick() {
+                        public void onClick() {
                             ItemClick(note);
                             confirm.dismiss();
                         }
@@ -162,6 +164,8 @@ public class NoteManager{
 
         dbManager.delete(currentFolderName,note);
     }
+
+
     public void deleteNote(Note note) {
 
 
@@ -171,9 +175,9 @@ public class NoteManager{
         warnDialog.setTitle("提示");
         warnDialog.setEnableEdit(false);
         warnDialog.setInfo("是否确认删除!");
-        warnDialog.setYesListener(new onYesOnclickListener() {
+        warnDialog.setYesListener(new MyOnClickListener() {
             @Override
-            public void onYesClick() {
+            public void onClick() {
                 dbManager.delete(currentFolderName,note1);
                 warnDialog.dismiss();
                 ((ContentActivity) mContext).finish();
@@ -182,20 +186,23 @@ public class NoteManager{
 
     }
 
+    public void update(Note preNote,Note newNote){
+        dbManager.upDate(currentFolderName,preNote,newNote);
+    }
+
 
     public void update(Note note,String newName){
 
         Note newNote = note.getClone();
         newNote.setName(newName);
 
-
-
         dbManager.upDate(currentFolderName,note,newNote);
 
-        int index = list.indexOf(note);
-        list.set(index,newNote);
-
-        adapter.notifyDataSetChanged();
+        if(list!=null) {
+            int index = list.indexOf(note);
+            list.set(index, newNote);
+            adapter.notifyDataSetChanged();
+        }
     }
 
 

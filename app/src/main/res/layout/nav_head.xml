@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:padding="10dp"
-    android:background="@drawable/background"
+    android:background="@drawable/background2"
     >
-
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/useImg_nav"
@@ -27,4 +26,14 @@
         android:textSize="16sp"
         android:textColor="@color/orange" />
 
+    <ImageView
+        android:id="@+id/useEdit_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pic_edit"
+        android:tint="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+
+        />
 </RelativeLayout>
