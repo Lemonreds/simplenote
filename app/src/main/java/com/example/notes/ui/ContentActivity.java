@@ -218,20 +218,7 @@ public class ContentActivity extends BaseActivity  {
         });
 
 
-        findViewById(R.id.action_center).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setAlignCenter();
-            }
-        });
-        findViewById(R.id.action_right).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setAlignRight();
-            }
-        });
-
-    }
+        f
  **/
     private void init_view(){
         //设置noteMng
@@ -254,7 +241,7 @@ public class ContentActivity extends BaseActivity  {
         content.setText(Html.fromHtml(note.getText()));
 
         TextView numberFollow = (TextView)findViewById(R.id.numberFollow_content);
-        numberFollow.setText("字数:"+StringUtil.clearHtml(content.getText().toString()).length());
+        numberFollow.setText(" "+StringUtil.clearHtml(content.getText().toString()).length()+" ");
 
 
         switch (note.getLevel()){
@@ -369,137 +356,6 @@ public class ContentActivity extends BaseActivity  {
 
         location.setText(address);
     }
-
-/**
-
-    private void editAction() {
-
-        //edit 默认是false 记录为编辑状态
-        edit = !edit; //点击修改状态
-        if (edit) {//如果是编辑状态
-            mEditor.setFocusableInTouchMode(true);
-            mEditor.setFocusable(true);
-            mEditor.requestFocus();
-            mToolbar.getMenu().getItem(0).setIcon(R.drawable.pic_done);
-            hideOrOpenKeyBoard();
-
-        } else {//保存状态
-            NoteManager mNoteManager = new NoteManager(this, currentFolderName);
-            note = mNoteManager.updateContent(note, mEditor.getHtml());
-
-            mEditor.setFocusable(false);
-            mEditor.setFocusableInTouchMode(false);
-            mToolbar.getMenu().getItem(0).setIcon(R.drawable.pic_edit);
-        }
-    }
-
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()) {
-            case R.id.btn_red:
-            case R.id.btn_green:
-            case R.id.btn_orange:
-                change_level(v);
-                break;
-            case R.id.delete_bottom_content:
-                deleteNote();
-                break;
-            case R.id.location_bottom_content:
-                getLocation();
-                break;
-            default:
-                break;
-        }
-
-    }
-
-
-
-    private void change_level(View v) {
-
-        int level = note.getLevel();
-
-        switch (v.getId()) {
-            case R.id.btn_red:
-                level = Note.RED_LEVEL;
-                break;
-            case R.id.btn_orange:
-                level = Note.ORA_LEVEL;
-                break;
-            case R.id.btn_green:
-                level = Note.GRE_LEVEL;
-                break;
-        }
-
-        note = mNoteManager.updateLevel(note, level);
-
-        MsgToast.showToast(this, "已成功修改");
-    }
-**/
-/**
-
-    private void editContent() {
-        mEditor.setFocusableInTouchMode(true);
-        mEditor.setFocusable(true);
-        mEditor.requestFocus();
-
-    }
-
-
-    private void saveContent(boolean save) {
-
-      //  if (save) {
-            NoteManager mNoteManager = new NoteManager(this, currentFolderName);
-            note = mNoteManager.updateContent(note, mEditor.getHtml());
-       // }
-
-        mEditor.setFocusable(false);
-        mEditor.setFocusableInTouchMode(false);
-
-    }**/
-/**    private void hideOrOpenKeyBoard() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-    }
-
-
-
-    private void showToolbarMenu(boolean value) {
-        if (value) {
-            mToolbar.getMenu().getItem(0).setVisible(true);
-
-        } else {
-            mToolbar.getMenu().getItem(0).setVisible(false);
-
-        }
-    }
-
-    private void setEditTextEditable(EditText editText, boolean value) {
-        if (value) {
-            editText.setFocusableInTouchMode(true);
-            editText.requestFocus();
-            showToolbarMenu(false);
-        } else {
-            editText.setFocusableInTouchMode(false);
-            editText.clearFocus();
-            showToolbarMenu(true);
-        }
-        hideOrOpenKeyBoard();
-    }
-
-
-
-
-    private void deleteNote(){
-
-        NoteManager noteManager = new NoteManager(this,currentFolderName);
-        noteManager.deleteNote(note);
-    }
-
-**/
-
 
 
 

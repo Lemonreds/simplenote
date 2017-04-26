@@ -61,9 +61,10 @@ public class InfoDialog extends android.app.Dialog {
 
 
         info = (EditText) findViewById(R.id.edit_dialog);
-        setEnableEdit(false);
+        //setEnableEdit(false);
 
-        info.setOnClickListener(new View.OnClickListener() {
+
+       /** info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 info.setFocusableInTouchMode(true);
@@ -72,6 +73,7 @@ public class InfoDialog extends android.app.Dialog {
               //  hideOrOpenKeyBoard();
             }
         });
+        **/
         title = (TextView) findViewById(R.id.title_dialog);
     }
 
@@ -102,7 +104,6 @@ public class InfoDialog extends android.app.Dialog {
         });
 
     }
-
 
     private void hideOrOpenKeyBoard(){
         InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -159,15 +160,17 @@ public class InfoDialog extends android.app.Dialog {
             info.setFocusableInTouchMode(true);
             info.setFocusable(true);
             info.requestFocus();
+           // hideOrOpenKeyBoard();
 
         }
         else {
             info.setFocusable(false);
             info.setFocusableInTouchMode(false);
-            hideOrOpenKeyBoard();
+           // hideOrOpenKeyBoard();
         }
 
     }
+
 
 
 

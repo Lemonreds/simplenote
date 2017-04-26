@@ -29,6 +29,7 @@
                     adroid:layout_gravity="center"
                     adroid:textColor="@color/black"
                     adroid:textSize="20sp"
+
                     />
             </android.support.v7.widget.Toolbar>
 

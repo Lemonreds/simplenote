@@ -4,7 +4,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-
+        <item name="fontPath">fonts/thin.ttf</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -14,7 +14,7 @@
     <!-- ProgressDialog theme. -->
     <style name="ProgressDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:backgroundDimEnabled">false</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowBackground">@null</item>
         <item name="colorAccent">@color/blue</item>
     </style>
 

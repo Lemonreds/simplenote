@@ -1,5 +1,6 @@
 package com.example.notes.ui;
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.content.res.ColorStateList;
@@ -46,6 +47,7 @@ import java.util.Collections;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 /**
@@ -69,11 +71,31 @@ public class MainActivity extends AppCompatActivity {
     private TextView toolbar_title;
     private long backpressFirst = 0;
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //此处运行耗时任务
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+            }
+        }).start();
+
         setContentView(R.layout.activity_main);
         actionbarReset();
         init();

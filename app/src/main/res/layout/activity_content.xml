@@ -75,21 +75,23 @@
 
         <TextView
             adroid:layout_alignParentLeft="true"
-            adroid:id="@+id/numberFollow_content"
+            adroid:id="@+id/location_content"
             adroid:layout_width="match_parent"
             adroid:layout_height="wrap_content"
             adroid:gravity="start"
             adroid:layout_marginLeft="10dp"
+            adroid:hint="@string/location_create"
+
             />
 
         <TextView
             adroid:layout_alignParentRight="true"
-            adroid:id="@+id/location_content"
+            adroid:id="@+id/numberFollow_content"
             adroid:layout_width="wrap_content"
             adroid:layout_height="wrap_content"
             adroid:gravity="end"
             adroid:layout_marginRight="10dp"
-            adroid:hint="@string/location_create"
+            adroid:hint="@string/number_create"
             />
 
 

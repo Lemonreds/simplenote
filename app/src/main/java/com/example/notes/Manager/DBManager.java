@@ -74,8 +74,10 @@ public class DBManager {
             database.execSQL("delete from "+ folderName + " where item = ?",new Object[] {data});
 
             if( !folderName.equals("recycle")){
-                note.setDeleteDate(new Date());
-                insert("recycle",(note));
+                Note note1 = note.getClone();
+                note = null;
+                note1.setDeleteDate(new Date());
+                insert("recycle",(note1));
             }
 
 

@@ -72,8 +72,8 @@ public class Note extends Item implements Serializable ,Comparable{
 
 
         if(d1.before(d2))
-            return  1;
-        else return 0;
+            return  -1;
+        else return 1;
 
     }
 

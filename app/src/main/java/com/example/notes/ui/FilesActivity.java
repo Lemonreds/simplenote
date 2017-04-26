@@ -166,7 +166,6 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
 
 
 
-
                             break;
 
                         default:
@@ -189,6 +188,7 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
 
                     intent.putExtra("currentFolderName", returnData);
                     setResult(RESULT_OK, intent);
+                    overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                     finish();
                 }
             });

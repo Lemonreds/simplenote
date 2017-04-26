@@ -25,8 +25,10 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
+        android:name="com.example.notes.ui.AndroidApplication"
+
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -57,7 +59,8 @@
         <activity
             android:name="com.example.notes.ui.CreateActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.example.notes.ui.QuickCreateActivity"></activity>
+        <activity android:name="com.example.notes.ui.QuickCreateActivity" />
+        <activity android:name="com.example.notes.ui.WelcomeActivity"/>
     </application>
 
 </manifest>

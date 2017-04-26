@@ -56,21 +56,21 @@
     <string name="title_create">标题</string>
     <string name="content_create">内容</string>
     <string name="date_create">时间</string>
-    <string name="location_create">位置</string>
+    <string name="number_create">字数</string>
+    <string name="location_create">未定位</string>
     <string name="done_create">完成</string>
 
-    <string name="hint_quick">快点记下来...</string>
+    <string name="hint_quick">写下内容...</string>
 
     <string name="main_about">只是随便写点什么.\n</string>
 
 
     <string name="text_about">更新历史:\n \n\n
 
-        使用到的第三方库:\n\ncom.baoyz.swipemenulistview\n
-		me.imid.swipebacklayout\n
-		de.hdodenhof:circleimageview\n
-		jp.wasabeef:richeditor-android:1.2.2\n
-		com.getbase:floatingactionbutton\n</string>
+        </string>
 
+
+    <string name="info_wel">随便记录点什么吧</string>
+    <string name="bottom_wel">1.0 2017/4/25</string>
 
 </resources>
