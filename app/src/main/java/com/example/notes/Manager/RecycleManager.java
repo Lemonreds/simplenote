@@ -6,8 +6,8 @@ import android.widget.BaseAdapter;
 import com.example.notes.Dialog.InfoDialog;
 import com.example.notes.Interface.MyOnClickListener;
 import com.example.notes.util.MsgToast;
-import com.example.notes.ui.RecycleActivity;
-import com.example.notes.util.Note;
+import com.example.notes.Activity.RecycleActivity;
+import com.example.notes.model.Note;
 
 import java.util.List;
 
@@ -46,8 +46,18 @@ public class RecycleManager {
         dbManager.recovery(note);
         update_bottom(position);
     }
+    public  void recoveryAll(){
 
-    public void clearAll(int dataSize){
+
+       for(int i=0;i<mData.size();){
+           recovery(i);
+       }
+    }
+
+    public void clearAll(){
+
+
+        int dataSize = mData.size();
 
 
         if(dataSize == 0 ){
@@ -66,7 +76,7 @@ public class RecycleManager {
             public void onClick() {
                 int number  = dbManager.clearAllFolder(currentFolderName);
                 update_bottom(-1);
-                MsgToast.showToast(mContext,"删除了 "+number+" 条数据");
+                MsgToast.showToast(mContext,"删除了 "+number+" 条");
                 ((RecycleActivity)mContext).finish();
             }
         });

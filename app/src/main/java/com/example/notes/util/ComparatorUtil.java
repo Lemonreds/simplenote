@@ -1,5 +1,7 @@
 package com.example.notes.util;
 
+import com.example.notes.model.Note;
+
 import java.util.*;
 
 /**

@@ -8,7 +8,10 @@
 
         adroid:layout_height="match_parent">
 
-
+    <ImageView
+        adroid:id="@+id/iv_photo"
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="wrap_content" />
 
         <FrameLayout
             adroid:layout_width="match_parent"
@@ -17,6 +20,7 @@
             <android.support.v7.widget.Toolbar
                 adroid:id="@+id/toolbar"
                 app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+
                 adroid:layout_width="match_parent"
                 adroid:layout_height="46dp"
                 adroid:background="@drawable/border_bottom">
@@ -44,6 +48,7 @@
             >
 
 
+
             <com.getbase.floatingactionbutton.FloatingActionsMenu
                 adroid:id="@+id/action_menu"
                 adroid:layout_width="wrap_content"
@@ -64,7 +69,7 @@
                     adroid:layout_width="wrap_content"
                     adroid:layout_height="wrap_content"
                     fab:fab_colorNormal="@color/white"
-                    fab:fab_title="备忘录"
+                    fab:fab_title="新备忘录"
                     fab:fab_size="mini"
                     adroid:src="@drawable/pic_addnote"
                     fab:fab_colorPressed="@color/blue"/>

@@ -1,4 +1,4 @@
-package com.example.notes.Manager;
+package com.example.notes.util;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,7 +13,7 @@ import com.amap.api.location.AMapLocationListener;
  * Created by 阿买 on 2017/4/4.
  */
 
-public class LocationManager {
+public class LocationUtil {
 
     private Context context;
     //声明AMapLocationClient类对象
@@ -24,7 +24,7 @@ public class LocationManager {
 
     private static StringBuilder location;
 
-    public LocationManager(Context context) {
+    public LocationUtil(Context context) {
         this.context = context;
     }
 

@@ -7,6 +7,7 @@
         android:id="@+id/search_item"
         android:title="@string/search_txv_main"
         android:icon="@drawable/pic_search"
+
         app:showAsAction="ifRoom"/>
 
 </menu>

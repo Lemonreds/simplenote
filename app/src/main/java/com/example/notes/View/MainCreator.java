@@ -27,9 +27,9 @@ public class MainCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator
 
         openItem.setBackground(R.color.orange);
         openItem.setWidth(dp2px(55));
-        openItem.setTitle("编辑");
-       // openItem.setIcon(R.drawable.pic_edit);
-        openItem.setTitleSize(16);
+       // openItem.setTitle("编辑");
+        openItem.setIcon(R.drawable.pic_edit);
+        //openItem.setTitleSize(16);
         openItem.setTitleColor(Color.WHITE);
         menu.addMenuItem(openItem);
 
@@ -37,9 +37,9 @@ public class MainCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator
         SwipeMenuItem moveItem = new SwipeMenuItem(mContext.getApplicationContext());
         moveItem.setBackground(R.color.gray);
         moveItem.setWidth(dp2px(55));
-        moveItem.setTitle("移动");
-       // moveItem.setIcon(R.drawable.pic_move);
-        moveItem.setTitleSize(16);
+       // moveItem.setTitle("移动");
+       moveItem.setIcon(R.drawable.pic_move);
+       // moveItem.setTitleSize(16);
         moveItem.setTitleColor(Color.WHITE);
         menu.addMenuItem(moveItem);
 
@@ -47,10 +47,10 @@ public class MainCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator
         SwipeMenuItem deleteItem = new SwipeMenuItem(mContext.getApplicationContext());
         deleteItem.setBackground(R.color.deep_red);
         deleteItem.setWidth(dp2px(55));
-       // deleteItem.setIcon(R.drawable.pic_delete);
-        deleteItem.setTitle("删除");
+        deleteItem.setIcon(R.drawable.pic_delete);
+       // deleteItem.setTitle("删除");
 
-        deleteItem.setTitleSize(16);
+      //  deleteItem.setTitleSize(16);
         deleteItem.setTitleColor(Color.WHITE);
         menu.addMenuItem(deleteItem);
 

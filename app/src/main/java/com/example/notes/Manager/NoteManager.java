@@ -10,10 +10,10 @@ import com.example.notes.Dialog.InfoDialog;
 import com.example.notes.Dialog.NoteDialog;
 import com.example.notes.Interface.MyOnClickListener;
 import com.example.notes.util.MsgToast;
-import com.example.notes.ui.ContentActivity;
-import com.example.notes.util.Date;
+import com.example.notes.Activity.ContentActivity;
+import com.example.notes.model.Date;
 
-import com.example.notes.util.Note;
+import com.example.notes.model.Note;
 import com.example.notes.util.StringUtil;
 
 import java.util.List;
@@ -102,7 +102,7 @@ public class NoteManager{
 
         Note select_item = list.get(position);
         delete(select_item);
-        MsgToast.showToast(mContext,"已删除,但仍可以在回收站找到它");
+        MsgToast.showToast(mContext,"已移至回收站");
 
     }
 
@@ -160,17 +160,15 @@ public class NoteManager{
 
         adapter.notifyDataSetChanged();
 
-       // ((MainActivity)mContext).update_bottom();
-
         dbManager.delete(currentFolderName,note);
     }
 
 
     public void deleteNote(Note note) {
 
-
-        final InfoDialog warnDialog = new InfoDialog(mContext);
         final Note note1 = note;
+       /** final InfoDialog warnDialog = new InfoDialog(mContext);
+
         warnDialog.show();
         warnDialog.setTitle("提示");
         warnDialog.setEnableEdit(false);
@@ -178,11 +176,11 @@ public class NoteManager{
         warnDialog.setYesListener(new MyOnClickListener() {
             @Override
             public void onClick() {
+                **/
                 dbManager.delete(currentFolderName,note1);
-                warnDialog.dismiss();
-                ((ContentActivity) mContext).finish();
-            }
-        });
+               // warnDialog.dismiss();
+          //  }
+        //});
 
     }
 

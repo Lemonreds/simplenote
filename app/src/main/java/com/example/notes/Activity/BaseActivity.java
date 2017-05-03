@@ -1,4 +1,4 @@
-package com.example.notes.ui;
+package com.example.notes.Activity;
 
 import android.content.Context;
 import android.os.Bundle;

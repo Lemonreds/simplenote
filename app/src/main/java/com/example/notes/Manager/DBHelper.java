@@ -46,7 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_NOTE);
         db.execSQL(CREATE_RECYCLE);
-        MsgToast.showToast(mContext, "谢谢你的使用!");
+       // MsgToast.showToast(mContext, "谢谢你的使用!");
     }
 
     @Override

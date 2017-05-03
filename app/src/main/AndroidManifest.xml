@@ -24,9 +24,12 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
-    <application
-        android:name="com.example.notes.ui.AndroidApplication"
+    <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <application
+        android:name="com.example.notes.Activity.AndroidApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
@@ -37,7 +40,7 @@
             android:value="e8b1cbdcbdf87fa848039743b51f1d31" />
 
         <activity
-            android:name="com.example.notes.ui.MainActivity"
+            android:name="com.example.notes.Activity.MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,21 +49,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.notes.ui.ContentActivity"
+            android:name="com.example.notes.Activity.ContentActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.example.notes.ui.SearchActivity" />
-        <activity android:name="com.example.notes.ui.SettingActivity" />
-        <activity android:name="com.example.notes.ui.FilesActivity" />
-        <activity android:name="com.example.notes.ui.RecycleActivity" />
-        <activity android:name="com.example.notes.ui.AboutActivity" />
+        <activity android:name="com.example.notes.Activity.SearchActivity" />
+        <activity android:name="com.example.notes.Activity.FilesActivity" />
+        <activity android:name="com.example.notes.Activity.RecycleActivity" />
+        <activity android:name="com.example.notes.Activity.AboutActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
 
         <activity
-            android:name="com.example.notes.ui.CreateActivity"
+            android:name="com.example.notes.Activity.CreateActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.example.notes.ui.QuickCreateActivity" />
-        <activity android:name="com.example.notes.ui.WelcomeActivity"/>
+        <activity android:name="com.example.notes.Activity.QuickCreateActivity" />
+        <activity android:name="com.example.notes.Activity.WelcomeActivity" />
+        <activity android:name="com.example.notes.Activity.SecurityActivity"/>
+
+
+
+
     </application>
+
+
 
 </manifest>

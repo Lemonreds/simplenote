@@ -6,11 +6,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.notes.util.Date;
-import com.example.notes.util.Note;
+import com.example.notes.model.Date;
+import com.example.notes.model.Note;
 import com.example.ui.R;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 

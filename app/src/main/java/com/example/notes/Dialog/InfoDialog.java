@@ -45,8 +45,7 @@ public class InfoDialog extends android.app.Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_info);
-        setCanceledOnTouchOutside(false);
-
+       // setCanceledOnTouchOutside(false);
         initView();
         initEvent();
     }
@@ -61,7 +60,7 @@ public class InfoDialog extends android.app.Dialog {
 
 
         info = (EditText) findViewById(R.id.edit_dialog);
-        //setEnableEdit(false);
+
 
 
        /** info.setOnClickListener(new View.OnClickListener() {
@@ -160,13 +159,11 @@ public class InfoDialog extends android.app.Dialog {
             info.setFocusableInTouchMode(true);
             info.setFocusable(true);
             info.requestFocus();
-           // hideOrOpenKeyBoard();
-
+            hideOrOpenKeyBoard();
         }
         else {
             info.setFocusable(false);
             info.setFocusableInTouchMode(false);
-           // hideOrOpenKeyBoard();
         }
 
     }

@@ -1,4 +1,4 @@
-package com.example.notes.ui;
+package com.example.notes.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -17,7 +17,7 @@ import com.example.notes.Manager.DBManager;
 import com.example.notes.Manager.RecycleManager;
 import com.example.notes.util.MsgToast;
 import com.example.notes.View.RecycleCreator;
-import com.example.notes.util.Note;
+import com.example.notes.model.Note;
 import com.example.ui.R;
 import java.util.List;
 
@@ -41,7 +41,6 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 finish();
-                //overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
             }
         });
@@ -49,12 +48,30 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                mManager.clearAll(mData.size());
+
+                item.setVisible(false);
+                TextView deleteAll =(TextView) findViewById(R.id.deleteAll_bottom);
+                deleteAll.setVisibility(View.VISIBLE);
+                deleteAll.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mManager.clearAll();
+                    }
+                });
+
+                TextView recoverAll =(TextView) findViewById(R.id.recoverAll_bottom);
+                recoverAll.setVisibility(View.VISIBLE);
+                recoverAll.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mManager.recoveryAll();
+                    }
+                });
+
+
                 return false;
             }
         });
-
-
 
 
         mData = new DBManager(this).search("recycle");
@@ -88,7 +105,6 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
 
-
             case R.id.back_title:
                 finish();
                 break;
@@ -97,8 +113,6 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
 
         }
     }
-
-
 
 
 
@@ -125,9 +139,6 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
     }
 
 
-
-
-
     /**
      * 底部栏的更新
      */
@@ -142,7 +153,6 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
         int number = 0;
         if(mData!=null){
             number=mData.size();
-
         }
 
         if(number == 0){
@@ -155,16 +165,20 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
             TextView info = (TextView) findViewById(R.id.text_empty);
             info.setText("回收站似乎空空如也");
 
+            LinearLayout linearLayout = (LinearLayout)findViewById(R.id.bottom_content);
+            linearLayout.setVisibility(View.GONE);
+
             return ;
         }else{
 
             mListView.setVisibility(View.VISIBLE);
             RelativeLayout empty = (RelativeLayout) findViewById(R.id.empty);
             empty.setVisibility(View.GONE);
-
             str.append(number);
-
             str.append(" 个备忘录");
+
+            LinearLayout linearLayout = (LinearLayout)findViewById(R.id.bottom_content);
+            linearLayout.setVisibility(View.VISIBLE);
         }
 
 

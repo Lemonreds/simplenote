@@ -1,11 +1,10 @@
-package com.example.notes.ui;
+package com.example.notes.Activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -17,7 +16,7 @@ import android.widget.TextView;
 
 import com.example.notes.Manager.DBManager;
 import com.example.notes.Manager.NoteManager;
-import com.example.notes.util.Note;
+import com.example.notes.model.Note;
 import com.example.notes.Adapter.NoteAdapter;
 import com.example.notes.util.StringUtil;
 import com.example.ui.R;
@@ -147,9 +146,11 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
                 // 当搜索内容改变时触发该方法
                 @Override
-                public boolean onQueryTextChange(String newText) {
-                    search(newText);
+                public boolean onQueryTextChange(final String newText) {
+                   search(newText);
                     update_Bottom();
+
+
                     return false;
 
                 }

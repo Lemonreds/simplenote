@@ -4,9 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.notes.util.Date;
-import com.example.notes.util.MsgToast;
-import com.example.notes.util.Note;
+import com.example.notes.model.Date;
+import com.example.notes.model.Note;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -221,8 +220,6 @@ public class DBManager {
         if( ! db.tabbleIsExist(belongFolder)){
             db.add_table(belongFolder);
         }
-
-
 
         insert(belongFolder,note);
 

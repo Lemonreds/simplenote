@@ -1,4 +1,4 @@
-package com.example.notes.ui;
+package com.example.notes.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import com.example.notes.Manager.DBHelper;
 import com.example.notes.Manager.DBManager;
 import com.example.notes.View.FileCreator;
 import com.example.notes.util.MsgToast;
-import com.example.notes.util.Note;
+import com.example.notes.model.Note;
 import com.example.notes.util.StringUtil;
 import com.example.ui.R;
 
@@ -55,14 +55,13 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
                 onBackPressed();
-                // overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
             }
         });
 
         //right
         TextView right = (TextView) findViewById(R.id.right_bottom);
-        right.setText("新建文件夹");
+        right.setText("新的分类");
         right.setOnClickListener(this);
         viewUpdate();
 
@@ -106,7 +105,7 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
                         final InfoDialog info = new InfoDialog(FilesActivity.this);
                         info.show();
                         info.setTitle("消息提示");
-                        info.setInfo("确认清空默认Notes?");
+                        info.setInfo("确认清空 Notes ?");
                         info.setEnableEdit(false);
                         info.setYesListener(new MyOnClickListener() {
                             @Override
@@ -147,7 +146,7 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
 
                             deleteDialog.show();
                             deleteDialog.setTitle("删除分类?");
-                            deleteDialog.setInfo("如果仅删除文件夹,其备忘录将转移到回收站.");
+                            deleteDialog.setInfo("如果仅删除文件夹,其所有的备忘录都将转移到回收站.");
                             deleteDialog.setChoose1("删除文件夹和备忘录");
                             deleteDialog.setListener_1(new MyOnClickListener() {
                                 @Override
@@ -164,8 +163,6 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
                             });
                             deleteDialog.setChoose3("取消");
 
-
-
                             break;
 
                         default:
@@ -179,7 +176,6 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
             mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
 
                     if(addFolder)return;
                     //获取点击的文件夹名字返回给主界面
@@ -252,7 +248,7 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
         addFolder=true;
         final InfoDialog info = new InfoDialog(this);
         info.show();
-        info.setTitle("新建类别");
+        info.setTitle("新的分类");
         info.setInfo("输入你喜欢的名字");
         info.setEnableEdit(true);
         info.setYesListener(new MyOnClickListener() {
@@ -295,6 +291,11 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
         adapter.notifyDataSetChanged();
         //setAdapter
         mListView.setAdapter(adapter);
+
+        //botton
+        TextView bottom= (TextView)findViewById(R.id.text_bottom);
+        bottom.setText(" "+folderName.size()+" ");
+
     }
 
     private void listSort(){

@@ -9,6 +9,17 @@
     android:padding="5dp"
     >
 
+    <TextView
+        android:id="@+id/deleteAll_bottom"
+        android:layout_margin="5dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:gravity="start"
+        android:textColor="@color/black"
+        android:text="@string/deleteAll_recycle"
+        android:visibility="gone"
+        />
 
     <TextView
         android:id="@+id/text_bottom"
@@ -20,5 +31,16 @@
         android:textColor="@color/black"
         />
 
+    <TextView
+        android:id="@+id/recoverAll_bottom"
+        android:layout_margin="5dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:gravity="end"
+        android:textColor="@color/black"
+        android:text="@string/recoverAll_recycle"
+        android:visibility="gone"
+        />
 
 </LinearLayout>

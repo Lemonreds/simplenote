@@ -8,18 +8,15 @@
 
     <string name="add_btn_main">+</string>
     <string name="search_txv_main">搜索</string>
-    <string name="more_txv_main">更多</string>
 
 
-    <string name="home_title_main">H</string>
     <string name="title_title_main">Notes</string>
-    <string name="more_title_main">M</string>
 
 
     <string name="head_dialog_titlte">个人信息</string>
     <string name="head_dialog_name">Name</string>
 
-    <string name="delete_menu_content">删除</string>
+    <string name="delete_menu_content">选择</string>
 
     <string name="input_sv_search">搜索你想要的</string>
     <string name="cancel_btn_search">取消</string>
@@ -37,40 +34,55 @@
     <string name="delete_icon">X</string>
     <string name="clear">清空所有搜索记录</string>
 
-    <string name='text_files'>SimpleNote</string>
 
-    <string name="folder">类别管理</string>
-    <string name="recycle">回收站</string>
-    <string name="security">安全</string>
-    <string name="setting"></string>
+    <string name="folder">全部分类</string>
+    <string name="recycle">最近删除</string>
+    <string name="security">隐私安全</string>
+
     <string name="about">关于</string>
     <string name="exit">退出SimpleNote</string>
 
     <string name="title_recycle">回收站</string>
     <string name="info_recycle">回收的备忘录将会在30天后永久删除</string>
     <string name="clearAll_recycle">清空</string>
+    <string name="deleteAll_recycle">删除全部</string>
+    <string name="recoverAll_recycle">恢复全部</string>
 
-    <string name="share_content_menu">分享</string>
 
 
     <string name="title_create">标题</string>
     <string name="content_create">内容</string>
+    <string name="content_share">分享</string>
     <string name="date_create">时间</string>
     <string name="number_create">字数</string>
     <string name="location_create">未定位</string>
     <string name="done_create">完成</string>
 
-    <string name="hint_quick">写下内容...</string>
+    <string name="title_security">安全</string>
+    <string name="info_security">输入密码</string>
+    <string name="key9_security">9</string>
+    <string name="key8_security">8</string>
+    <string name="key7_security">7</string>
+    <string name="key6_security">6</string>
+    <string name="key5_security">5</string>
+    <string name="key4_security">4</string>
+    <string name="key3_security">3</string>
+    <string name="key2_security">2</string>
+    <string name="key1_security">1</string>
+    <string name="key0_security">0</string>
 
-    <string name="main_about">只是随便写点什么.\n</string>
+    <string name="cancel_security">删除</string>
+    <string name="findPassword_security">忘记密码?</string>
 
 
-    <string name="text_about">更新历史:\n \n\n
 
-        </string>
+    <string name="hint_quick">想写点什么..</string>
+    <string name="main_about">还是不要出什么大bug才好\n</string>
+    <string name="help_about">红红火火 恍恍惚惚</string>
+    <string name="text_about">更新历史:\n5.01 新增 [个人信息]\n4.25 新增 [安全]\n </string>
 
 
-    <string name="info_wel">随便记录点什么吧</string>
-    <string name="bottom_wel">1.0 2017/4/25</string>
+    <string name="info_wel">记你所想</string>
+    <string name="bottom_wel">By 2017 04 25</string>
 
 </resources>

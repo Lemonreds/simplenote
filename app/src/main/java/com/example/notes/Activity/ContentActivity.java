@@ -1,19 +1,18 @@
-package com.example.notes.ui;
+package com.example.notes.Activity;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.Spanned;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import com.example.notes.Manager.LocationManager;
+import com.example.notes.util.LocationUtil;
 import com.example.notes.Manager.NoteManager;
-import com.example.notes.util.Note;
+import com.example.notes.model.Note;
 import com.example.notes.Dialog.ProDialog;
+import com.example.notes.util.MsgToast;
 import com.example.notes.util.StringUtil;
 import com.example.ui.R;
 import java.util.Timer;
@@ -33,9 +32,6 @@ public class ContentActivity extends BaseActivity  {
 
     private Toolbar mToolbar;
 
-    //private ImageView done;
-
-    //private boolean edit;
 
     private NoteManager mNoteManager;
 
@@ -72,22 +68,21 @@ public class ContentActivity extends BaseActivity  {
         mToolbar.inflateMenu(R.menu.menu_content);
 
 
+        mToolbar.setNavigationIcon(R.drawable.pic_back);
+
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.share_content_menu:
-                       // editAction();
-                        break;
-                }
+
+                          Intent intent=new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
+                intent.putExtra(Intent.EXTRA_TEXT,content.getText().toString()+ " " +"分享自SimpleNote");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(Intent.createChooser(intent, "从SimpleNote分享内容到...."));
                 return false;
             }
         });
-
-
-        mToolbar.setNavigationIcon(R.drawable.pic_back);
-
-
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,124 +97,10 @@ public class ContentActivity extends BaseActivity  {
        // setEditTextEditable(mTitle, false);
         mTitle.setText(note.getName());
        // mTitle.setSelection(mTitle.getText().length());
-       /** mTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setEditTextEditable(mTitle, true);
-                done.setVisibility(View.VISIBLE);
-            }
-        });
-
-**/
-
-/**
-        //toolbar上标题编辑是否完成按钮
-        done = (ImageView) findViewById(R.id.done_toolbar);
-        done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //savatitle
-                mNoteManager.update(note, mTitle.getText().toString());
-                MsgToast.showToast(ContentActivity.this, "完成");
-                showToolbarMenu(true);
-                done.setVisibility(View.GONE);
-                setEditTextEditable(mTitle, false);
-            }
-        });
 
     }
- **/
-    }
 
 
-/**
-
-  private void init_NoteEditor(){
-
-        mEditor = (RichEditor) findViewById(R.id.editor);
-        mEditor.setFontSize(14);
-
-
-
-       findViewById(R.id.editor_bottom).setVisibility(View.GONE);
-
-        findViewById(R.id.action_hide).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                findViewById(R.id.bottom).setVisibility(View.VISIBLE);
-                findViewById(R.id.editor_bottom).setVisibility(View.GONE);
-            }
-        });
-
-
-        findViewById(R.id.action_bold).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setBold();
-            }
-        });
-        // bold.setOnClickListener(this);
-
-        findViewById(R.id.action_italic).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setItalic();
-            }
-        });
-        //italic.setOnClickListener(this);
-
-        findViewById(R.id.action_underline).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setUnderline();
-            }
-        });
-        //underline.setOnClickListener(this);
-
-        findViewById(R.id.action_font).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        //ont.setOnClickListener(this);
-
-
-        // photo.setOnClickListener(this);
-
-        findViewById(R.id.action_checkbox).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.insertTodo();
-            }
-        });
-
-        findViewById(R.id.action_menulist).setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                mEditor.setNumbers();
-            }
-        });
-        //menuList.setOnClickListener(this);
-
-        findViewById(R.id.action_menubullte).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setBullets();
-            }
-        });
-
-        findViewById(R.id.action_left).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setAlignLeft();
-            }
-        });
-
-
-        f
- **/
     private void init_view(){
         //设置noteMng
         mNoteManager = new NoteManager(this, currentFolderName);
@@ -274,6 +155,8 @@ public class ContentActivity extends BaseActivity  {
             @Override
             public void onClick(View v) {
                 mNoteManager.deleteNote(note);
+                MsgToast.showToast(ContentActivity.this,"已移至'最近删除'");
+                finish();
             }
         });
 
@@ -305,14 +188,7 @@ public class ContentActivity extends BaseActivity  {
 
 
 
-/*
-        Button btn_red = (Button) findViewById(R.id.btn_red);
-        btn_red.setOnClickListener(this);
-        Button btn_orange = (Button) findViewById(R.id.btn_orange);
-        btn_orange.setOnClickListener(this);
-        Button btn_green = (Button) findViewById(R.id.btn_green);
-        btn_green.setOnClickListener(this);
-        **/
+
     }
 
 
@@ -335,7 +211,7 @@ public class ContentActivity extends BaseActivity  {
         final ProDialog proDialog = new ProDialog(this, "正在获取定位...");
         proDialog.show();
 
-        LocationManager mLocationMag = new LocationManager(getApplicationContext());
+        LocationUtil mLocationMag = new LocationUtil(getApplicationContext());
 
         final TextView location = (TextView) findViewById(R.id.location_content);
         location.setVisibility(View.VISIBLE);

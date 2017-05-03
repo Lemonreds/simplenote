@@ -3,20 +3,29 @@
     >
 
     <group android:checkableBehavior="none"
-        android:id="@+id/notes"
+        android:id="@+id/sort"
         >
     <item
         android:id="@+id/nav_folder"
         android:title="@string/folder"
-        android:icon="@drawable/pic_folder"
+        android:icon="@drawable/pic_addquick"
         />
+        </group>
 
+    <group android:checkableBehavior="none"
+        android:id="@+id/delete"
+        >
     <item
         android:id="@+id/nav_recycle"
         android:title="@string/recycle"
-        android:icon="@drawable/pic_recycle"
+        android:icon="@drawable/pic_delete"
         />
+    </group>
 
+
+    <group android:checkableBehavior="none"
+        android:id="@+id/security"
+        >
     <item
         android:id="@+id/nav_security"
         android:title="@string/security"

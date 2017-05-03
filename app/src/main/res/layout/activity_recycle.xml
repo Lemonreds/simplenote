@@ -7,8 +7,6 @@
     adroid:orientation="vertical">
 
 
-
-
     <android.support.v7.widget.Toolbar
         adroid:id="@+id/toolbar"
         app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
@@ -26,8 +24,6 @@
             adroid:textSize="20sp" />
 
     </android.support.v7.widget.Toolbar>
-
-
 
 
 

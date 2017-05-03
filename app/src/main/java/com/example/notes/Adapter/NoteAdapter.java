@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.notes.util.Note;
+import com.example.notes.model.Note;
 import com.example.ui.R;
 
 import java.util.List;

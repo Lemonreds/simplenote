@@ -29,10 +29,12 @@
             android:layout_height="wrap_content"
             android:text="@string/cancel_btn_search"
             android:layout_gravity="end"
+
             android:background="@drawable/border_bottom"
             />
 
     </LinearLayout>
+
 
     <include layout="@layout/search_history"/>
 
@@ -52,4 +54,4 @@
         android:gravity="center_horizontal"
         />
 
-   </LinearLayout>
+</LinearLayout>

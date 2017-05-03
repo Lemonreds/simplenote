@@ -39,8 +39,8 @@
 
     <TextView
         adroid:id="@+id/main_about"
-        adroid:layout_marginTop="26dp"
-        adroid:layout_marginBottom="26dp"
+        adroid:layout_marginTop="16dp"
+        adroid:layout_marginBottom="12dp"
         adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content"
         adroid:text="@string/main_about"
@@ -48,14 +48,36 @@
         adroid:layout_centerHorizontal="true"
         />
 
-    <TextView
 
-        adroid:layout_width="match_parent"
-        adroid:layout_height="wrap_content"
-        adroid:text="@string/text_about"
+    <LinearLayout
         adroid:layout_below="@+id/main_about"
         adroid:layout_centerHorizontal="true"
         adroid:layout_alignParentBottom="true"
-        />
+        adroid:orientation="vertical"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content">
 
+     <TextView
+            adroid:layout_width="match_parent"
+            adroid:layout_height="wrap_content"
+            adroid:text="@string/help_about"
+            adroid:gravity="center"
+            adroid:layout_marginBottom="20dp"
+         />
+
+
+
+       <ScrollView
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content">
+    <TextView
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content"
+        adroid:text="@string/text_about"
+        adroid:textColor="@color/black"
+        />
+    </ScrollView>
+
+
+    </LinearLayout>
 </RelativeLayout>

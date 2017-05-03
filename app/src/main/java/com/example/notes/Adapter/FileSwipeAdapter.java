@@ -1,16 +1,13 @@
 package com.example.notes.Adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 
-import com.baoyz.swipemenulistview.SwipeMenu;
 import com.example.notes.Manager.DBManager;
-import com.example.notes.util.Note;
 import com.example.ui.R;
 
 import java.util.List;

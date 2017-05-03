@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 
-import com.example.notes.util.Note;
+import com.example.notes.model.Note;
 import com.example.notes.util.StringUtil;
 import com.example.ui.R;
 
