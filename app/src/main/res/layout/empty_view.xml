@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:adroid="http://schemas.android.com/apk/res/android"
+    adroid:id="@+id/empty"
+    adroid:layout_width="match_parent"
+    adroid:layout_height="match_parent">
+
+
+    <TextView
+        adroid:id="@+id/text_empty"
+        adroid:layout_marginTop="26dp"
+        adroid:layout_marginBottom="26dp"
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="wrap_content"
+        adroid:text="@string/app_name"
+        adroid:layout_below="@+id/icon_about"
+        adroid:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        adroid:id="@+id/icon_about"
+        adroid:layout_marginTop="191dp"
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="wrap_content"
+        adroid:text="@string/app_name"
+        adroid:textColor="@color/black"
+        adroid:textSize="30sp"
+        adroid:layout_alignParentTop="true"
+        adroid:layout_centerHorizontal="true"
+        />
+
+
+</RelativeLayout>

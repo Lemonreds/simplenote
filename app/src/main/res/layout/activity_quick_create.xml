@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:adroid="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    adroid:layout_width="match_parent"
+    adroid:layout_height="match_parent"
+    adroid:orientation="vertical"
+    adroid:background="@null"
+    >
+
+    <android.support.v7.widget.Toolbar
+        adroid:id="@+id/toolbar"
+        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="46dp"
+        adroid:background="@drawable/border_bottom">
+
+        <TextView
+            adroid:id="@+id/title_toolbar"
+            adroid:layout_width="wrap_content"
+            adroid:layout_height="wrap_content"
+            adroid:layout_gravity="center"
+            adroid:textColor="@color/black"
+            adroid:textSize="18sp"
+            />
+    </android.support.v7.widget.Toolbar>
+
+
+    <EditText
+        adroid:layout_margin="10dp"
+        adroid:id="@+id/content_quick"
+        adroid:layout_width="match_parent"
+        adroid:textColor="@color/black"
+        adroid:textSize="16dp"
+        adroid:gravity="top"
+        adroid:background="@null"
+        adroid:layout_height="460dp"
+        adroid:hint="@string/hint_quick"
+        />
+
+
+</LinearLayout>

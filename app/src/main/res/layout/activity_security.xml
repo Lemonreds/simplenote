@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:adroid="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    adroid:layout_width="match_parent"
+    adroid:layout_height="match_parent">
+
+
+    <android.support.v7.widget.Toolbar
+        adroid:id="@+id/toolbar"
+        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="46dp"
+        adroid:background="@drawable/border_bottom">
+
+        <TextView
+            adroid:id="@+id/title_toolbar"
+            adroid:layout_width="wrap_content"
+            adroid:layout_height="wrap_content"
+            adroid:layout_gravity="center"
+            adroid:textColor="@color/black"
+            adroid:text="@string/title_security"
+            adroid:textSize="20sp" />
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+
+    <TextView
+        adroid:id="@+id/info_security"
+        adroid:layout_marginTop="66dp"
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="wrap_content"
+        adroid:layout_centerInParent="true"
+        adroid:layout_alignParentTop="true"
+        adroid:textColor="@color/black"
+        adroid:textSize="17sp"
+        adroid:text="@string/info_security"
+        />
+
+
+    <TextView
+        adroid:id="@+id/password_security"
+        adroid:layout_marginTop="96dp"
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="wrap_content"
+        adroid:layout_centerInParent="true"
+        adroid:layout_alignParentTop="true"
+        adroid:textColor="@color/black"
+        adroid:textSize="22sp"
+        />
+
+
+    <LinearLayout
+        adroid:layout_width="match_parent"
+        adroid:layout_height="400dp"
+        adroid:orientation="vertical"
+        adroid:gravity="center_horizontal"
+        adroid:layout_alignParentBottom="true"
+        adroid:layout_centerInParent="true"
+        >
+
+        <LinearLayout
+            adroid:layout_width="match_parent"
+            adroid:layout_height="wrap_content"
+            adroid:orientation="horizontal"
+            adroid:paddingLeft="50dp"
+            adroid:paddingRight="50dp"
+            >
+
+            <Button
+                adroid:id="@+id/btn_1"
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:text="@string/key1_security"
+
+                />
+
+            <Button
+                adroid:id="@+id/btn_2"
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:text="@string/key2_security"
+                />
+
+            <Button
+                adroid:id="@+id/btn_3"
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:text="@string/key3_security"
+
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            adroid:layout_width="match_parent"
+            adroid:layout_height="wrap_content"
+            adroid:orientation="horizontal"
+            adroid:paddingLeft="50dp"
+            adroid:paddingRight="50dp"
+            >
+
+            <Button
+                adroid:id="@+id/btn_4"
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:text="@string/key4_security"
+                />
+
+            <Button
+                adroid:id="@+id/btn_5"
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:text="@string/key5_security"
+                />
+
+            <Button
+                adroid:id="@+id/btn_6"
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:text="@string/key6_security"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            adroid:layout_width="match_parent"
+            adroid:layout_height="wrap_content"
+            adroid:orientation="horizontal"
+            adroid:paddingLeft="50dp"
+            adroid:paddingRight="50dp"
+           >
+
+            <Button
+                adroid:id="@+id/btn_7"
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:text="@string/key7_security"
+                />
+
+            <Button
+                adroid:id="@+id/btn_8"
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:text="@string/key8_security"
+                />
+
+            <Button
+                adroid:id="@+id/btn_9"
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:text="@string/key9_security"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            adroid:layout_width="match_parent"
+            adroid:layout_height="wrap_content"
+            adroid:orientation="horizontal"
+            adroid:paddingLeft="50dp"
+            adroid:paddingRight="50dp"
+            >
+            <Button
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:visibility="invisible"
+                />
+
+            <Button
+                adroid:id="@+id/btn_0"
+                adroid:background="@drawable/radius"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:text="@string/key0_security"
+                />
+
+            <Button
+                adroid:id="@+id/btn_cancel"
+                adroid:background="@null"
+                adroid:layout_width="70dp"
+                adroid:layout_height="70dp"
+                adroid:layout_marginLeft="15dp"
+                adroid:layout_marginRight="15dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:text="@string/cancel_security"
+                adroid:textSize="14sp"
+                />
+        </LinearLayout>
+
+
+
+
+        <TextView
+            adroid:id="@+id/findPassword_security"
+            adroid:layout_marginTop="10dp"
+            adroid:layout_width="wrap_content"
+            adroid:layout_height="wrap_content"
+            adroid:textColor="@color/blue"
+            adroid:text="@string/findPassword_security"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:adroid="http://schemas.android.com/apk/res/android"
+    adroid:layout_width="match_parent"
+    adroid:layout_height="match_parent">
+
+
+    <TextView
+        adroid:layout_below="@id/image"
+        adroid:id="@+id/main_wel"
+        adroid:layout_margin="10dp"
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="wrap_content"
+        adroid:text="@string/app_name"
+        adroid:layout_centerInParent="true"
+        adroid:textColor="@color/black"
+        adroid:textSize="26sp"
+
+        />
+    <TextView
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="wrap_content"
+        adroid:text="@string/info_wel"
+        adroid:layout_centerInParent="true"
+        adroid:layout_below="@id/main_wel"
+        adroid:textSize="13sp"
+        />
+
+    <TextView
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content"
+        adroid:layout_centerHorizontal="true"
+        adroid:layout_alignParentBottom="true"
+        adroid:gravity="center"
+        adroid:text="@string/bottom_wel"
+        adroid:layout_marginBottom="20dp"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        adroid:id="@+id/image"
+        adroid:layout_width="80dp"
+        adroid:layout_height="80dp"
+
+        adroid:src="@drawable/icon"
+        adroid:layout_alignParentTop="true"
+        adroid:layout_centerHorizontal="true"
+        adroid:layout_marginTop="187dp" />
+
+    <Button
+        adroid:id="@+id/firstButton"
+        adroid:layout_width="wrap_content"
+        adroid:layout_height="35dp"
+        adroid:layout_alignParentBottom="true"
+        adroid:layout_marginBottom="20dp"
+        adroid:layout_centerInParent="true"
+        adroid:background="@color/blue"
+        adroid:text="开始使用"
+        adroid:textColor="@color/white"
+        />
+</RelativeLayout>
