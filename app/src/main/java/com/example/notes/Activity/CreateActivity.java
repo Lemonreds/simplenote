@@ -29,21 +29,32 @@ import java.util.TimerTask;
 
 import jp.wasabeef.richeditor.RichEditor;
 
+/**
+ * 新建备忘录
+ */
+
 public class CreateActivity extends BaseActivity implements View.OnClickListener {
 
+   // private TextView model_title;
 
-    private TextView model_title;
-
+    //题目
     private EditText title;
+    //内容
     private RichEditor mEditor;
+    //日期
     private Date date;
+    //日期视图
     private TextView date_view;
+    //位置
     private TextView location;
+    //level
     private int level;
+    //新建的文件夹
     private String currentFolderName;
 
-
-    private boolean model; //false 是新建模式    true是编辑模式
+    //模式
+    private boolean model; // (false 新建模式   true 编辑模式)
+    //编辑的Note
     private Note edit_Note;
 
 
@@ -53,8 +64,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
         setContentView(R.layout.activity_create);
 
 
-        model_title = (TextView) findViewById(R.id.title_toolbar);
-
+        TextView  model_title = (TextView) findViewById(R.id.title_toolbar);
 
         Intent intent = this.getIntent();//新建模式
         currentFolderName = intent.getStringExtra("currentFolderName");
@@ -67,18 +77,20 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             currentFolderName = edit_Note.getFolderName();
         }
 
-
+        init_NoteEditor();
         init_view();
         init_Toolbar();
-        init_NoteEditor();
 
-        if(model){//如果是编辑模式
+
+        if(model){//编辑模式
             init_edit();
         }
     }
 
 
-
+    /**
+     * 编辑初始化
+     */
     private void init_edit(){
 
         title.setText( edit_Note.getName() );
@@ -87,6 +99,10 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
         location.setText( edit_Note.getLocation());
 
     }
+
+    /**
+     * 视图初始化
+     */
     private  void init_view(){
 
         title = (EditText) findViewById(R.id.title_create);
@@ -109,6 +125,9 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
         init_bottom();
     }
 
+    /**
+     * 底部栏的初始化
+     */
     private void init_bottom(){
 
        findViewById(R.id.open_bottom_create).setOnClickListener(new View.OnClickListener() {
@@ -171,11 +190,18 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
 
     }
 
+    /**
+     * 是否进行了编辑
+     * @return
+     */
     private  boolean isEdit(){
         return StringUtil.isEmpty(title.getText().toString()) &&
                 StringUtil.isEmpty(mEditor.getHtml());
     }
 
+    /**
+     * 重置
+     */
     private void reset(){
 
         title.setText("");
@@ -184,6 +210,9 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
         level=Note.GRE_LEVEL;
     }
 
+    /**
+     * fab的初始化
+     */
     private void init_fab(){
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_create);
@@ -195,16 +224,11 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
                 fab.setVisibility(View.GONE);
             }
         });
-
-       // init_bottom();
     }
 
-
-
-    private void hideOrOpenKeyBoard() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-    }
+    /**
+     * 获取定位
+     */
     private void getLocation(){
 
 
@@ -227,11 +251,15 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             location.setText(address);
     }
 
+    /**
+     * 初始化Editor
+     */
     private  void init_NoteEditor() {
 
 
 
         mEditor = (RichEditor) findViewById(R.id.editor);
+
         mEditor.setFontSize(14);
         mEditor.setPlaceholder("在这里写下内容");
 
@@ -272,7 +300,6 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
                 mEditor.setStrikeThrough();
             }
         });
-
 
 
         findViewById(R.id.action_checkbox).setOnClickListener(new View.OnClickListener() {
@@ -321,8 +348,9 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
     }
 
 
-
-
+    /**
+     * toolbar初始
+     */
 
     private  void init_Toolbar(){
 
@@ -345,14 +373,16 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
-                    NoteManager noteManager = new NoteManager(CreateActivity.this,currentFolderName);
 
-                    Note newNote = new Note(title.getText().toString(),  new Date(),
-                            location.getText().toString(), mEditor.getHtml(),currentFolderName,level);
+                        NoteManager noteManager = new NoteManager(CreateActivity.this, currentFolderName);
 
-                    noteManager.update(edit_Note,newNote);
-                    MsgToast.showToast(CreateActivity.this,"已保存");
-                    finish();
+                        Note newNote = new Note(title.getText().toString(), edit_Note.getDate(),
+                                location.getText().toString(), mEditor.getHtml(), currentFolderName, level);
+
+                        noteManager.update(edit_Note, newNote);
+                        MsgToast.showToast(CreateActivity.this, "已保存");
+                        finish();
+
                     return false;
                 }
             });
@@ -363,14 +393,20 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
 
-                    Note create_note = new Note(title.getText().toString(), date,
-                            location.getText().toString(), mEditor.getHtml(),
-                            currentFolderName, level);
 
-                    NoteManager noteManager = new NoteManager(CreateActivity.this, currentFolderName);
-                    noteManager.add(create_note);
-                    hideOrOpenKeyBoard();
-                    finish();
+                        String titleName = title.getText().toString();
+                        if(StringUtil.isEmpty(titleName)){
+                            titleName="未命名";
+                        }
+                        Note create_note = new Note(titleName, date,
+                                location.getText().toString(), mEditor.getHtml(),
+                                currentFolderName, level);
+
+                        NoteManager noteManager = new NoteManager(CreateActivity.this, currentFolderName);
+                        noteManager.add(create_note);
+                        hideOrOpenKeyBoard();
+                        finish();
+
                     return false;
                 }
             });
@@ -380,7 +416,10 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-
+    /**
+     * 监听事件
+     * @param v
+     */
     @Override
     public void onClick(View v) {
 
@@ -396,7 +435,10 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
           }
     }
 
-
+    /**
+     * 改变level
+     * @param v
+     */
 
     private void change_level(View v) {
 
@@ -417,5 +459,13 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
                 break;
         }
         MsgToast.showToast(this, sb.toString());
+    }
+
+    /**
+     * 键盘的显示和隐藏
+     */
+    private void hideOrOpenKeyBoard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }

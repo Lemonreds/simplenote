@@ -18,15 +18,12 @@ import java.util.List;
 
 public class NoteAdapter extends ArrayAdapter<Note> {
 
-    private int note_xml_id;
     private Context mContext;
 
 
-    public NoteAdapter(Context context, int item_xml_id, List<Note> data){
-        super (context,item_xml_id,data);
+    public NoteAdapter(Context context, List<Note> data){
+        super (context,R.layout.item,data);
         this.mContext=context;
-        this.note_xml_id = item_xml_id;
-
     }
 
 
@@ -35,7 +32,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
 
         Note note = getItem(position);
-        View view = LayoutInflater.from(getContext()).inflate(note_xml_id,parent,false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.item,parent,false);
 
 
         TextView txt = (TextView) view.findViewById(R.id.text1_item);

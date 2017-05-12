@@ -21,6 +21,8 @@ import com.example.notes.model.Note;
 import com.example.ui.R;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class RecycleActivity extends BaseActivity implements View.OnClickListener{
 
     private SwipeMenuListView mListView;
@@ -35,6 +37,7 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
 
 
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.pic_back);//设置导航栏图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -44,34 +47,38 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
             }
         });
-        toolbar.inflateMenu(R.menu.menu_recycle);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
 
-                item.setVisible(false);
-                TextView deleteAll =(TextView) findViewById(R.id.deleteAll_bottom);
+
+
+
+
+                CircleImageView deleteAll =(CircleImageView) findViewById(R.id.deleteAll);
                 deleteAll.setVisibility(View.VISIBLE);
                 deleteAll.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(mData.size()==0){
+                            MsgToast.showToast(RecycleActivity.this,"空空如也!");
+                            return;
+                        }
                         mManager.clearAll();
                     }
                 });
 
-                TextView recoverAll =(TextView) findViewById(R.id.recoverAll_bottom);
+                CircleImageView recoverAll =(CircleImageView) findViewById(R.id.recoverAll);
                 recoverAll.setVisibility(View.VISIBLE);
                 recoverAll.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(mData.size()==0){
+                            MsgToast.showToast(RecycleActivity.this,"空空如也!");
+                            return;
+                        }
                         mManager.recoveryAll();
+
                     }
                 });
 
-
-                return false;
-            }
-        });
 
 
         mData = new DBManager(this).search("recycle");
@@ -85,6 +92,8 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
         mListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
         mListView.setAdapter(adapter);
 
+        mManager = new RecycleManager(this,mData,adapter);
+
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -93,7 +102,7 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
         });
 
 
-        mManager = new RecycleManager(this,mData,adapter);
+
 
         view_Listener();
         update_bottom();

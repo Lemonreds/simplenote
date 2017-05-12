@@ -3,11 +3,12 @@ package com.example.notes.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -24,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baoyz.swipemenulistview.*;
+import com.example.notes.Dialog.ChooseDialog;
 import com.example.notes.Dialog.HeadDialog;
 import com.example.notes.Dialog.ProDialog;
 import com.example.notes.Interface.MyOnClickListener;
@@ -34,7 +36,6 @@ import com.example.notes.View.MainCreator;
 
 import com.example.notes.View.MainScrollview;
 import com.example.notes.View.SwipeListView;
-import com.example.notes.model.Date;
 import com.example.notes.util.MsgToast;
 import com.example.notes.util.ComparatorUtil;
 import com.example.notes.model.Note;
@@ -47,6 +48,7 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -59,23 +61,25 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 public class MainActivity extends AppCompatActivity {
 
-
-
-    private PersonalManager personal ;
+    //个人信息管理类
+   // private PersonalManager personal;
+    //Note管理类
     private NoteManager noteManager;
 
+    //view
+    private DrawerLayout mDrawer;
     private SwipeListView mListView;
     private List<Note> mData;
 
-    private DrawerLayout mDrawer;
-
-
+    //初始化
     private String currentFolderName ="Notes";
 
-
-    private TextView toolbar_title;
+    //第一次按下返回键的时间
     private long backPressFirst = 0;
 
+    private CircleImageView navHeadImg;
+    private CircleImageView dialogIcon;
+    private Uri pic_uri;
 
         @Override
     protected void attachBaseContext(Context newBase) {
@@ -88,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        personal = new PersonalManager( this);
+       // personal = new PersonalManager( this);
 
         new Thread(new Runnable() {
             @Override
@@ -136,23 +140,19 @@ public class MainActivity extends AppCompatActivity {
     public void init (){
 
         listView_setting();
-        slide_setting();
+        drawer_setting();
         fab_setting();
     }
 
-    private void slide_setting(){
+    private void drawer_setting(){
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         NavigationView navigation = (NavigationView)findViewById(R.id.navigation);
-
-
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
 
                 switch (item.getItemId()){
-
                     case R.id.nav_folder:
                         Intent intent = new Intent(MainActivity.this,FilesActivity.class);
                         startActivityForResult(intent,1);
@@ -168,9 +168,7 @@ public class MainActivity extends AppCompatActivity {
                        intent2.putExtra("model",SecurityActivity.MODLE_EDIT);
                        startActivity(intent2);
                        overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
-
                      break;
-
                     case R.id.nav_about:
                         Intent intent11 = new Intent(MainActivity.this,AboutActivity.class);
                         startActivity(intent11);
@@ -207,8 +205,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-        toolbar_title = (TextView) findViewById(R.id.title_toolbar) ;
+        TextView toolbar_title = (TextView) findViewById(R.id.title_toolbar) ;
         toolbar_title.setText(currentFolderName);
 
         toolbar.inflateMenu(R.menu.menu_main);//设置右上角的填充菜单
@@ -217,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()){
+
 
                     case R.id.search_item:
                         Intent intent1 = new Intent(MainActivity.this,SearchActivity.class);
@@ -232,55 +230,55 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void personalSet(View view){
+    private void personalSet(final View view){
 
-        final TextView userName = (TextView) view.findViewById(R.id.useName_nav);
-
-        final CircleImageView userImg = (CircleImageView) view.findViewById(R.id.useImg_nav);
-
-        final ImageView userEdit = (ImageView)view.findViewById(R.id.useEdit_nav);
-
+        final PersonalManager personal = new PersonalManager( this);
+        final Drawable headImg = personal.getHeadImg();
         final String name = personal.getPersonName();
 
+
+        final TextView userName = (TextView) view.findViewById(R.id.useName_nav);
+        final CircleImageView userImg = (CircleImageView) view.findViewById(R.id.useImg_nav);
+
+
+        if(headImg!=null) userImg.setImageDrawable(headImg);
         userName.setText(name);
 
-        if(personal.getHeadImg()!=null) userImg.setImageDrawable(personal.getHeadImg());
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final HeadDialog dialog = new HeadDialog(MainActivity.this);
                 dialog.show();
+
+
+                dialog.setPersonalName(name);
+                if(headImg!=null) dialog.setImg(headImg);
+
+
+                
                 dialog.setImgListener(new MyOnClickListener() {
                    @Override
                    public void onClick() {
-                       // 激活系统图库，选择一张图片
-                       Intent intent = new Intent(Intent.ACTION_PICK);
-                       intent.setType("image/*");
-                       // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_GALLERY
-                       startActivityForResult(intent, 2);
+                       picOrPhoto();
+                       navHeadImg = userImg;
+                       dialogIcon = dialog.getImg();
 
-                       if(personal.getHeadImg()!=null)  dialog.setImg(personal.getHeadImg());
-                       if(personal.getHeadImg()!=null) userImg.setImageDrawable(personal.getHeadImg());
                    }
-                   }
-                );
-
-
-                if(personal.getHeadImg()!=null)  dialog.setImg(personal.getHeadImg());
-                if(personal.getHeadImg()!=null) userImg.setImageDrawable(personal.getHeadImg());
-
-                dialog.setPersonalName(userName.getText().toString());
+                });
 
                 dialog.setYesListener(new MyOnClickListener(){
                     @Override
                     public void onClick() {
                         String newName = dialog.getPersonalName();
-                        if(! newName.equals(name)){
+                        if(! newName.equals( name)){
                             personal.savePersonName(newName);
                             userName.setText(newName);
                         }
-                        dialog.dismiss();
+                        saveImg();
+                        dialog.setImg(headImg);
+
+                      dialog.dismiss();
                     }
                 });
                 mDrawer.closeDrawers();
@@ -288,31 +286,34 @@ public class MainActivity extends AppCompatActivity {
         };
 
 
-        userImg.setOnClickListener(listener);
 
-        userEdit.setOnClickListener(listener);
+       userImg.setOnClickListener(listener);
+        (view.findViewById(R.id.useEdit_nav)).setOnClickListener(listener);
  }
 
-    /**
+
     private  void picOrPhoto(){
+
 
         final ChooseDialog dialog = new ChooseDialog(this);
 
         dialog.show();
         dialog.setTitle("请选择");
         dialog.setInfo("修改你的个人头像");
-        dialog.setChoose1("从照相机");
+
+
+        dialog.setChoose1("拍照");
         dialog.setListener_1(new MyOnClickListener() {
             @Override
             public void onClick() {
-
+                MsgToast.showToast(MainActivity.this,"现在还不支持该功能");
             }
         });
+
         dialog.setChoose2("从相册中选取");
         dialog.setListener_2(new MyOnClickListener() {
             @Override
             public void onClick() {
-
                 // 激活系统图库，选择一张图片
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
@@ -322,7 +323,6 @@ public class MainActivity extends AppCompatActivity {
         });
         dialog.setChoose3("取消");
     }
-     **/
 
 
     @Override
@@ -333,6 +333,7 @@ public class MainActivity extends AppCompatActivity {
                     String returnData = data.getStringExtra("currentFolderName");
                     if (!StringUtil.isEmpty(returnData)) {
                         currentFolderName = returnData;
+                        TextView toolbar_title = (TextView) findViewById(R.id.title_toolbar) ;
                         toolbar_title.setText(currentFolderName);
                     }
                 }
@@ -342,15 +343,32 @@ public class MainActivity extends AppCompatActivity {
                 // 从相册返回的数据
                 if (data != null) {
                     // 得到图片的全路径
-                    Uri uri = data.getData();
-                    PersonalManager personal = new PersonalManager(this);
-                    personal.setHeadImg(uri);
+                    pic_uri = data.getData();
+
+                    try {
+                        Bitmap pic = MediaStore.Images.Media.getBitmap
+                                (getContentResolver(), pic_uri);
+                        dialogIcon.setImageBitmap(pic);
+                        navHeadImg.setImageBitmap(pic);
+                    }catch (IOException e){
+                        MsgToast.showToast(MainActivity.this,"获取失败了呢");
+                    }
                 }
                 break;
             default:
                 break;
         }
 
+    }
+
+
+
+    private void saveImg(){
+        if(pic_uri!=null) {
+
+            PersonalManager personal = new PersonalManager(this);
+            personal.setHeadImg(pic_uri);
+        }
     }
 
 
@@ -463,6 +481,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent,View view,int position,long id){
                 noteManager.ItemClick(position);
 
+
             }
         });
 
@@ -491,6 +510,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         noteManager.deleteClick(position);
+                        emptyListCheck();
                     default:
                         break;
                 }
@@ -518,7 +538,7 @@ public class MainActivity extends AppCompatActivity {
             empty.setVisibility(View.VISIBLE);
 
             TextView info = (TextView) findViewById(R.id.text_empty);
-            info.setText("似乎空空如也");
+            info.setText(R.string.main_empty_info);
         }else{
             mListView.setVisibility(View.VISIBLE);
             RelativeLayout empty = (RelativeLayout) findViewById(R.id.empty);
@@ -548,6 +568,8 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyUp(keyCode, event);
     }
+
+
 
 
 

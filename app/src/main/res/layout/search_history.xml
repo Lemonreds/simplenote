@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:text="@string/clear"
         android:layout_gravity="center_horizontal"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:background="@null"
         />
 

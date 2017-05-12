@@ -24,6 +24,8 @@ import com.example.ui.R;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class FilesActivity extends BaseActivity implements View.OnClickListener {
 
@@ -60,9 +62,11 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
         });
 
         //right
-        TextView right = (TextView) findViewById(R.id.right_bottom);
-        right.setText("新的分类");
-        right.setOnClickListener(this);
+       // TextView right = (TextView) findViewById(R.id.right_bottom);
+       // right.setText("新的分类");
+       // right.setOnClickListener(this);
+
+        findViewById(R.id.add_file).setOnClickListener(this);
         viewUpdate();
 
 
@@ -74,6 +78,7 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
             TextView title = (TextView) findViewById(R.id.title_toolbar);
             title.setText("选择类别");
             TextView text = (TextView) findViewById(R.id.text_files);
+            text.setVisibility(View.VISIBLE);
             text.setText("将备忘录 " + moveNote.getName() + " 移动到...");
 
 
@@ -181,11 +186,10 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
                     //获取点击的文件夹名字返回给主界面
                     Intent intent = new Intent();
                     String returnData = folderName.get(position);
-
                     intent.putExtra("currentFolderName", returnData);
                     setResult(RESULT_OK, intent);
-                    overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                     finish();
+                    overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                 }
             });
         }
@@ -195,7 +199,7 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.right_bottom:
+            case R.id.add_file:
                 add();
                 break;
             case R.id.back_title:

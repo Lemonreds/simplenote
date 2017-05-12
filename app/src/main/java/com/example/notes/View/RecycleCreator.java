@@ -27,8 +27,8 @@ public class RecycleCreator implements com.baoyz.swipemenulistview.SwipeMenuCrea
     public void create(SwipeMenu menu) {
 
         SwipeMenuItem openItem = new SwipeMenuItem(mContext.getApplicationContext());
-        openItem.setBackground(R.color.light_blue);
-        openItem.setWidth(dp2px(70));
+        openItem.setBackground(R.color.blue);
+        openItem.setWidth(dp2px(55));
         openItem.setTitle("恢复");
         openItem.setTitleSize(15);
         openItem.setTitleColor(Color.WHITE);
@@ -36,7 +36,7 @@ public class RecycleCreator implements com.baoyz.swipemenulistview.SwipeMenuCrea
 
         SwipeMenuItem deleteItem = new SwipeMenuItem(mContext.getApplicationContext());
         deleteItem.setBackground(R.color.red);
-        deleteItem.setWidth(dp2px(70));
+        deleteItem.setWidth(dp2px(55));
         deleteItem.setTitle("删除");
         deleteItem.setTitleSize(15);
         deleteItem.setTitleColor(Color.WHITE);

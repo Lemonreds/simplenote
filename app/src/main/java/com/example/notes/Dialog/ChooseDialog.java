@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.notes.Interface.MyOnClickListener;
+import com.example.notes.util.StringUtil;
 import com.example.ui.R;
 
 /**
@@ -95,14 +96,17 @@ public class ChooseDialog extends Dialog {
     }
 
     public void setChoose1(String choose1) {
+        if(StringUtil.isEmpty(choose1))this.choose1.setVisibility(View.GONE);
         this.choose1.setText(choose1);
     }
 
     public void setChoose2(String choose2) {
+        if(StringUtil.isEmpty(choose2))this.choose2.setVisibility(View.GONE);
         this.choose2.setText(choose2);
     }
 
     public void setChoose3(String choose3) {
+        if(StringUtil.isEmpty(choose3))this.choose3.setVisibility(View.GONE);
         this.choose3.setText(choose3);
     }
 
@@ -116,9 +120,6 @@ public class ChooseDialog extends Dialog {
         this.listener_2 = listener_2;
     }
 
-    public void setListener_3(MyOnClickListener listener_3) {
-        this.listener_3 = listener_3;
-    }
 
 
 

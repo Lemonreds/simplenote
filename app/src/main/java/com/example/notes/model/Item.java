@@ -20,7 +20,6 @@ public class Item  implements Serializable {
     }
 
 
-
     public Date getDate() {
         return date;
     }

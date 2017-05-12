@@ -3,7 +3,8 @@
     xmlns:adroid="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     adroid:layout_width="match_parent"
-    adroid:layout_height="match_parent">
+    adroid:layout_height="match_parent"
+    >
 
 
     <android.support.v7.widget.Toolbar
@@ -27,7 +28,7 @@
 
     <TextView
         adroid:id="@+id/icon_about"
-        adroid:layout_marginTop="66dp"
+        adroid:layout_marginTop="126dp"
         adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content"
         adroid:text="@string/app_name"
@@ -39,11 +40,12 @@
 
     <TextView
         adroid:id="@+id/main_about"
-        adroid:layout_marginTop="16dp"
-        adroid:layout_marginBottom="12dp"
+        adroid:layout_marginTop="8dp"
         adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content"
         adroid:text="@string/main_about"
+        adroid:textColor="@color/minBlack"
+        adroid:textSize="14sp"
         adroid:layout_below="@+id/icon_about"
         adroid:layout_centerHorizontal="true"
         />
@@ -57,27 +59,33 @@
         adroid:layout_width="match_parent"
         adroid:layout_height="wrap_content">
 
+
+    <RelativeLayout
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content"
+        adroid:layout_marginTop="20dp">
+        <include layout="@layout/about_table"/>
+
      <TextView
             adroid:layout_width="match_parent"
             adroid:layout_height="wrap_content"
-            adroid:text="@string/help_about"
+            adroid:paddingBottom="6dp"
+            adroid:text="@string/bottom_about"
             adroid:gravity="center"
-            adroid:layout_marginBottom="20dp"
-         />
-
-
-
-       <ScrollView
-        adroid:layout_width="match_parent"
-        adroid:layout_height="wrap_content">
-    <TextView
-        adroid:layout_width="match_parent"
-        adroid:layout_height="wrap_content"
-        adroid:text="@string/text_about"
-        adroid:textColor="@color/black"
-        />
-    </ScrollView>
+            adroid:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
 
 
     </LinearLayout>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        adroid:layout_width="66dp"
+        adroid:layout_height="66dp"
+        adroid:src="@drawable/icon"
+        adroid:layout_below="@+id/toolbar"
+        adroid:layout_centerHorizontal="true"
+        adroid:layout_marginTop="10dp" />
+
 </RelativeLayout>

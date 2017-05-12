@@ -2,7 +2,8 @@
 <RelativeLayout
     xmlns:adroid="http://schemas.android.com/apk/res/android"
     adroid:layout_width="match_parent"
-    adroid:layout_height="match_parent">
+    adroid:layout_height="match_parent"
+>
 
 
     <TextView
@@ -23,7 +24,7 @@
         adroid:text="@string/info_wel"
         adroid:layout_centerInParent="true"
         adroid:layout_below="@id/main_wel"
-        adroid:textSize="13sp"
+        adroid:textSize="16sp"
         />
 
     <TextView

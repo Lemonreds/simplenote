@@ -5,7 +5,6 @@
     adroid:id="@+id/activity_create"
     adroid:layout_width="match_parent"
     adroid:layout_height="match_parent"
-    adroid:background="@null"
    >
 
     <android.support.v7.widget.Toolbar
@@ -14,6 +13,7 @@
         adroid:layout_width="match_parent"
         adroid:layout_height="46dp"
         adroid:background="@drawable/border_bottom">
+
 
         <TextView
             adroid:id="@+id/title_toolbar"
@@ -32,7 +32,7 @@
         adroid:layout_width="match_parent"
         adroid:layout_height="wrap_content"
         adroid:layout_marginTop="46dp"
-        adroid:background="@drawable/border_bottom"
+
         >
     <EditText
         adroid:id="@+id/title_create"
@@ -70,7 +70,6 @@
         adroid:layout_width="match_parent"
         adroid:layout_height="wrap_content"
         adroid:layout_marginTop="5dp"
-        adroid:layout_marginBottom="5dp"
         adroid:layout_marginLeft="10dp"
         adroid:orientation="horizontal"
         >
@@ -120,6 +119,7 @@
         adroid:layout_alignParentRight="true"
         adroid:layout_alignParentBottom="true"
         adroid:layout_margin="10dp"
+        app:fab_size="mini"
         app:elevation="6dp"
         adroid:src="@drawable/pic_add"
         app:backgroundTint="@null"

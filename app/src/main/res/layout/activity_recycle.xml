@@ -21,7 +21,7 @@
             adroid:layout_gravity="center"
             adroid:textColor="@color/black"
             adroid:text="@string/title_recycle"
-            adroid:textSize="20sp" />
+            adroid:textSize="18sp" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -49,17 +49,42 @@
             adroid:layout_above="@id/tab_recycle"
             adroid:orientation="vertical">
 
-            <TextView
-                adroid:layout_width="match_parent"
-                adroid:layout_height="20dp"
-                adroid:text="@string/info_recycle"
-                adroid:textSize="14sp"
-                adroid:gravity="center"
-                adroid:layout_margin="3dp"
+
+
+        <LinearLayout
+            adroid:layout_width="match_parent"
+            adroid:layout_height="wrap_content"
+            adroid:orientation="horizontal"
+            adroid:gravity="center"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                adroid:id="@+id/deleteAll"
+                adroid:layout_width="wrap_content"
+                adroid:layout_height="wrap_content"
+                adroid:src="@drawable/pic_delete"
+                adroid:layout_marginLeft="40dp"
+                adroid:layout_marginTop="10dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:layout_marginRight="20dp"
+                />
+            <de.hdodenhof.circleimageview.CircleImageView
+                adroid:id="@+id/recoverAll"
+                adroid:layout_width="wrap_content"
+                adroid:layout_height="wrap_content"
+                adroid:src="@drawable/pic_reback"
+                adroid:layout_marginLeft="20dp"
+                adroid:layout_marginTop="10dp"
+                adroid:layout_marginBottom="10dp"
+                adroid:layout_marginRight="40dp"
                 />
 
+            </LinearLayout>
 
-            <include layout="@layout/empty_view"/>
+
+
+
+
+        <include layout="@layout/empty_view"/>
 
 
             <com.baoyz.swipemenulistview.SwipeMenuListView

@@ -152,6 +152,10 @@ public class HeadDialog extends  android.app.Dialog {
         this.img.setImageDrawable(img);
     }
 
+    public CircleImageView getImg() {
+        return img;
+    }
+
     private void hideOrOpenKeyBoard(){
 
 

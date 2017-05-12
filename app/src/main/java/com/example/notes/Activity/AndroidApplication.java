@@ -7,7 +7,8 @@ import com.example.ui.R;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
- * Created by 阿买 on 2017/4/25.
+ * Created on 2017/4/25.
+ * Application类 用于全局字体设置
  */
 
 public class AndroidApplication extends Application {

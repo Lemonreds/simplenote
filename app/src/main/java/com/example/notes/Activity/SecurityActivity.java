@@ -19,17 +19,13 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
 
     private TextView title;
     private TextView info;
-
     private TextView passWord;
-    private TextView cancel;
-    private TextView findPassword;
-
 
     private int passWordNumber;
     private StringBuilder inputPassWord;
     private StringBuilder oldInputPassWord;
 
-    private int model ;
+    private int model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +80,8 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
         passWord = (TextView)findViewById(R.id.password_security);
 
 
-        cancel = (TextView)findViewById(R.id.btn_cancel);
-        cancel.setOnClickListener(new View.OnClickListener() {
+        TextView cancel = (TextView)findViewById(R.id.btn_cancel);
+         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -97,8 +93,8 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
 
             }
         });
-        findPassword =(TextView) findViewById(R.id.findPassword_security);
-        findPassword.setOnClickListener(new View.OnClickListener() {
+        TextView findPassWord =(TextView) findViewById(R.id.findPassword_security);
+        findPassWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MsgToast.showToast(SecurityActivity.this,"我也很绝望呀!");
@@ -121,14 +117,6 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
      * 显示视图
      */
     private void setPassWord(){
-/**
-        StringBuilder hideChar = new StringBuilder(4);
-
-        for(int i=0;i<passWordNumber;i++){
-            hideChar.append("●");
-        }
-        passWord.setText(hideChar.toString());
-**/
 
         int i;
         StringBuilder  hideChar = new StringBuilder(4);

@@ -128,7 +128,6 @@ public class DBManager {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
             cursor.close();
         }

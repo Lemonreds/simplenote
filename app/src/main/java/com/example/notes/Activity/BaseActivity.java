@@ -9,7 +9,8 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
- * Created by 阿买 on 2017/4/7.
+ * Created on 2017/4/7.
+ * Activity基类 用于设置活动的侧滑退出
  */
 
 public class BaseActivity  extends SwipeBackActivity {
@@ -21,6 +22,10 @@ public class BaseActivity  extends SwipeBackActivity {
         backSet();
 
     }
+
+    /**
+     * 侧滑设置
+     */
     private void  backSet(){
         SwipeBackLayout mSwipeBackLayout = getSwipeBackLayout();
         mSwipeBackLayout.setEdgeSize(400);
@@ -28,7 +33,10 @@ public class BaseActivity  extends SwipeBackActivity {
         mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
     }
 
-
+    /**
+     * 字体链接
+     * @param newBase
+     */
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));

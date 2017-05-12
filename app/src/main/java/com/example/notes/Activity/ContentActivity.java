@@ -18,23 +18,21 @@ import com.example.ui.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import jp.wasabeef.richeditor.RichEditor;
 
+/**
+ * 内容
+ * 由Main触发的活动
+ */
 public class ContentActivity extends BaseActivity  {
 
-
-    private TextView mTitle;
-
-    private TextView content;
-
+    //展示的Note类
     private Note note;
-
-    private String currentFolderName;
-
-    private Toolbar mToolbar;
-
-
+    //Note管理类
     private NoteManager mNoteManager;
 
+
+    //private String currentFolderName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,30 +41,28 @@ public class ContentActivity extends BaseActivity  {
 
         //获取mainActivity传来的信息
         Intent intent = this.getIntent();
-        currentFolderName = intent.getStringExtra("currentFolderName");
         note = (Note) intent.getSerializableExtra("note");
-        mNoteManager = new NoteManager(this,currentFolderName);
         init();
     }
 
 
-    //获取item并打开响应的activity
+    /**
+     * ContentActivity初始化
+     */
     private void init() {
-
         init_toolbar();
         init_view();
         init_bottom();
-
     }
 
 
-
-
+    /**
+     * toolbar的初始化
+     */
     private void init_toolbar() {
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.inflateMenu(R.menu.menu_content);
-
 
         mToolbar.setNavigationIcon(R.drawable.pic_back);
 
@@ -74,12 +70,12 @@ public class ContentActivity extends BaseActivity  {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
-                          Intent intent=new Intent(Intent.ACTION_SEND);
+                Intent intent=new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
-                intent.putExtra(Intent.EXTRA_TEXT,content.getText().toString()+ " " +"分享自SimpleNote");
+                intent.putExtra(Intent.EXTRA_TEXT,note.getText()+ " " +"\n分享自SimpleNote");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(Intent.createChooser(intent, "从SimpleNote分享内容到...."));
+                startActivity(Intent.createChooser(intent, "分享你的内容到...."));
                 return false;
             }
         });
@@ -87,23 +83,24 @@ public class ContentActivity extends BaseActivity  {
             @Override
             public void onClick(View v) {
                 onBackPressed();
-                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_left);
             }
         });
 
 
         //toolbar上的标题
-        mTitle = (TextView) findViewById(R.id.title_toolbar);
-       // setEditTextEditable(mTitle, false);
+        TextView   mTitle = (TextView) findViewById(R.id.title_toolbar);
         mTitle.setText(note.getName());
-       // mTitle.setSelection(mTitle.getText().length());
 
     }
 
 
+    /**
+     * view的初始化
+     */
     private void init_view(){
-        //设置noteMng
-        mNoteManager = new NoteManager(this, currentFolderName);
+        //Note管理类
+        mNoteManager = new NoteManager(this, note.getFolderName());
 
         //日期
         final TextView date = (TextView) findViewById(R.id.date_content);
@@ -111,20 +108,28 @@ public class ContentActivity extends BaseActivity  {
 
         //位置
         final TextView location = (TextView) findViewById(R.id.location_content);
-        //位置信息的判断
+
         if (StringUtil.isEmpty(note.getLocation()))
             location.setVisibility(View.GONE);
         else {
             location.setText(note.getLocation());
         }
+        //内容
+      //  TextView content =(TextView)findViewById(R.id.content);
+       // content.setText(Html.fromHtml(note.getText()));
 
-        content =(TextView)findViewById(R.id.content);
-        content.setText(Html.fromHtml(note.getText()));
+        RichEditor content = (RichEditor)findViewById(R.id.editor);
+        content.setHtml(note.getText());
+        content.setInputEnabled(false);
 
+
+        //内容的长度
+        //TextView numberFollow = (TextView)findViewById(R.id.numberFollow_content);
+       // numberFollow.setText(" "+StringUtil.clearHtml(content.getText().toString()).length()+" ");
         TextView numberFollow = (TextView)findViewById(R.id.numberFollow_content);
-        numberFollow.setText(" "+StringUtil.clearHtml(content.getText().toString()).length()+" ");
+         numberFollow.setText(" "+StringUtil.clearHtml(StringUtil.clearHtml(content.getHtml())).length()+" ");
 
-
+        //Level
         switch (note.getLevel()){
             case Note.GRE_LEVEL:
                 findViewById(R.id.level_content).setBackgroundResource(R.drawable.radius_green);
@@ -139,18 +144,20 @@ public class ContentActivity extends BaseActivity  {
 
     }
 
+    /**
+     * 底部栏的初始化
+     */
+
     private void init_bottom() {
 
-
+        //编辑
         findViewById(R.id.edit_bottom_content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
                 edit();
             }
         });
-
-
+        //删除
         findViewById(R.id.delete_bottom_content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,7 +166,7 @@ public class ContentActivity extends BaseActivity  {
                 finish();
             }
         });
-
+        //移动到
         findViewById(R.id.move_bottom_content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,14 +178,11 @@ public class ContentActivity extends BaseActivity  {
                 bundle.putSerializable("note",note);
                 intent.putExtras(bundle);
                 startActivity(intent);
-
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
-                //move
 
             }
         });
-
-
+        //位置
         findViewById(R.id.location_bottom_content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -187,11 +191,11 @@ public class ContentActivity extends BaseActivity  {
         });
 
 
-
-
     }
 
-
+    /**
+     * 编辑响应
+     */
     private  void edit(){
 
         Intent intent = new Intent(this,CreateActivity.class);
@@ -205,7 +209,9 @@ public class ContentActivity extends BaseActivity  {
         finish();
     }
 
-
+    /**
+     * 获取位置响应
+     */
     private void getLocation() {
 
         final ProDialog proDialog = new ProDialog(this, "正在获取定位...");
@@ -232,7 +238,6 @@ public class ContentActivity extends BaseActivity  {
 
         location.setText(address);
     }
-
 
 
 }

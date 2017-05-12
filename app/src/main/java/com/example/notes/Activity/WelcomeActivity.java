@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.notes.util.AppUtil;
 import com.example.notes.util.MsgToast;
 import com.example.ui.R;
 
@@ -24,12 +25,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
     private void checkStart(){
-        //定义一个setting记录APP是几次启动！！！
-        SharedPreferences setting = getSharedPreferences("FirstStart", Context.MODE_PRIVATE);
-        Boolean user_first = setting.getBoolean("FIRST", true);
 
-        if (user_first) {// 第一次
-            setting.edit().putBoolean("FIRST", false).apply();
+        Boolean user_first = AppUtil.isFirstStart(this);
+
+        if (user_first) {
             firstStart();
         } else {
             noFirstStart();

@@ -1,5 +1,6 @@
 package com.example.notes.Manager;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+
+import com.example.notes.util.AppUtil;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -28,7 +31,6 @@ public class PersonalManager {
 
     private Context mContent;
 
-
     private static String path = "/sdcard/myHead/";// sd路径
 
     public PersonalManager(Context mContent) {
@@ -36,8 +38,12 @@ public class PersonalManager {
     }
 
 
-
     public Drawable getHeadImg(){
+
+        if(AppUtil.isFirstStart((Activity) mContent)){
+            return  null;
+        }
+
         Bitmap bt = getBitmap(path + "head.jpg");
         if(bt==null) return null;
         Drawable drawable = new BitmapDrawable(bt);

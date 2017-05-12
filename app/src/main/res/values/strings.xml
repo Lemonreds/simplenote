@@ -3,6 +3,7 @@
     <string name="app_name">SimpleNote</string>
 
     <string name="note_empty_info">空空如也</string>
+    <string name="main_empty_info">还没有任何备忘录</string>
     <string name="recycle_empty_info">回收站似乎空空如也</string>
 
 
@@ -27,24 +28,19 @@
     <string name="yes_btn">确认</string>
     <string name="delete_btn">删除</string>
 
-    <string name="text_title">标题</string>
-    <string name="right_title">完成</string>
-    <string name="left_title">返回</string>
 
     <string name="delete_icon">X</string>
     <string name="clear">清空所有搜索记录</string>
 
-
     <string name="folder">全部分类</string>
     <string name="recycle">最近删除</string>
     <string name="security">隐私安全</string>
-
     <string name="about">关于</string>
-    <string name="exit">退出SimpleNote</string>
+    <string name="exit">退出 SimpleNote</string>
 
-    <string name="title_recycle">回收站</string>
-    <string name="info_recycle">回收的备忘录将会在30天后永久删除</string>
-    <string name="clearAll_recycle">清空</string>
+
+    <string name="title_recycle">最近删除</string>
+    <string name="info_recycle">最近删除的备忘录将会在30天后永久删除</string>
     <string name="deleteAll_recycle">删除全部</string>
     <string name="recoverAll_recycle">恢复全部</string>
 
@@ -75,14 +71,15 @@
     <string name="findPassword_security">忘记密码?</string>
 
 
+    <string name="hint_quick">突然想写点什么..</string>
 
-    <string name="hint_quick">想写点什么..</string>
+
     <string name="main_about">还是不要出什么大bug才好\n</string>
-    <string name="help_about">红红火火 恍恍惚惚</string>
-    <string name="text_about">更新历史:\n5.01 新增 [个人信息]\n4.25 新增 [安全]\n </string>
-
-
+    <string name="t1_table">分享此应用给朋友</string>
+    <string name="t2_table">问题反馈</string>
+    <string name="t3_table">更新历史</string>
+    <string name="bottom_about">Created on 2017 04 25</string>
     <string name="info_wel">记你所想</string>
-    <string name="bottom_wel">By 2017 04 25</string>
+    <string name="bottom_wel">2017 04 25</string>
 
 </resources>

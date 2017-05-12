@@ -29,6 +29,7 @@ public class QuickCreateActivity extends AppCompatActivity {
 
         content = (EditText)findViewById(R.id.content_quick);
 
+
         title = (TextView) findViewById(R.id.title_toolbar);
         title.setText("快速创建");
 
@@ -54,13 +55,14 @@ public class QuickCreateActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+
                 //done
                 String title;
                 Date date = new Date();
                 if(content.getText().length()>=10)
                     title=content.getText().toString().substring(0,9);
                 else {
-                    title ="未命名备忘录";
+                    title ="未命名";
                 }
 
                 Note create_note = new Note(title, date,

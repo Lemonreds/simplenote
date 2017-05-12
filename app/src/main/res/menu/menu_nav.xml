@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+
     >
 
     <group android:checkableBehavior="none"
@@ -8,13 +9,15 @@
     <item
         android:id="@+id/nav_folder"
         android:title="@string/folder"
+        
         android:icon="@drawable/pic_addquick"
+
         />
-        </group>
+    </group>
 
     <group android:checkableBehavior="none"
-        android:id="@+id/delete"
         >
+
     <item
         android:id="@+id/nav_recycle"
         android:title="@string/recycle"
@@ -41,21 +44,35 @@
 
     </group>
 
+    <item
+        android:checkable="false"
+        android:title=""
+        />
+    <item
+        android:checkable="false"
+        android:title=""
+        />
+    <item
+        android:checkable="false"
+        android:title=""
+        />
+    <item
+        android:checkable="false"
 
-    <group
-        android:checkableBehavior="none"
-        android:id="@+id/more"
-        >
+        android:title=""
+        />
+
+
+
 
 
         <item
             android:id="@+id/nav_about"
+
             android:title="@string/about"/>
         <item
             android:id="@+id/nav_exit"
             android:title="@string/exit"
             />
 
-
-    </group>
 </menu>

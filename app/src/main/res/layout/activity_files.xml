@@ -38,7 +38,6 @@
             adroid:orientation="horizontal"
             adroid:layout_alignParentBottom="true"
             adroid:background="@drawable/border"
-
             >
             <include layout="@layout/bottom_file"
                  />
@@ -59,12 +58,23 @@
                 adroid:layout_width="match_parent"
                 adroid:layout_height="20dp"
                 adroid:gravity="center"
+                adroid:visibility="gone"
+                />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                adroid:id="@+id/add_file"
+                adroid:layout_width="wrap_content"
+                adroid:layout_height="wrap_content"
+                adroid:src="@drawable/pic_add"
+                adroid:layout_gravity="center"
+                adroid:layout_marginTop="10dp"
                 />
 
             <com.baoyz.swipemenulistview.SwipeMenuListView
                 adroid:id="@+id/list_view"
                 adroid:layout_width="match_parent"
                 adroid:layout_height="match_parent"
+                adroid:layout_marginLeft="10dp"
                 adroid:layout_margin="10dp"
                 />
 

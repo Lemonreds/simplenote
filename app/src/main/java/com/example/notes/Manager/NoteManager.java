@@ -1,6 +1,7 @@
 package com.example.notes.Manager;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.example.notes.model.Date;
 
 import com.example.notes.model.Note;
 import com.example.notes.util.StringUtil;
+import com.example.ui.R;
 
 import java.util.List;
 
@@ -54,7 +56,6 @@ public class NoteManager{
     public void ItemClick(int position){
         final Note select_item = list.get(position);
         ItemClick(select_item);
-
     }
 
     /**
@@ -64,11 +65,12 @@ public class NoteManager{
     private void ItemClick(Note select_item){
 
         Intent intent = new Intent(mContext,ContentActivity.class);
-        intent.putExtra("currentFolderName",currentFolderName);
+
         Bundle bundle = new Bundle();
         bundle.putSerializable("note", select_item);
         intent.putExtras(bundle);
         mContext.startActivity(intent);
+        ((Activity) mContext).overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
 
 

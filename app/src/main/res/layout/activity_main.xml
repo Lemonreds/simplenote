@@ -5,7 +5,6 @@
         xmlns:fab="http://schemas.android.com/apk/res-auto"
         adroid:id="@+id/drawer_layout"
         adroid:layout_width="match_parent"
-
         adroid:layout_height="match_parent">
 
     <ImageView
@@ -24,6 +23,7 @@
                 adroid:layout_width="match_parent"
                 adroid:layout_height="46dp"
                 adroid:background="@drawable/border_bottom">
+
 
                 <TextView
                     adroid:id="@+id/title_toolbar"
@@ -60,6 +60,7 @@
                 fab:fab_addButtonColorPressed="@null"
                 fab:fab_addButtonPlusIconColor="@color/black"
                 fab:fab_labelStyle="@style/menu_labels_style"
+
                 adroid:layout_marginBottom="16dp"
                 adroid:layout_marginRight="16dp"
                 adroid:layout_marginEnd="16dp">
@@ -98,14 +99,15 @@
                     adroid:id="@+id/main_scrollView"
                     adroid:layout_width="match_parent"
                     adroid:layout_height="wrap_content"
-                    adroid:background="@drawable/border_bottom">
+                    adroid:background="@drawable/border_bottom_null">
 
                 <com.example.notes.View.SwipeListView
+
                     adroid:id="@+id/list_view"
                     adroid:layout_width="match_parent"
                     adroid:layout_height="match_parent"
                     adroid:divider="#FFF5EE"
-                    adroid:dividerHeight="5dp"
+                    adroid:dividerHeight="3dp"
                     adroid:background="@null"
                     />
                 </com.example.notes.View.MainScrollview>

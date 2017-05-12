@@ -45,13 +45,11 @@ public class RecycleSwipeAdapter extends BaseAdapter {
         TextView name =(TextView)convertView.findViewById(R.id.name_item);
         TextView folder =(TextView)convertView.findViewById(R.id.folder_item);
         TextView deleteDate = (TextView) convertView.findViewById(R.id.date_item);
-
-        //if(txt!=null)txt.setText(note.getName());
         name.setText(note.getName());
         folder.setText(note.getFolderName());
 
         int days=nowDate.getLeaveDay(note.getDate());
-        String leaveDay = Integer.toString(30-days)+"天";
+        String leaveDay = Integer.toString(29-days)+"天";
 
         if(deleteDate!=null)deleteDate.setText(leaveDay);
 

@@ -41,13 +41,15 @@ public class RecycleManager {
 
 
         Note note = mData.get(position);
-
-
         dbManager.recovery(note);
         update_bottom(position);
     }
     public  void recoveryAll(){
 
+        if(mData.size() == 0 ){
+            MsgToast.showToast(mContext,"空空如也");
+            return;
+        }
 
        for(int i=0;i<mData.size();){
            recovery(i);

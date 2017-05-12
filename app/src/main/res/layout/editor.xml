@@ -3,9 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-           >
+    >
+
 
     <jp.wasabeef.richeditor.RichEditor
+        android:background="@null"
+        android:inputType="textMultiLine"
+        android:minLines="9"
+        android:maxLines="9"
+        android:scrollbars="vertical"
         android:id="@+id/editor"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -13,7 +19,6 @@
         android:layout_alignParentTop="true"
         android:layout_margin="10dp"
         />
-
 
 
     <HorizontalScrollView

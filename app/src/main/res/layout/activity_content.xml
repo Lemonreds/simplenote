@@ -3,7 +3,8 @@
     xmlns:adroid="http://schemas.android.com/apk/res/android"
     adroid:layout_width="match_parent"
     adroid:layout_height="match_parent"
-    adroid:orientation="vertical">
+    adroid:orientation="vertical"
+ >
 
 
 
@@ -98,17 +99,26 @@
         </RelativeLayout>
 
 
-        <ScrollView
-            adroid:layout_width="match_parent"
-            adroid:layout_height="wrap_content">
-        <TextView
-            adroid:layout_margin="10dp"
-            adroid:id="@+id/content"
+
+        <LinearLayout
             adroid:layout_width="match_parent"
             adroid:layout_height="wrap_content"
-            adroid:textColor="@color/black">
-        </TextView>
-    </ScrollView>
+            >
+            <jp.wasabeef.richeditor.RichEditor
+                adroid:layout_marginTop="16dp"
+                adroid:background="@null"
+                adroid:inputType="textMultiLine"
+                adroid:minLines="9"
+                adroid:maxLines="9"
+                adroid:scrollbars="vertical"
+                adroid:id="@+id/editor"
+                adroid:layout_width="match_parent"
+                adroid:layout_height="wrap_content"
+                adroid:gravity="top"
+                adroid:layout_alignParentTop="true"
+                />
+
+        </LinearLayout>
 
 
     </LinearLayout>
@@ -118,7 +128,8 @@
         adroid:id="@+id/bottom_content"
         adroid:layout_width="match_parent"
         adroid:layout_height="wrap_content"
-        adroid:layout_alignParentBottom="true">
+        adroid:layout_alignParentBottom="true"
+        >
         <include layout="@layout/bottom_content"/>
     </LinearLayout>
 

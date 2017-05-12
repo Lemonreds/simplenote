@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/border"
     android:padding="5dp"
     >
 
+
     <TextView
-        android:id="@+id/deleteAll_bottom"
-        android:layout_margin="5dp"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:gravity="start"
-        android:textColor="@color/black"
-        android:text="@string/deleteAll_recycle"
-        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="@string/info_recycle"
+        android:textSize="14sp"
+        android:textColor="@color/red"
+        android:gravity="center"
+        android:layout_margin="3dp"
         />
+
+
 
     <TextView
         android:id="@+id/text_bottom"
@@ -31,16 +31,5 @@
         android:textColor="@color/black"
         />
 
-    <TextView
-        android:id="@+id/recoverAll_bottom"
-        android:layout_margin="5dp"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:gravity="end"
-        android:textColor="@color/black"
-        android:text="@string/recoverAll_recycle"
-        android:visibility="gone"
-        />
 
 </LinearLayout>

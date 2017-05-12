@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="#FAFAFA"
     >
 
     <View
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginBottom="5dp"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             />
 
@@ -56,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:paddingTop="10dp"
             android:padding="5dp"
             android:textColor="@color/black"
@@ -67,7 +68,7 @@
              android:layout_height="wrap_content"
              android:layout_gravity="center_vertical"
              android:paddingLeft="5dp"
-             android:textSize="14sp"
+             android:textSize="12sp"
              />
         </LinearLayout>
 
