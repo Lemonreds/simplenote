@@ -56,18 +56,20 @@
         <activity android:name="com.example.notes.Activity.RecycleActivity" />
         <activity android:name="com.example.notes.Activity.AboutActivity" />
 
-        <service android:name="com.amap.api.location.APSService" />
+
 
         <activity
             android:name="com.example.notes.Activity.CreateActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.example.notes.Activity.QuickCreateActivity" />
+        <activity android:name="com.example.notes.Activity.QuickCreateActivity"
+
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name="com.example.notes.Activity.WelcomeActivity" />
         <activity android:name="com.example.notes.Activity.SecurityActivity"/>
 
 
 
-
+        <service android:name="com.amap.api.location.APSService" />
     </application>
 
 

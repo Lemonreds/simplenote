@@ -1,4 +1,4 @@
-package com.example.notes.util;
+package com.example.notes.Util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -69,7 +69,7 @@
         adroid:layout_below="@+id/second"
         adroid:layout_width="match_parent"
         adroid:layout_height="wrap_content"
-        adroid:layout_marginTop="5dp"
+
         adroid:layout_marginLeft="10dp"
         adroid:orientation="horizontal"
         >

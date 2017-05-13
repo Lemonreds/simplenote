@@ -15,13 +15,13 @@ import android.widget.TextView;
 
 import com.example.notes.Dialog.InfoDialog;
 import com.example.notes.Dialog.ProDialog;
-import com.example.notes.Interface.MyOnClickListener;
-import com.example.notes.util.LocationUtil;
+import com.example.notes.Dialog.MyOnClickListener;
+import com.example.notes.Util.LocationUtil;
 import com.example.notes.Manager.NoteManager;
-import com.example.notes.model.Date;
-import com.example.notes.util.MsgToast;
-import com.example.notes.model.Note;
-import com.example.notes.util.StringUtil;
+import com.example.notes.Model.Date;
+import com.example.notes.Util.MsgToast;
+import com.example.notes.Model.Note;
+import com.example.notes.Util.StringUtil;
 import com.example.ui.R;
 
 import java.util.Timer;

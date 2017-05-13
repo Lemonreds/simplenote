@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.notes.Manager.SecurityManager;
-import com.example.notes.util.MsgToast;
+import com.example.notes.Util.MsgToast;
 import com.example.ui.R;
 
 public class SecurityActivity extends BaseActivity implements View.OnClickListener{

@@ -7,8 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 
-import com.example.notes.model.Note;
-import com.example.notes.util.StringUtil;
+import com.example.notes.Model.Note;
+import com.example.notes.Util.StringUtil;
 import com.example.ui.R;
 
 import java.util.List;
@@ -66,11 +66,11 @@ public class MainSwipeAdapter extends BaseAdapter {
             content.setVisibility(View.VISIBLE);
 
 
-            if(clearContent.length()<36){
+            if(clearContent.length()<32){
                 sb.append(clearContent);
             }
-            else if(note.getText().length() > 36){
-                sb.append(clearContent.substring(0,35));
+            else if(note.getText().length() > 32){
+                sb.append(clearContent.substring(0,31));
                 sb.append("...");
             }
         }

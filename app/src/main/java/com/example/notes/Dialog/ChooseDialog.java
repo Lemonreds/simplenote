@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.notes.Interface.MyOnClickListener;
-import com.example.notes.util.StringUtil;
+import com.example.notes.Util.StringUtil;
 import com.example.ui.R;
 
 /**

@@ -9,13 +9,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.notes.Adapter.HistoryAdapter;
 import com.example.notes.Adapter.SearchAdapter;
 import com.example.notes.Manager.DBManager;
 import com.example.notes.Manager.NoteManager;
-import com.example.notes.model.Note;
+import com.example.notes.Model.Note;
+import com.example.notes.Util.StringUtil;
 import com.example.ui.R;
 import com.quinny898.library.persistentsearch.SearchBox;
 import com.quinny898.library.persistentsearch.SearchResult;
@@ -222,7 +222,7 @@ public class SearchActivity extends BaseActivity {
         String [] get=  data.split("\\|");
 
         for( String str:get){
-            if(! history.contains( str )){
+            if(! history.contains(str) && !StringUtil.isEmpty(str)){
                 history.add(str);
             }
         }

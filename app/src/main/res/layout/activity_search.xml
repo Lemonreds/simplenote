@@ -9,7 +9,7 @@
     <com.quinny898.library.persistentsearch.SearchBox
         android:layout_width="wrap_content"
         android:id="@+id/searchbox"
-        android:layout_height="60dp"/>
+        android:layout_height="wrap_content"/>
 
 
     <ListView

@@ -3,7 +3,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -15,9 +14,9 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.notes.Adapter.RecycleSwipeAdapter;
 import com.example.notes.Manager.DBManager;
 import com.example.notes.Manager.RecycleManager;
-import com.example.notes.util.MsgToast;
+import com.example.notes.Util.MsgToast;
 import com.example.notes.View.RecycleCreator;
-import com.example.notes.model.Note;
+import com.example.notes.Model.Note;
 import com.example.ui.R;
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package com.example.notes.Dialog;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.notes.Interface.MyOnClickListener;
 import com.example.ui.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;

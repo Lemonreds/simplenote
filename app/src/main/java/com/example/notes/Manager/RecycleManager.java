@@ -4,10 +4,10 @@ import android.content.Context;
 import android.widget.BaseAdapter;
 
 import com.example.notes.Dialog.InfoDialog;
-import com.example.notes.Interface.MyOnClickListener;
-import com.example.notes.util.MsgToast;
+import com.example.notes.Dialog.MyOnClickListener;
+import com.example.notes.Util.MsgToast;
 import com.example.notes.Activity.RecycleActivity;
-import com.example.notes.model.Note;
+import com.example.notes.Model.Note;
 
 import java.util.List;
 

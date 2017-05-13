@@ -5,8 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.notes.util.MsgToast;
-
 /**
  * Created by 阿买 on 2017/3/21.
  */
@@ -17,12 +15,10 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_NOTE =
 
             "create table Notes ("
-                    //  +"id integer primary key autoincrement,"
                     + "item blob)";
 
     private static final String CREATE_RECYCLE =
             "create table recycle ("
-                    //   +"id integer primary key autoincrement,"
                     + "item blob)";
 
     private Context mContext;
@@ -58,7 +54,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String create =
                 "create table " + name + "("
-                        //    +"id integer primary key autoincrement,"
                         + "item blob)";
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL(create);
@@ -121,7 +116,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean tabbleIsExist(String name) {
+    public boolean folderIsExist(String name) {
 
         boolean result = false;
         if (name != null) {

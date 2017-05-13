@@ -32,7 +32,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:gravity="center"
-            android:textSize="12sp"
+            android:textSize="14sp"
             />
 
         <View
@@ -53,6 +53,7 @@
             android:layout_marginTop="5dp"
             android:lines="1"
             android:gravity="center"
+            android:textSize="13sp"
             android:text="@string/hint" />
 
         <View
@@ -73,6 +74,7 @@
             android:layout_marginTop="5dp"
             android:lines="1"
             android:gravity="center"
+            android:textSize="13sp"
             android:text="@string/hint" />
 
         <View
@@ -92,6 +94,7 @@
             android:layout_marginTop="5dp"
             android:lines="1"
             android:gravity="center"
+            android:textSize="13sp"
             android:text="@string/hint" />
 
         <View

@@ -29,10 +29,7 @@
     <string name="delete_btn">删除</string>
 
 
-    <string name="delete_icon">X</string>
-    <string name="clear">清空所有搜索记录</string>
-
-    <string name="folder">全部分类</string>
+     <string name="folder">全部分类</string>
     <string name="recycle">最近删除</string>
     <string name="security">隐私安全</string>
     <string name="about">关于</string>
@@ -40,10 +37,7 @@
 
 
     <string name="title_recycle">最近删除</string>
-    <string name="info_recycle">最近删除的备忘录将会在30天后永久删除</string>
-    <string name="deleteAll_recycle">删除全部</string>
-    <string name="recoverAll_recycle">恢复全部</string>
-
+    <string name="info_recycle">备忘录将在30天后永久删除</string>
 
 
     <string name="title_create">标题</string>
@@ -72,6 +66,7 @@
 
 
     <string name="hint_quick">突然想写点什么..</string>
+    <string name="location_quick">你在哪里?</string>
 
 
     <string name="main_about">还是不要出什么大bug才好\n</string>
@@ -79,7 +74,7 @@
     <string name="t2_table">问题反馈</string>
     <string name="t3_table">更新历史</string>
     <string name="bottom_about">Created on 2017 04 25</string>
-    <string name="info_wel">记你所想</string>
-    <string name="bottom_wel">2017 04 25</string>
+    <string name="info_wel"> </string>
+    <string name="bottom_wel">SimpleNote</string>
 
 </resources>

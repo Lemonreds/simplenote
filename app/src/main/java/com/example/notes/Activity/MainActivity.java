@@ -20,15 +20,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baoyz.swipemenulistview.*;
 import com.example.notes.Dialog.ChooseDialog;
 import com.example.notes.Dialog.HeadDialog;
-import com.example.notes.Dialog.ProDialog;
-import com.example.notes.Interface.MyOnClickListener;
+import com.example.notes.Dialog.MyOnClickListener;
 import com.example.notes.Manager.DBManager;
 
 import com.example.notes.Manager.NoteManager;
@@ -36,12 +34,12 @@ import com.example.notes.View.MainCreator;
 
 import com.example.notes.View.MainScrollview;
 import com.example.notes.View.SwipeListView;
-import com.example.notes.util.MsgToast;
-import com.example.notes.util.ComparatorUtil;
-import com.example.notes.model.Note;
+import com.example.notes.Util.MsgToast;
+import com.example.notes.Util.ComparatorUtil;
+import com.example.notes.Model.Note;
 
 import com.example.notes.Manager.PersonalManager;
-import com.example.notes.util.StringUtil;
+import com.example.notes.Util.StringUtil;
 import com.example.notes.Adapter.MainSwipeAdapter;
 import com.example.ui.R;
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -61,8 +59,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 public class MainActivity extends AppCompatActivity {
 
-    //个人信息管理类
-   // private PersonalManager personal;
+
     //Note管理类
     private NoteManager noteManager;
 
@@ -92,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-       // personal = new PersonalManager( this);
 
         new Thread(new Runnable() {
             @Override
@@ -119,11 +115,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         listView_setting();
+        findViewById(R.id.action_menu).bringToFront();
+
     }
 
     protected void onStart(){
         super.onStart();
         listView_setting();
+        findViewById(R.id.action_menu).bringToFront();
+
     }
 
 
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
     public void actionbarReset(){
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+/**
         toolbar.setNavigationIcon(R.drawable.pic_home);//设置导航栏图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
            @Override
@@ -203,6 +203,14 @@ public class MainActivity extends AppCompatActivity {
                mDrawer.openDrawer(GravityCompat.START);
            }
         });
+**/
+        findViewById(R.id.head_main).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawer.openDrawer(GravityCompat.START);
+            }
+        });
+        resetHeadIcon();
 
 
         TextView toolbar_title = (TextView) findViewById(R.id.title_toolbar) ;
@@ -278,6 +286,8 @@ public class MainActivity extends AppCompatActivity {
                         saveImg();
                         dialog.setImg(headImg);
 
+
+                        resetHeadIcon();
                       dialog.dismiss();
                     }
                 });
@@ -291,6 +301,20 @@ public class MainActivity extends AppCompatActivity {
         (view.findViewById(R.id.useEdit_nav)).setOnClickListener(listener);
  }
 
+
+    private void resetHeadIcon(){
+
+
+        CircleImageView main_head = (CircleImageView)findViewById(R.id.head_main);
+        //CircleImageView nav_head = (CircleImageView) findViewById(R.id.useImg_nav);
+
+        Drawable db = new PersonalManager(this).getHeadImg();
+        if(db!=null) {
+            main_head.setImageDrawable(db);
+          //  nav_head.setImageDrawable(db);
+        }
+
+    }
 
     private  void picOrPhoto(){
 
@@ -384,8 +408,7 @@ public class MainActivity extends AppCompatActivity {
 
         hide_fabMenu();
 
-        final ProDialog proDialog = new ProDialog(this, "正在加载...");
-        proDialog.show();
+
 
         mData = new DBManager(this).search(currentFolderName);
 
@@ -416,7 +439,7 @@ public class MainActivity extends AppCompatActivity {
 
         view_Listener();
         emptyListCheck();
-        proDialog.dismiss();
+
     }
 
 
@@ -438,7 +461,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
 
-
+                findViewById(R.id.action_menu).bringToFront();
             }
         });
 
@@ -456,6 +479,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("currentFolderName",currentFolderName);
                 startActivity(intent);
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+
+                findViewById(R.id.action_menu).bringToFront();
             }
         });
     }
@@ -497,6 +522,8 @@ public class MainActivity extends AppCompatActivity {
                         noteManager.editClick(position);
                         break;
                     case 1:
+
+
                         Intent intent = new Intent(MainActivity.this,FilesActivity.class);
                         intent.putExtra("move",true);
 

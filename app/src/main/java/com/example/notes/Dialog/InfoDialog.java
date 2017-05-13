@@ -8,11 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.notes.Interface.MyOnClickListener;
 import com.example.ui.R;
 
 /**
- * Created by 阿买 on 2017/1/18.
+ * Created by 阿买 on 2017/4/18.
  */
 
 public class InfoDialog extends android.app.Dialog {

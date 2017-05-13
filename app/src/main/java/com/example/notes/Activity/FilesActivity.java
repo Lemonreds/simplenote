@@ -13,18 +13,16 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.notes.Adapter.FileSwipeAdapter;
 import com.example.notes.Dialog.ChooseDialog;
 import com.example.notes.Dialog.InfoDialog;
-import com.example.notes.Interface.MyOnClickListener;
+import com.example.notes.Dialog.MyOnClickListener;
 import com.example.notes.Manager.DBHelper;
 import com.example.notes.Manager.DBManager;
 import com.example.notes.View.FileCreator;
-import com.example.notes.util.MsgToast;
-import com.example.notes.model.Note;
-import com.example.notes.util.StringUtil;
+import com.example.notes.Util.MsgToast;
+import com.example.notes.Model.Note;
+import com.example.notes.Util.StringUtil;
 import com.example.ui.R;
 
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class FilesActivity extends BaseActivity implements View.OnClickListener {

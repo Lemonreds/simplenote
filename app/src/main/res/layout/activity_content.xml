@@ -100,25 +100,21 @@
 
 
 
-        <LinearLayout
-            adroid:layout_width="match_parent"
-            adroid:layout_height="wrap_content"
-            >
+
             <jp.wasabeef.richeditor.RichEditor
                 adroid:layout_marginTop="16dp"
                 adroid:background="@null"
-                adroid:inputType="textMultiLine"
-                adroid:minLines="9"
-                adroid:maxLines="9"
+
                 adroid:scrollbars="vertical"
                 adroid:id="@+id/editor"
                 adroid:layout_width="match_parent"
-                adroid:layout_height="wrap_content"
+                adroid:layout_height="500dp"
+                adroid:layout_marginLeft="10dp"
+                adroid:layout_marginRight="10dp"
                 adroid:gravity="top"
                 adroid:layout_alignParentTop="true"
                 />
 
-        </LinearLayout>
 
 
     </LinearLayout>

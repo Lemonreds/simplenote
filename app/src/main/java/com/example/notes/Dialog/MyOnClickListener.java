@@ -1,4 +1,4 @@
-package com.example.notes.Interface;
+package com.example.notes.Dialog;
 
 /**
  * Created by 阿买 on 2017/4/14.

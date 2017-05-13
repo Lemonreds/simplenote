@@ -3,7 +3,7 @@ package com.example.notes.Manager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.notes.util.StringUtil;
+import com.example.notes.Util.StringUtil;
 
 /**
  * Created by 阿买 on 2017/4/27.

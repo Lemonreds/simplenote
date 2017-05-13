@@ -4,17 +4,21 @@ package com.example.notes.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import com.example.notes.util.LocationUtil;
+
+import com.example.notes.Dialog.ChooseDialog;
+import com.example.notes.Dialog.MyOnClickListener;
+import com.example.notes.Util.IntentUtil;
+import com.example.notes.Util.LocationUtil;
 import com.example.notes.Manager.NoteManager;
-import com.example.notes.model.Note;
+import com.example.notes.Model.Note;
 import com.example.notes.Dialog.ProDialog;
-import com.example.notes.util.MsgToast;
-import com.example.notes.util.StringUtil;
+import com.example.notes.Util.MsgToast;
+import com.example.notes.Util.StringUtil;
 import com.example.ui.R;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -70,12 +74,47 @@ public class ContentActivity extends BaseActivity  {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
-                Intent intent=new Intent(Intent.ACTION_SEND);
+
+
+                final ChooseDialog dialog = new ChooseDialog(ContentActivity.this);
+
+                dialog.show();
+                dialog.setTitle("请选择");
+                dialog.setInfo("你想怎样分享你的备忘录");
+
+                dialog.setChoose1("截图分享");
+                dialog.setListener_1(new MyOnClickListener() {
+                    @Override
+                    public void onClick() {
+                        IntentUtil.startShootShareIntent(ContentActivity.this);
+                    }
+                });
+
+                dialog.setChoose2("仅文字分享");
+                dialog.setListener_2(new MyOnClickListener() {
+                    @Override
+                    public void onClick() {
+                        IntentUtil.startWordShareIntent
+                             (ContentActivity.this,StringUtil.clearHtml(note.getText()));
+
+                    }
+                });
+                dialog.setChoose3("取消");
+
+
+               // IntentUtil.startShootShareIntent(ContentActivity.this);
+
+               // IntentUtil.startWordShareIntent
+               //         (ContentActivity.this,StringUtil.clearHtml(note.getText()));
+                /**
+                    Intent intent=new Intent(Intent.ACTION_SEND);
+
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
                 intent.putExtra(Intent.EXTRA_TEXT,note.getText()+ " " +"\n分享自SimpleNote");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(Intent.createChooser(intent, "分享你的内容到...."));
+                 **/
                 return false;
             }
         });
@@ -93,6 +132,9 @@ public class ContentActivity extends BaseActivity  {
         mTitle.setText(note.getName());
 
     }
+
+
+
 
 
     /**
@@ -127,7 +169,7 @@ public class ContentActivity extends BaseActivity  {
         //TextView numberFollow = (TextView)findViewById(R.id.numberFollow_content);
        // numberFollow.setText(" "+StringUtil.clearHtml(content.getText().toString()).length()+" ");
         TextView numberFollow = (TextView)findViewById(R.id.numberFollow_content);
-         numberFollow.setText(" "+StringUtil.clearHtml(StringUtil.clearHtml(content.getHtml())).length()+" ");
+         numberFollow.setText(" "+StringUtil.clearHtml(content.getHtml()).length()+" ");
 
         //Level
         switch (note.getLevel()){

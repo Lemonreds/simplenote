@@ -4,8 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.notes.model.Date;
-import com.example.notes.model.Note;
+import com.example.notes.Model.Date;
+import com.example.notes.Model.Note;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -216,7 +216,7 @@ public class DBManager {
 
         DBHelper db = DBHelper.getInstance(mContext);
 
-        if( ! db.tabbleIsExist(belongFolder)){
+        if( ! db.folderIsExist(belongFolder)){
             db.add_table(belongFolder);
         }
 

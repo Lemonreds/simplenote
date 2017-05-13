@@ -1,4 +1,4 @@
-package com.example.notes.model;
+package com.example.notes.Model;
 
 /**
  * Created by 阿买 on 2017/3/9.

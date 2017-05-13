@@ -1,6 +1,6 @@
-package com.example.notes.util;
+package com.example.notes.Util;
 
-import com.example.notes.model.Note;
+import com.example.notes.Model.Note;
 
 import java.util.*;
 

@@ -7,15 +7,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.BaseAdapter;
 
+import com.example.notes.Dialog.EditDialog;
 import com.example.notes.Dialog.InfoDialog;
 import com.example.notes.Dialog.NoteDialog;
-import com.example.notes.Interface.MyOnClickListener;
-import com.example.notes.util.MsgToast;
+import com.example.notes.Dialog.MyOnClickListener;
+import com.example.notes.Util.MsgToast;
 import com.example.notes.Activity.ContentActivity;
-import com.example.notes.model.Date;
+import com.example.notes.Model.Date;
 
-import com.example.notes.model.Note;
-import com.example.notes.util.StringUtil;
+import com.example.notes.Model.Note;
+import com.example.notes.Util.StringUtil;
 import com.example.ui.R;
 
 import java.util.List;
@@ -75,13 +76,13 @@ public class NoteManager{
 
 
     public void editClick(int position){
-
+/**
         final InfoDialog dialog = new InfoDialog(mContext);
         dialog.show();
 
         final Note select_item = list.get(position);
         dialog.setEnableEdit(true);
-        dialog.setTitle("重命名此便签");
+        dialog.setTitle("修改标题");
         dialog.setInfo(select_item.getName());
 
         dialog.setYesListener(new MyOnClickListener() {
@@ -92,6 +93,28 @@ public class NoteManager{
                     MsgToast.showToast(mContext,"名字不能为空");
                 }else if(!newName.equals(select_item.getName())){
                     update(select_item,newName);
+                }
+                dialog.dismiss();
+            }
+        });
+ **/
+        final EditDialog dialog = new EditDialog(mContext);
+        dialog.show();
+
+        final Note select_item = list.get(position);
+
+        dialog.setTitle("编辑");
+        dialog.setInfo(select_item.getName());
+
+        dialog.setYesListener(new MyOnClickListener() {
+            @Override
+            public void onClick() {
+                String newName = dialog.getInfo();
+
+                if(StringUtil.isEmpty(newName.trim())){
+                    MsgToast.showToast(mContext,"名字不能为空");
+                }else{
+                    update(select_item,newName,dialog.getLevel());
                 }
                 dialog.dismiss();
             }
@@ -191,10 +214,12 @@ public class NoteManager{
     }
 
 
-    public void update(Note note,String newName){
+    public void update(Note note,String newName,int newLevel){
 
         Note newNote = note.getClone();
         newNote.setName(newName);
+        newNote.setLevel(newLevel);
+
 
         dbManager.upDate(currentFolderName,note,newNote);
 
