@@ -1,19 +1,17 @@
 <LinearLayout
     xmlns:adroid="http://schemas.android.com/apk/res/android"
-
-
-    adroid:layout_width="match_parent"
-    adroid:layout_height="400dp"
+     adroid:layout_width="match_parent"
+    adroid:layout_height="match_parent"
     adroid:orientation="vertical"
-    adroid:gravity="center_horizontal"
+    adroid:layout_marginLeft="20dp"
+    adroid:layout_marginRight="20dp"
+    adroid:gravity="center"
     >
 
     <LinearLayout
-        adroid:layout_width="match_parent"
+        adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content"
         adroid:orientation="horizontal"
-        adroid:paddingLeft="50dp"
-        adroid:paddingRight="50dp"
         >
 
         <Button
@@ -54,11 +52,9 @@
 
 
     <LinearLayout
-        adroid:layout_width="match_parent"
+        adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content"
         adroid:orientation="horizontal"
-        adroid:paddingLeft="50dp"
-        adroid:paddingRight="50dp"
         >
 
         <Button
@@ -97,11 +93,10 @@
 
 
     <LinearLayout
-        adroid:layout_width="match_parent"
+        adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content"
         adroid:orientation="horizontal"
-        adroid:paddingLeft="50dp"
-        adroid:paddingRight="50dp"
+
         >
 
         <Button
@@ -139,11 +134,9 @@
     </LinearLayout>
 
     <LinearLayout
-        adroid:layout_width="match_parent"
+        adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content"
         adroid:orientation="horizontal"
-        adroid:paddingLeft="50dp"
-        adroid:paddingRight="50dp"
         >
         <Button
             adroid:background="@drawable/radius"
@@ -178,7 +171,6 @@
             adroid:textSize="14sp"
             />
     </LinearLayout>
-
 
 
 

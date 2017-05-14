@@ -54,12 +54,13 @@
 
 
     <LinearLayout
+
         adroid:layout_width="match_parent"
         adroid:layout_height="wrap_content"
-        adroid:layout_marginLeft="20dp"
-        adroid:layout_centerInParent="true"
-        adroid:layout_alignParentBottom="true">
-    <include layout="@layout/keybord" />
+        adroid:layout_centerInParent="true">
+
+        <include layout="@layout/keybord"
+           />
     </LinearLayout>
 
 </RelativeLayout>

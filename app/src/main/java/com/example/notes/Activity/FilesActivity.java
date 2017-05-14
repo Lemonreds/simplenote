@@ -80,6 +80,12 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
             text.setText("将备忘录 " + moveNote.getName() + " 移动到...");
 
 
+            //
+
+
+
+            //
+
             // list 的点击监听
             mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -96,84 +102,11 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
 
         } else {
 
-            mListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
-
-                @Override
-                public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {//具体实现
 
 
-                    final int postin = position;
 
-                    if (postin == 0) {
-                        final InfoDialog info = new InfoDialog(FilesActivity.this);
-                        info.show();
-                        info.setTitle("消息提示");
-                        info.setInfo("确认清空 Notes ?");
-                        info.setEnableEdit(false);
-                        info.setYesListener(new MyOnClickListener() {
-                            @Override
-                            public void onClick() {
-                                dropFolder(postin);
-                                info.dismiss();
-                            }
-                        });
-                        return true;
-                    }
 
-                    switch (index) {
-                        //edit
-                        case 0:
-                            final InfoDialog dialog = new InfoDialog(FilesActivity.this);
-                            dialog.show();
 
-                            final String select_item = folderName.get(position);
-
-                            dialog.setEnableEdit(true);
-                            dialog.setTitle("重命名这个类别");
-                            dialog.setInfo(select_item);
-                            dialog.setYesListener(new MyOnClickListener() {
-                                @Override
-                                public void onClick() {
-                                    String newName = dialog.getInfo();
-                                    if (!newName.isEmpty()) {
-                                        updateFolder(folderName.get(postin), newName);
-                                    }
-                                    dialog.dismiss();
-
-                                }
-                            });
-                            break;
-                        case 1:
-
-                            final ChooseDialog deleteDialog = new ChooseDialog(FilesActivity.this);
-
-                            deleteDialog.show();
-                            deleteDialog.setTitle("删除分类?");
-                            deleteDialog.setInfo("如果仅删除文件夹,其所有的备忘录都将转移到回收站.");
-                            deleteDialog.setChoose1("删除文件夹和备忘录");
-                            deleteDialog.setListener_1(new MyOnClickListener() {
-                                @Override
-                                public void onClick() {
-                                    dropFolderAndNote(postin);
-                                }
-                            });
-                            deleteDialog.setChoose2("仅删除文件夹");
-                            deleteDialog.setListener_2(new MyOnClickListener() {
-                                @Override
-                                public void onClick() {
-                                    dropFolder(postin);
-                                }
-                            });
-                            deleteDialog.setChoose3("取消");
-
-                            break;
-
-                        default:
-                            break;
-                    }
-                    return true;
-                }
-            });
 
             // list 的点击监听
             mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -193,6 +126,85 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
         }
 
 
+
+        mListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {//具体实现
+
+
+                final int postin = position;
+
+                if (postin == 0) {
+                    final InfoDialog info = new InfoDialog(FilesActivity.this);
+                    info.show();
+                    info.setTitle("消息提示");
+                    info.setInfo("确认清空 Notes ?");
+                    info.setEnableEdit(false);
+                    info.setYesListener(new MyOnClickListener() {
+                        @Override
+                        public void onClick() {
+                            dropFolder(postin);
+                            info.dismiss();
+                        }
+                    });
+                    return true;
+                }
+
+                switch (index) {
+                    //edit
+                    case 0:
+                        final InfoDialog dialog = new InfoDialog(FilesActivity.this);
+                        dialog.show();
+
+                        final String select_item = folderName.get(position);
+
+                        dialog.setEnableEdit(true);
+                        dialog.setTitle("重命名这个类别");
+                        dialog.setInfo(select_item);
+                        dialog.setYesListener(new MyOnClickListener() {
+                            @Override
+                            public void onClick() {
+                                String newName = dialog.getInfo();
+                                if (!newName.isEmpty()) {
+                                    updateFolder(folderName.get(postin), newName);
+                                }
+                                dialog.dismiss();
+
+                            }
+                        });
+                        break;
+                    case 1:
+
+                        final ChooseDialog deleteDialog = new ChooseDialog(FilesActivity.this);
+
+                        deleteDialog.show();
+                        deleteDialog.setTitle("删除分类?");
+                        deleteDialog.setInfo("如果仅删除文件夹,其所有的备忘录都将转移到回收站.");
+                        deleteDialog.setChoose1("删除文件夹和备忘录");
+                        deleteDialog.setListener_1(new MyOnClickListener() {
+                            @Override
+                            public void onClick() {
+                                dropFolderAndNote(postin);
+                            }
+                        });
+                        deleteDialog.setChoose2("仅删除文件夹");
+                        deleteDialog.setListener_2(new MyOnClickListener() {
+                            @Override
+                            public void onClick() {
+                                dropFolder(postin);
+                            }
+                        });
+                        deleteDialog.setChoose3("取消");
+
+                        break;
+
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
     }
     @Override
     public void onClick(View v) {
