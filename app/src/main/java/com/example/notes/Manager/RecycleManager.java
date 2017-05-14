@@ -5,7 +5,7 @@ import android.widget.BaseAdapter;
 
 import com.example.notes.Dialog.InfoDialog;
 import com.example.notes.Dialog.MyOnClickListener;
-import com.example.notes.Util.MsgToast;
+import com.example.notes.View.MsgToast;
 import com.example.notes.Activity.RecycleActivity;
 import com.example.notes.Model.Note;
 

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.notes.Util.AppUtil;
-import com.example.notes.Util.MsgToast;
+import com.example.notes.View.MsgToast;
 import com.example.ui.R;
 
 public class WelcomeActivity extends AppCompatActivity {

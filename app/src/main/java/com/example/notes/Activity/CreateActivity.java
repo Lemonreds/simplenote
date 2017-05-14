@@ -19,7 +19,7 @@ import com.example.notes.Dialog.MyOnClickListener;
 import com.example.notes.Util.LocationUtil;
 import com.example.notes.Manager.NoteManager;
 import com.example.notes.Model.Date;
-import com.example.notes.Util.MsgToast;
+import com.example.notes.View.MsgToast;
 import com.example.notes.Model.Note;
 import com.example.notes.Util.StringUtil;
 import com.example.ui.R;

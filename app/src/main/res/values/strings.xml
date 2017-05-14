@@ -69,11 +69,12 @@
     <string name="location_quick">你在哪里?</string>
 
 
-    <string name="main_about">还是不要出什么大bug才好\n</string>
+    <string name="main_about">Designed By DJC\n</string>
     <string name="t1_table">分享此应用给朋友</string>
     <string name="t2_table">问题反馈</string>
     <string name="t3_table">更新历史</string>
     <string name="bottom_about">Created on 2017 04 25</string>
+    <string name="back_wel">欢迎回来</string>
     <string name="info_wel"> </string>
     <string name="bottom_wel">SimpleNote</string>
 

@@ -11,7 +11,7 @@ import com.example.notes.Dialog.EditDialog;
 import com.example.notes.Dialog.InfoDialog;
 import com.example.notes.Dialog.NoteDialog;
 import com.example.notes.Dialog.MyOnClickListener;
-import com.example.notes.Util.MsgToast;
+import com.example.notes.View.MsgToast;
 import com.example.notes.Activity.ContentActivity;
 import com.example.notes.Model.Date;
 

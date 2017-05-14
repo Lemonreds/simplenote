@@ -12,10 +12,11 @@
         adroid:layout_margin="10dp"
         adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content"
-
+        adroid:layout_marginTop="20dp"
+        adroid:text="@string/back_wel"
         adroid:layout_centerInParent="true"
         adroid:textColor="@color/black"
-        adroid:textSize="26sp"
+        adroid:textSize="16sp"
 
         />
     <TextView

@@ -14,7 +14,7 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.notes.Adapter.RecycleSwipeAdapter;
 import com.example.notes.Manager.DBManager;
 import com.example.notes.Manager.RecycleManager;
-import com.example.notes.Util.MsgToast;
+import com.example.notes.View.MsgToast;
 import com.example.notes.View.RecycleCreator;
 import com.example.notes.Model.Note;
 import com.example.ui.R;

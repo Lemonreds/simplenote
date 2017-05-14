@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.example.notes.Util.MsgToast;
+import com.example.notes.View.MsgToast;
 import com.example.ui.R;
 
 /**

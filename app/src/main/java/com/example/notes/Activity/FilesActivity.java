@@ -17,7 +17,7 @@ import com.example.notes.Dialog.MyOnClickListener;
 import com.example.notes.Manager.DBHelper;
 import com.example.notes.Manager.DBManager;
 import com.example.notes.View.FileCreator;
-import com.example.notes.Util.MsgToast;
+import com.example.notes.View.MsgToast;
 import com.example.notes.Model.Note;
 import com.example.notes.Util.StringUtil;
 import com.example.ui.R;

@@ -1,7 +1,7 @@
-package com.example.notes.Util;
+package com.example.notes.View;
 
 /**
- * Created by 阿买 on 2017/3/26.
+ * Created on 2017/3/26.
  */
 
 import android.content.Context;

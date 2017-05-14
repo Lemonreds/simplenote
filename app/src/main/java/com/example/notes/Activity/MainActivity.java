@@ -34,7 +34,7 @@ import com.example.notes.View.MainCreator;
 
 import com.example.notes.View.MainScrollview;
 import com.example.notes.View.SwipeListView;
-import com.example.notes.Util.MsgToast;
+import com.example.notes.View.MsgToast;
 import com.example.notes.Util.ComparatorUtil;
 import com.example.notes.Model.Note;
 
