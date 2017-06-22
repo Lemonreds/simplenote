@@ -1,18 +1,17 @@
 # SimpleNote
 
+* Created on SCAU 
 
-* sophomore source design，created by lemonreds SCAU on 20170514
+* 这是一款安卓备忘录应用，大二时的课程设计。
 
-* fixing bug is endless,if I am interested or free,I will continue to update.
+* 如果有空或者感兴趣会继续更新完善功能。
 
-* apk baiduyun : http://pan.baidu.com/s/1dE7aPqh
+* 获取apk安装包: http://pan.baidu.com/s/1cAhgjs
 
-* get codes:  https://github.com/Lemonreds/SimpleNote
+* 作者邮箱: lemonreds@163.com
 
-* author email: lemonreds@163.com
-
-* i used these library:
-    
+* 项目用到了这些开源的项目:
+  
     compile 'com.baoyz.swipemenulistview:library:1.3.0'
 
     compile 'me.imid.swipebacklayout.lib:library:1.0.0'
@@ -28,7 +27,7 @@
     compile 'com.quinny898.library.persistentsearch:library:1.1.0-SNAPSHOT'
 
 
-* run image:
+* 运行截图:
 
 
 
