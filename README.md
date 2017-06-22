@@ -31,8 +31,6 @@
 
 * 运行截图:
 
-
-
 ![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514101955.png)
 
 
