@@ -10,12 +10,9 @@
 
 * 作者邮箱: lemonreds@163.com
 
-* 项目用到了这些开源的项目:
-
-
-  
-    compile 'com.baoyz.swipemenulistview:library:1.3.0'
-
+* 用到了这些开源的项目:
+       
+    
     compile 'me.imid.swipebacklayout.lib:library:1.0.0'
 
     compile 'de.hdodenhof:circleimageview:2.1.0'
@@ -27,6 +24,8 @@
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 
     compile 'com.quinny898.library.persistentsearch:library:1.1.0-SNAPSHOT'
+    
+    compile 'com.baoyz.swipemenulistview:library:1.3.0'
 
 
 * 运行截图:
