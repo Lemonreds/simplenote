@@ -1,5 +1,6 @@
 # SimpleNote
 
+## 说明
 * Created on SCAU 
 
 * 这是一款安卓备忘录应用，大二时的课程设计。
@@ -12,7 +13,7 @@
 
 * 作者邮箱: lemonreds@163.com
 
-* 用到了这些开源的项目:
+## 使用到的开源
        
     
     compile 'me.imid.swipebacklayout.lib:library:1.0.0'
@@ -30,7 +31,7 @@
     compile 'com.baoyz.swipemenulistview:library:1.3.0'
 
 
-* 部分运行截图:
+## 部分运行截图
 
 
 ![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514101955.png)
