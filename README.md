@@ -7,9 +7,9 @@
 
 * 如果有空或者感兴趣会继续更新完善功能。
 
-* ICON来源: https://material.io/icons
+* Icon: https://material.io/icons
 
-* 获取apk安装包: http://pan.baidu.com/s/1cAhgjs
+* 获取apk: http://pan.baidu.com/s/1kV83Yyr
 
 * 作者邮箱: lemonreds@163.com
 
