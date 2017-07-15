@@ -6,6 +6,8 @@
 
 * 如果有空或者感兴趣会继续更新完善功能。
 
+* ICON来源: https://material.io/icons
+
 * 获取apk安装包: http://pan.baidu.com/s/1cAhgjs
 
 * 作者邮箱: lemonreds@163.com
@@ -28,7 +30,8 @@
     compile 'com.baoyz.swipemenulistview:library:1.3.0'
 
 
-* 运行截图:
+* 部分运行截图:
+
 
 ![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514101955.png)
 
