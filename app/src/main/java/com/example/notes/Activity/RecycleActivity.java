@@ -48,16 +48,13 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
         });
 
 
-
-
-
                 CircleImageView deleteAll =(CircleImageView) findViewById(R.id.deleteAll);
                 deleteAll.setVisibility(View.VISIBLE);
                 deleteAll.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(mData.size()==0){
-                            MsgToast.showToast(RecycleActivity.this,"空空如也!");
+                            MsgToast.showToast(RecycleActivity.this,getResources().getString(R.string.empty_info));
                             return;
                         }
                         mManager.clearAll();
@@ -70,14 +67,13 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
                     @Override
                     public void onClick(View v) {
                         if(mData.size()==0){
-                            MsgToast.showToast(RecycleActivity.this,"空空如也!");
+                            MsgToast.showToast(RecycleActivity.this,getResources().getString(R.string.empty_info));
                             return;
                         }
                         mManager.recoveryAll();
 
                     }
                 });
-
 
 
         mData = new DBManager(this).search("recycle");
@@ -96,10 +92,10 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MsgToast.showToast(RecycleActivity.this,"恢复后才能打开");
+                //恢复后才能打开
+                MsgToast.showToast(RecycleActivity.this,getResources().getString(R.string.recovery_recycle));
             }
         });
-
 
 
 
@@ -113,9 +109,9 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
 
-            case R.id.back_title:
-                finish();
-                break;
+           // case R.id.back_title:
+           //     finish();
+           //     break;
             default:
                 break;
 
@@ -143,7 +139,6 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
                     return true;
                 }
             });
-
     }
 
 
@@ -171,7 +166,8 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
             RelativeLayout empty = (RelativeLayout) findViewById(R.id.empty);
             empty.setVisibility(View.VISIBLE);
             TextView info = (TextView) findViewById(R.id.text_empty);
-            info.setText("回收站似乎空空如也");
+            //回收站似乎空空如也
+            info.setText(getResources().getString(R.string.recycle_empty_info));
 
             LinearLayout linearLayout = (LinearLayout)findViewById(R.id.bottom_content);
             linearLayout.setVisibility(View.GONE);

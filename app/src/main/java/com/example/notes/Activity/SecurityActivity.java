@@ -1,6 +1,7 @@
 package com.example.notes.Activity;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -10,10 +11,10 @@ import com.example.notes.Manager.SecurityManager;
 import com.example.notes.View.MsgToast;
 import com.example.ui.R;
 
-public class SecurityActivity extends BaseActivity implements View.OnClickListener{
+public class SecurityActivity extends AppCompatActivity implements View.OnClickListener{
 
-    public final static int MODLE_VERIFY = 0;
-    public final static int MODLE_EDIT = 1;
+    public final static int MODEL_VERIFY = 0;
+    public final static int MODEL_EDIT = 1;
 
     private SecurityManager sManager;
 
@@ -43,16 +44,17 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
 
         model = getIntent().getIntExtra("model",0);
 
-        if(model == MODLE_VERIFY){
+        if(model == MODEL_VERIFY){
             if(!sManager.isHavePassWord()){
                 finish();
             }else{
-                title.setText("验证身份");
+
+                title.setText(getResources().getString(R.string.comfirm_t_sec));
             }
         }
 
 
-        if(model == MODLE_EDIT){
+        if(model == MODEL_EDIT){
 
 
             Toolbar mToolbar =(Toolbar)findViewById(R.id.toolbar);
@@ -66,9 +68,9 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
             });
 
             if(!sManager.isHavePassWord()){
-                title.setText("设置密码");
+                title.setText(getResources().getString(R.string.set_t_sec));
             }else{
-                title.setText("重置密码");
+                title.setText(getResources().getString(R.string.reset_t_sec));
             }
         }
 
@@ -97,7 +99,7 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
         findPassWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MsgToast.showToast(SecurityActivity.this,"我也很绝望呀!");
+                MsgToast.showToast(SecurityActivity.this,getResources().getString(R.string.forget_sec));
             }
         });
 
@@ -153,25 +155,25 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
 
         if (sManager.isHavePassWord()) {//有密码
 
-            if (model == MODLE_EDIT) {//修改模式
+            if (model == MODEL_EDIT) {//修改模式
 
                 if (sManager.isRightPassWord(input)) {
                     sManager.clearPassWord();
-                    MsgToast.showToast(this, "已清除密码");
+                    MsgToast.showToast(this, getResources().getString(R.string.clear_sec));
                     finish();
                 } else {
-                    MsgToast.showToast(this, "验证失败");
+                    MsgToast.showToast(this, getResources().getString(R.string.defeat_sec));
                     reset();
                 }
 
 
-            } else if (model == MODLE_VERIFY) {//验证模式
+            } else if (model == MODEL_VERIFY) {//验证模式
 
                 if (sManager.isRightPassWord(input)) {
                     finish();
                 }else{
-                    MsgToast.showToast(this, "密码错误");
-                    info.setText("请重新输入");
+                    MsgToast.showToast(this, getResources().getString(R.string.wrong_sec));
+                    info.setText(getResources().getString(R.string.agian_sec));
                     reset();
                 }
             }
@@ -182,7 +184,7 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
 
             if(oldInputPassWord == null){
                 oldInputPassWord = inputPassWord;
-                info.setText("再次确认");
+                info.setText(getResources().getString(R.string.comfirm_sec));
                 reset();
             }
             else {
@@ -190,13 +192,13 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
 
                 if(oldInputPassWord.toString().equals(inputPassWord.toString())) {
                     sManager.setPassWord(input);
-                    MsgToast.showToast(this, "已设置密码");
+                    MsgToast.showToast(this, getResources().getString(R.string.done_sec));
                     finish();
                 }else{
                     oldInputPassWord = null;
                     reset();
-                    MsgToast.showToast(this, "两次输入不一致");
-                    info.setText("输入密码");
+                    MsgToast.showToast(this, getResources().getString(R.string.diffrent_sec));
+                    info.setText(getResources().getString(R.string.input_sec));
                 }
             }
 
@@ -211,6 +213,7 @@ public class SecurityActivity extends BaseActivity implements View.OnClickListen
         inputPassWord = new StringBuilder();
         passWordNumber = 0;
         setPassWord();
+
     }
 
 }

@@ -23,9 +23,9 @@
     <!-- 用于申请获取蓝牙信息进行室内定位 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
+    <!-- 用于申请获取使用相机 -->
     <uses-permission android:name="android.permission.CAMERA" />
-
+    <!-- 在SDCard中创建与删除文件权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application
@@ -66,8 +66,6 @@
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name="com.example.notes.Activity.WelcomeActivity" />
         <activity android:name="com.example.notes.Activity.SecurityActivity"/>
-
-
 
         <service android:name="com.amap.api.location.APSService" />
     </application>

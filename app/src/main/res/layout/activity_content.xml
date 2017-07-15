@@ -20,7 +20,6 @@
 
 
     <LinearLayout
-        adroid:id="@+id/text_area_content"
         adroid:layout_width="match_parent"
         adroid:layout_height="match_parent"
         adroid:orientation="vertical"

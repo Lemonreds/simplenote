@@ -20,7 +20,7 @@
             adroid:layout_height="wrap_content"
             adroid:layout_gravity="center"
             adroid:textColor="@color/black"
-            adroid:text="@string/title_security"
+            adroid:text="@string/title_sec"
             adroid:textSize="18sp" />
 
     </android.support.v7.widget.Toolbar>
@@ -37,7 +37,7 @@
         adroid:layout_alignParentTop="true"
         adroid:textColor="@color/black"
         adroid:textSize="16sp"
-        adroid:text="@string/info_security"
+        adroid:text="@string/info_sec"
         />
 
 
@@ -57,7 +57,10 @@
 
         adroid:layout_width="match_parent"
         adroid:layout_height="wrap_content"
-        adroid:layout_centerInParent="true">
+        adroid:layout_marginTop="39dp"
+        adroid:layout_below="@+id/password_security"
+        adroid:layout_alignParentLeft="true"
+        adroid:layout_alignParentStart="true">
 
         <include layout="@layout/keybord"
            />

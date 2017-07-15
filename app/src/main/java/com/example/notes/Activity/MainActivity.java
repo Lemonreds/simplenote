@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                    case R.id.nav_security:
                        Intent intent2 = new Intent(MainActivity.this,SecurityActivity.class);
-                       intent2.putExtra("model",SecurityActivity.MODLE_EDIT);
+                       intent2.putExtra("model",SecurityActivity.MODEL_EDIT);
                        startActivity(intent2);
                        overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
                      break;
@@ -195,16 +195,8 @@ public class MainActivity extends AppCompatActivity {
     public void actionbarReset(){
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-/**
-        toolbar.setNavigationIcon(R.drawable.pic_home);//设置导航栏图标
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-           @Override
-            public void onClick(View v) {
-               mDrawer.openDrawer(GravityCompat.START);
-           }
-        });
-**/
-        findViewById(R.id.head_main).setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.headicon_main).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDrawer.openDrawer(GravityCompat.START);
@@ -305,16 +297,17 @@ public class MainActivity extends AppCompatActivity {
     private void resetHeadIcon(){
 
 
-        CircleImageView main_head = (CircleImageView)findViewById(R.id.head_main);
-        //CircleImageView nav_head = (CircleImageView) findViewById(R.id.useImg_nav);
+        CircleImageView main_head = (CircleImageView) findViewById(R.id.headicon_main);
 
         Drawable db = new PersonalManager(this).getHeadImg();
+
         if(db!=null) {
             main_head.setImageDrawable(db);
-          //  nav_head.setImageDrawable(db);
         }
 
     }
+
+
 
     private  void picOrPhoto(){
 
@@ -586,7 +579,6 @@ public class MainActivity extends AppCompatActivity {
                 if (backPressSecond - backPressFirst > 2000) { //如果两次按键时间间隔大于2秒，则不退出
                     MsgToast.showToast(this,"再按一次返回键退出应用");
                     backPressFirst = backPressSecond;//更新firstTime
-
                     return true;
                 } else {  //两次按键小于2秒时，退出应用
                     System.exit(0);

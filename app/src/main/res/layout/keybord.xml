@@ -22,7 +22,7 @@
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
             adroid:layout_marginBottom="10dp"
-            adroid:text="@string/key1_security"
+            adroid:text="@string/key1_sec"
 
             />
 
@@ -33,7 +33,7 @@
             adroid:layout_height="70dp"
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
-            adroid:text="@string/key2_security"
+            adroid:text="@string/key2_sec"
 
             />
 
@@ -45,7 +45,7 @@
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
             adroid:layout_marginBottom="10dp"
-            adroid:text="@string/key3_security"
+            adroid:text="@string/key3_sec"
 
             />
     </LinearLayout>
@@ -65,7 +65,7 @@
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
             adroid:layout_marginBottom="10dp"
-            adroid:text="@string/key4_security"
+            adroid:text="@string/key4_sec"
             />
 
         <Button
@@ -76,7 +76,7 @@
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
             adroid:layout_marginBottom="10dp"
-            adroid:text="@string/key5_security"
+            adroid:text="@string/key5_sec"
             />
 
         <Button
@@ -87,7 +87,7 @@
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
             adroid:layout_marginBottom="10dp"
-            adroid:text="@string/key6_security"
+            adroid:text="@string/key6_sec"
             />
     </LinearLayout>
 
@@ -107,7 +107,7 @@
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
             adroid:layout_marginBottom="10dp"
-            adroid:text="@string/key7_security"
+            adroid:text="@string/key7_sec"
             />
 
         <Button
@@ -118,7 +118,7 @@
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
             adroid:layout_marginBottom="10dp"
-            adroid:text="@string/key8_security"
+            adroid:text="@string/key8_sec"
             />
 
         <Button
@@ -129,7 +129,7 @@
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
             adroid:layout_marginBottom="10dp"
-            adroid:text="@string/key9_security"
+            adroid:text="@string/key9_sec"
             />
     </LinearLayout>
 
@@ -156,7 +156,7 @@
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
             adroid:layout_marginBottom="10dp"
-            adroid:text="@string/key0_security"
+            adroid:text="@string/key0_sec"
             />
 
         <Button
@@ -167,7 +167,7 @@
             adroid:layout_marginLeft="15dp"
             adroid:layout_marginRight="15dp"
             adroid:layout_marginBottom="10dp"
-            adroid:text="@string/cancel_security"
+            adroid:text="@string/cancel_sec"
             adroid:textSize="14sp"
             />
     </LinearLayout>
@@ -180,6 +180,6 @@
         adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content"
         adroid:textColor="@color/blue"
-        adroid:text="@string/findPassword_security"/>
+        adroid:text="@string/findPassword_sec"/>
 
 </LinearLayout>

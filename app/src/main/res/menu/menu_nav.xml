@@ -3,9 +3,7 @@
 
     >
 
-    <group android:checkableBehavior="none"
-        android:id="@+id/sort"
-        >
+    <group android:checkableBehavior="none">
     <item
         android:id="@+id/nav_folder"
         android:title="@string/folder"
@@ -26,9 +24,7 @@
     </group>
 
 
-    <group android:checkableBehavior="none"
-        android:id="@+id/security"
-        >
+    <group android:checkableBehavior="none">
     <item
         android:id="@+id/nav_security"
         android:title="@string/security"
@@ -38,36 +34,18 @@
     </group>
 
 
-    <group android:checkableBehavior="none"
-        android:id="@+id/other"
-        >
+    <group android:checkableBehavior="none">
 
     </group>
-
-    <item
-        android:checkable="false"
-        android:title=""
-        />
-    <item
-        android:checkable="false"
-        android:title=""
-        />
-    <item
-        android:checkable="false"
-
-        android:title=""
-        />
-
-
-
 
 
         <item
             android:id="@+id/nav_about"
-
+            android:icon="@null"
             android:title="@string/about"/>
         <item
             android:id="@+id/nav_exit"
+            android:icon="@null"
             android:title="@string/exit"
             />
 

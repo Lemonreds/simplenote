@@ -43,7 +43,6 @@
 
 
     <LinearLayout
-        adroid:id="@+id/bottom"
         adroid:layout_width="match_parent"
         adroid:layout_height="wrap_content"
         adroid:layout_alignParentBottom="true"

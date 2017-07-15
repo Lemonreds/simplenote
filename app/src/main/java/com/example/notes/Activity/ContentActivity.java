@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 import com.example.notes.Dialog.ChooseDialog;
 import com.example.notes.Dialog.MyOnClickListener;
-import com.example.notes.Util.IntentUtil;
 import com.example.notes.Util.LocationUtil;
 import com.example.notes.Manager.NoteManager;
 import com.example.notes.Model.Note;
 import com.example.notes.Dialog.ProDialog;
+import com.example.notes.Util.ShareUtil;
 import com.example.notes.View.MsgToast;
 import com.example.notes.Util.StringUtil;
 import com.example.ui.R;
@@ -34,9 +34,6 @@ public class ContentActivity extends BaseActivity  {
     private Note note;
     //Note管理类
     private NoteManager mNoteManager;
-
-
-    //private String currentFolderName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,42 +76,27 @@ public class ContentActivity extends BaseActivity  {
                 final ChooseDialog dialog = new ChooseDialog(ContentActivity.this);
 
                 dialog.show();
-                dialog.setTitle("请选择");
-                dialog.setInfo("你想怎样分享你的备忘录");
-
-                dialog.setChoose1("截图分享");
+                dialog.setTitle(ContentActivity.this.getResources().getString(R.string.share));
+                //你想怎样分享
+                dialog.setInfo(ContentActivity.this.getResources().getString(R.string.howShare));
+                //分享截图
+                dialog.setChoose1(ContentActivity.this.getResources().getString(R.string.imgShare));
                 dialog.setListener_1(new MyOnClickListener() {
                     @Override
                     public void onClick() {
-                        IntentUtil.startShootShareIntent(ContentActivity.this);
+                        ShareUtil.shareImg(ContentActivity.this);
                     }
                 });
-
-                dialog.setChoose2("仅文字分享");
+                //分享文字
+                dialog.setChoose2(ContentActivity.this.getResources().getString(R.string.textShare));
                 dialog.setListener_2(new MyOnClickListener() {
                     @Override
                     public void onClick() {
-                        IntentUtil.startWordShareIntent
-                             (ContentActivity.this,StringUtil.clearHtml(note.getText()));
-
+                        ShareUtil.shareText(ContentActivity.this,
+                                StringUtil.clearHtml(note.getText()));
                     }
                 });
                 dialog.setChoose3("取消");
-
-
-               // IntentUtil.startShootShareIntent(ContentActivity.this);
-
-               // IntentUtil.startWordShareIntent
-               //         (ContentActivity.this,StringUtil.clearHtml(note.getText()));
-                /**
-                    Intent intent=new Intent(Intent.ACTION_SEND);
-
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
-                intent.putExtra(Intent.EXTRA_TEXT,note.getText()+ " " +"\n分享自SimpleNote");
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(Intent.createChooser(intent, "分享你的内容到...."));
-                 **/
                 return false;
             }
         });
@@ -156,18 +138,12 @@ public class ContentActivity extends BaseActivity  {
         else {
             location.setText(note.getLocation());
         }
-        //内容
-      //  TextView content =(TextView)findViewById(R.id.content);
-       // content.setText(Html.fromHtml(note.getText()));
 
         RichEditor content = (RichEditor)findViewById(R.id.editor);
         content.setHtml(note.getText());
         content.setInputEnabled(false);
 
 
-        //内容的长度
-        //TextView numberFollow = (TextView)findViewById(R.id.numberFollow_content);
-       // numberFollow.setText(" "+StringUtil.clearHtml(content.getText().toString()).length()+" ");
         TextView numberFollow = (TextView)findViewById(R.id.numberFollow_content);
          numberFollow.setText(" "+StringUtil.clearHtml(content.getHtml()).length()+" ");
 
@@ -204,7 +180,9 @@ public class ContentActivity extends BaseActivity  {
             @Override
             public void onClick(View v) {
                 mNoteManager.deleteNote(note);
-                MsgToast.showToast(ContentActivity.this,"已移至'最近删除'");
+                //已经移动到最近删除
+                MsgToast.showToast(ContentActivity.this,
+                        getResources().getString(R.string.move_recycle));
                 finish();
             }
         });
@@ -212,10 +190,9 @@ public class ContentActivity extends BaseActivity  {
         findViewById(R.id.move_bottom_content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
+
                 Intent intent = new Intent(ContentActivity.this,FilesActivity.class);
                 intent.putExtra("move",true);
-
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("note",note);
                 intent.putExtras(bundle);
@@ -256,7 +233,10 @@ public class ContentActivity extends BaseActivity  {
      */
     private void getLocation() {
 
-        final ProDialog proDialog = new ProDialog(this, "正在获取定位...");
+        //正在获取定位....
+        final ProDialog proDialog = new ProDialog(this,
+                getResources().getString(R.string.location));
+
         proDialog.show();
 
         LocationUtil mLocationMag = new LocationUtil(getApplicationContext());

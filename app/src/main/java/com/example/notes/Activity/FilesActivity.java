@@ -102,12 +102,6 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
 
         } else {
 
-
-
-
-
-
-
             // list 的点击监听
             mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -212,16 +206,13 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
             case R.id.add_file:
                 add();
                 break;
-            case R.id.back_title:
-
+          //  case R.id.back_title:
                 //获取点击的文件夹名字返回给主界面
-                Intent intent = new Intent();
-                intent.putExtra("currentFolderName","Notes");
-                setResult(RESULT_OK,intent);
-                finish();
-                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
-
-
+           //     Intent intent = new Intent();
+           //     intent.putExtra("currentFolderName","Notes");
+            //    setResult(RESULT_OK,intent);
+            //    finish();
+            //    overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
             default:
                 break;
 

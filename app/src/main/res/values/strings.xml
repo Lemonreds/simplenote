@@ -2,34 +2,21 @@
 
     <string name="app_name">SimpleNote</string>
 
-    <string name="note_empty_info">空空如也</string>
+    <string name="empty_info">空空如也</string>
     <string name="main_empty_info">还没有任何备忘录</string>
     <string name="recycle_empty_info">回收站似乎空空如也</string>
 
-
-    <string name="add_btn_main">+</string>
     <string name="search_txv_main">搜索</string>
 
-
-    <string name="title_title_main">Notes</string>
-
-
-    <string name="head_dialog_titlte">个人信息</string>
-    <string name="head_dialog_name">Name</string>
-
-    <string name="delete_menu_content">选择</string>
-
-    <string name="input_sv_search">搜索你想要的</string>
-    <string name="cancel_btn_search">取消</string>
+    <string name="location">正在获取定位..</string>
 
     <string name="msg">消息提示</string>
     <string name="hint">something</string>
     <string name="no_btn">取消</string>
     <string name="yes_btn">确认</string>
-    <string name="delete_btn">删除</string>
 
 
-     <string name="folder">全部分类</string>
+    <string name="folder">全部分类</string>
     <string name="recycle">最近删除</string>
     <string name="security">隐私安全</string>
     <string name="about">关于</string>
@@ -37,45 +24,77 @@
 
 
     <string name="title_recycle">最近删除</string>
+    <string name="move_recycle">已移至 最近删除</string>
     <string name="info_recycle">备忘录将在30天后永久删除</string>
+    <string name='recovery_recycle'>恢复后才能打开</string>
+
+
 
 
     <string name="title_create">标题</string>
-    <string name="content_create">内容</string>
     <string name="content_share">分享</string>
     <string name="date_create">时间</string>
     <string name="number_create">字数</string>
     <string name="location_create">未定位</string>
     <string name="done_create">完成</string>
 
-    <string name="title_security">安全</string>
-    <string name="info_security">输入密码</string>
-    <string name="key9_security">9</string>
-    <string name="key8_security">8</string>
-    <string name="key7_security">7</string>
-    <string name="key6_security">6</string>
-    <string name="key5_security">5</string>
-    <string name="key4_security">4</string>
-    <string name="key3_security">3</string>
-    <string name="key2_security">2</string>
-    <string name="key1_security">1</string>
-    <string name="key0_security">0</string>
+    <string name="title_sec">安全</string>
+    <string name="info_sec">输入密码</string>
+    <string name="key9_sec">9</string>
+    <string name="key8_sec">8</string>
+    <string name="key7_sec">7</string>
+    <string name="key6_sec">6</string>
+    <string name="key5_sec">5</string>
+    <string name="key4_sec">4</string>
+    <string name="key3_sec">3</string>
+    <string name="key2_sec">2</string>
+    <string name="key1_sec">1</string>
+    <string name="key0_sec">0</string>
 
-    <string name="cancel_security">删除</string>
-    <string name="findPassword_security">忘记密码?</string>
+    <string name="cancel_sec">删除</string>
+    <string name="findPassword_sec">忘记密码?</string>
+
+
+    <string name="comfirm_t_sec">验证身份</string>
+    <string name="set_t_sec">设置密码</string>
+    <string name="reset_t_sec">重置密码</string>
+    <string name="forget_sec">我也很绝望!</string>
+
+    <string name="clear_sec">已清除密码</string>
+    <string name="defeat_sec">验证失败</string>
+    <string name="wrong_sec">密码错误</string>
+    <string name="agian_sec">请重新输入</string>
+    <string name="comfirm_sec">再次确认</string>
+    <string name="done_sec">已设置密码</string>
+    <string name="diffrent_sec">两次输入不一致</string>
+    <string name="input_sec">输入密码</string>
 
 
     <string name="hint_quick">突然想写点什么..</string>
     <string name="location_quick">你在哪里?</string>
 
 
-    <string name="main_about">Designed By DJC\n</string>
+    <string name="main_about">\n</string>
     <string name="t1_table">分享此应用给朋友</string>
-    <string name="t2_table">问题反馈</string>
-    <string name="t3_table">更新历史</string>
+    <string name="t2_table">更多信息</string>
+    <string name="t3_table">E-mail: lemonreds@163.com</string>
+    
+    <string name="more_about">Create by Lemonreds\n\nQQ:\n792277840\n\n邮箱:\nlemonreds@163.com\n\n获取代码和更多信息:\nhttps://github.com/Lemonreds/SimpleNote\n</string>
     <string name="bottom_about">Created on 2017 04 25</string>
     <string name="back_wel">欢迎回来</string>
     <string name="info_wel"> </string>
     <string name="bottom_wel">SimpleNote</string>
+    
+
+
+    <string name="share">分享</string>
+    <string name="shareFrom">分享自SimpleNote</string>
+    <string name="shareApp">我发现了个好玩的应用,你也来试试吧</string>
+    <string name="shareTo">分享你的内容到....</string>
+    <string name="shareImg">将内容截图分享给....</string>
+
+    <string name="howShare">你想怎样分享你的备忘录</string>
+    <string name="imgShare">截图分享</string>
+    <string name="textShare">文字分享</string>
 
 </resources>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.example.notes.Util.ShareUtil;
 import com.example.notes.View.MsgToast;
 import com.example.ui.R;
 
@@ -19,7 +20,6 @@ public class AboutActivity extends BaseActivity {
         setContentView(R.layout.activity_about);
 
         init_toolbar();
-
         init_table();
     }
 
@@ -47,17 +47,13 @@ public class AboutActivity extends BaseActivity {
         findViewById(R.id.t1_table).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
-                intent.putExtra(Intent.EXTRA_TEXT,"我在使用SimpleNote你也来试试吧");
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(Intent.createChooser(intent, "把 SimpleNote 分享给...."));
+            //"我在使用SimpleNote你也来试试吧"
+                ShareUtil.shareText(AboutActivity.this,
+                        AboutActivity.this.getResources().getString(R.string.shareApp));
             }
         });
 
-
-
+/**
         findViewById(R.id.t2_table).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +69,7 @@ public class AboutActivity extends BaseActivity {
                 MsgToast.showToast(AboutActivity.this,"这个好像也没有");
             }
         });
-
+**/
     }
 
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:adroid="http://schemas.android.com/apk/res/android"
-    adroid:id="@+id/LevelGroup"
     adroid:orientation="horizontal"
     adroid:layout_width="match_parent"
     adroid:layout_height="20dp"

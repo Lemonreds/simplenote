@@ -8,7 +8,6 @@
         adroid:layout_height="match_parent">
 
     <ImageView
-        adroid:id="@+id/iv_photo"
         adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content" />
 
@@ -28,7 +27,7 @@
                     adroid:layout_height="match_parent"
                     adroid:gravity="start">
                 <de.hdodenhof.circleimageview.CircleImageView
-                    adroid:id="@+id/head_main"
+                    adroid:id="@+id/headicon_main"
                     adroid:layout_width="35dp"
                     adroid:layout_height="35dp"
                     adroid:src="@drawable/pic_head"

@@ -82,7 +82,6 @@
                 android:src="@drawable/format_delete" />
 
             <ImageButton
-                android:id="@+id/action_font"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@null"

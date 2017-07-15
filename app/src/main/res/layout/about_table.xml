@@ -2,7 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
 
 
@@ -42,64 +43,13 @@
                 android:src="@drawable/pic_right" />
         </TableRow>
 
-        <TableRow
-            android:id="@+id/t2_table"
-            android:layout_width="fill_parent"
-            android:layout_marginLeft="2.0dip"
-            android:layout_marginRight="2.0dip"
-            android:background="@drawable/border"
-            android:paddingBottom="16.0dip"
-            android:paddingTop="16.0dip" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:drawablePadding="10.0dip"
-                android:gravity="center_vertical"
-                android:includeFontPadding="false"
-                android:paddingLeft="17.0dip"
-                android:text="@string/t2_table"
-                android:textColor="#ff333333"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_gravity="right"
-                android:gravity="center_vertical"
-                android:paddingRight="20.0dip"
-                android:src="@drawable/pic_right" />
-        </TableRow>
-
-
-        <TableRow
-            android:id="@+id/t3_table"
-            android:layout_width="fill_parent"
-            android:layout_marginLeft="2.0dip"
-            android:layout_marginRight="2.0dip"
-            android:background="@drawable/border"
-            android:paddingBottom="16.0dip"
-            android:paddingTop="16.0dip" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:drawablePadding="10.0dip"
-                android:gravity="center_vertical"
-                android:includeFontPadding="false"
-                android:paddingLeft="17.0dip"
-                android:text="@string/t3_table"
-                android:textColor="#ff333333"
-                android:textSize="14sp" />
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_gravity="right"
-                android:gravity="center_vertical"
-                android:paddingRight="20.0dip"
-                android:src="@drawable/pic_right" />
-        </TableRow>
     </TableLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
+        android:text="@string/more_about"
+        />
 </LinearLayout>

@@ -65,7 +65,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private  void checkHavePassWord(){
         Intent intent1 = new Intent(WelcomeActivity.this, SecurityActivity.class);
-        intent1.putExtra("model",SecurityActivity.MODLE_VERIFY);
+        intent1.putExtra("model",SecurityActivity.MODEL_VERIFY);
         startActivity(intent1);
     }
 

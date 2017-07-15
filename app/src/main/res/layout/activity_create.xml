@@ -2,7 +2,6 @@
 <RelativeLayout
     xmlns:adroid="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    adroid:id="@+id/activity_create"
     adroid:layout_width="match_parent"
     adroid:layout_height="match_parent"
    >
