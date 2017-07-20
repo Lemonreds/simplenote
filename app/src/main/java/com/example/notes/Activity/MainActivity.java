@@ -172,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
                        overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
                      break;
 
+
                     case "关于":
                        Intent intent11 = new Intent(MainActivity.this,AboutActivity.class);
                        startActivity(intent11);
