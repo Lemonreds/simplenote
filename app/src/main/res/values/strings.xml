@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">SimpleNote</string>
-    <string name="app_version">版本:1.0.1</string>
+    <string name="app_version">版本:1.1</string>
 
     <string name="empty_info">空空如也</string>
     <string name="main_empty_info">还没有任何备忘录</string>
@@ -85,7 +85,7 @@
 
     <string name="update_his">更新历史</string>
     <string name="content_his">
-        -20170720   v1.0.1\n
+        -20170720   v1.1\n
         1.修复一些重要bug\n
         2.优化UI\n
         \n
