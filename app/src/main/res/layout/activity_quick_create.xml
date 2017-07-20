@@ -28,8 +28,8 @@
     </android.support.v7.widget.Toolbar>
 
     <EditText
-
         adroid:layout_below="@id/toolbar"
+        adroid:layout_above="@+id/bottom_quick"
         adroid:layout_margin="10dp"
         adroid:id="@+id/content_quick"
         adroid:layout_width="match_parent"
@@ -39,6 +39,7 @@
         adroid:gravity="top"
         adroid:layout_height="wrap_content"
         adroid:hint="@string/hint_quick"
+        adroid:textCursorDrawable="@null"
         />
 
 
@@ -47,6 +48,7 @@
         adroid:layout_height="wrap_content"
         adroid:layout_alignParentBottom="true"
         adroid:orientation="horizontal"
+        adroid:id="@+id/bottom_quick"
         >
 
         <ImageView

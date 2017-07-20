@@ -19,36 +19,13 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        checkStart();
-
-    }
-    private void checkStart(){
-
-        Boolean user_first = AppUtil.isFirstStart(this);
-
-        if (user_first) {
-            firstStart();
-        } else {
-            noFirstStart();
-        }
-    }
-
-    private void firstStart() {
-
-        Button startUse = (Button)findViewById(R.id.firstButton);
-        startUse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MsgToast.showToast(WelcomeActivity.this,"谢谢你的使用");
-                WelcomeActivity.this.finish();
-                checkHavePassWord();
-            }
-        });
+        init();
 
     }
 
-    private  void noFirstStart(){
-        findViewById(R.id.firstButton).setVisibility(View.GONE);
+
+    private void init(){
+
         Handler handler = new Handler();
         //当计时结束,跳转至主界面
         handler.postDelayed(new Runnable() {
@@ -61,7 +38,6 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         }, 3000);
     }
-
 
     private  void checkHavePassWord(){
         Intent intent1 = new Intent(WelcomeActivity.this, SecurityActivity.class);

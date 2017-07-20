@@ -37,8 +37,6 @@ public class QuickCreateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quick_create);
 
         currentFolderName = getIntent().getStringExtra("currentFolderName");
-
-
         init_Toolbar();
     }
 
@@ -70,7 +68,7 @@ public class QuickCreateActivity extends AppCompatActivity {
                 if(content.getText().length()>=20)
                     title=content.getText().toString().substring(0,19);
                 else {
-                    title ="Unnamed";
+                    title ="未命名备忘录";
                 }
 
 
@@ -124,9 +122,6 @@ public class QuickCreateActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 for(int i = s.length(); i > 0; i--){
-
-                    if(s.subSequence(i-1,i).toString().equals("\n"))
-                        s.replace(i-1, i, "");
                 }
             }
         });

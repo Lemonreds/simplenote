@@ -1,5 +1,7 @@
 package com.example.notes.Model;
 
+import com.example.notes.Util.StringUtil;
+
 import java.io.Serializable;
 
 /**
@@ -84,7 +86,7 @@ public class Note extends Item implements Serializable ,Comparable{
     }
 
     public String getName() {
-        return super.getName();
+        return StringUtil.clearEnter(super.getName());
     }
 
     public void setName(String name) {

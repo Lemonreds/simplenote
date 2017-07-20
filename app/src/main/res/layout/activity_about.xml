@@ -38,14 +38,14 @@
         adroid:textSize="30sp"
         />
 
+
     <TextView
         adroid:id="@+id/main_about"
-        adroid:layout_marginTop="8dp"
+        adroid:layout_marginTop="1dp"
         adroid:layout_width="wrap_content"
         adroid:layout_height="wrap_content"
-        adroid:text="@string/main_about"
-        adroid:textColor="@color/minBlack"
-        adroid:textSize="14sp"
+        adroid:text="@string/app_version"
+        adroid:textSize="13sp"
         adroid:layout_below="@+id/icon_about"
         adroid:layout_centerHorizontal="true"
         />

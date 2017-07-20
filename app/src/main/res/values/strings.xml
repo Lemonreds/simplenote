@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">SimpleNote</string>
+    <string name="app_version">版本:1.0.1</string>
 
     <string name="empty_info">空空如也</string>
     <string name="main_empty_info">还没有任何备忘录</string>
@@ -15,20 +16,19 @@
     <string name="no_btn">取消</string>
     <string name="yes_btn">确认</string>
 
-
-    <string name="folder">全部分类</string>
-    <string name="recycle">最近删除</string>
-    <string name="security">隐私安全</string>
-    <string name="about">关于</string>
-    <string name="exit">退出 SimpleNote</string>
+    <string name="all_nav">全部</string>
+    <string name="other_nav">其他</string>
+    <string name="folder_nav">所有分类</string>
+    <string name="recycle_nav">最近删除</string>
+    <string name="security_nav">隐私安全</string>
+    <string name="about_nav">关于</string>
+    <string name="exit_nav">退出 SimpleNote</string>
 
 
     <string name="title_recycle">最近删除</string>
     <string name="move_recycle">已移至 最近删除</string>
     <string name="info_recycle">备忘录将在30天后永久删除</string>
     <string name='recovery_recycle'>恢复后才能打开</string>
-
-
 
 
     <string name="title_create">标题</string>
@@ -54,7 +54,6 @@
     <string name="cancel_sec">删除</string>
     <string name="findPassword_sec">忘记密码?</string>
 
-
     <string name="comfirm_t_sec">验证身份</string>
     <string name="set_t_sec">设置密码</string>
     <string name="reset_t_sec">重置密码</string>
@@ -73,22 +72,34 @@
     <string name="hint_quick">突然想写点什么..</string>
     <string name="location_quick">你在哪里?</string>
 
-
+    <string name="about">关于</string>
+    <string name="author_about">作者信息</string>
+    <string name="other_about">其他</string>
     <string name="main_about">\n</string>
     <string name="t1_table">分享此应用给朋友</string>
-    <string name="t2_table">更多信息</string>
-    <string name="t3_table">E-mail: lemonreds@163.com</string>
-    
-    <string name="more_about">Create by Lemonreds\n\nQQ:\n792277840\n\n邮箱:\nlemonreds@163.com\n\n获取代码和更多信息:\nhttps://github.com/Lemonreds/SimpleNote\n</string>
-    <string name="bottom_about">Created on 2017 04 25</string>
+    <string name="t2_table">查看更新历史</string>
+
+    <string name="more_about">如果你有什么更好的建议和改进需求,或者是发现BUG,欢迎联系我!\n\n邮箱:\nlemonreds@163.com\n\nQQ:\n792277840\n\n获取代码和更多信息:\nhttps://github.com/Lemonreds/SimpleNote</string>
+    <string name="bottom_about">For Fun</string>
+
+
+    <string name="update_his">更新历史</string>
+    <string name="content_his">
+        -20170720   v1.0.1\n
+        1.修复一些重要bug\n
+        2.优化UI\n
+        \n
+        -20170719   v1.0\n
+        正式版\n
+    </string>
+
+
     <string name="back_wel">欢迎回来</string>
     <string name="info_wel"> </string>
     <string name="bottom_wel">SimpleNote</string>
-    
-
 
     <string name="share">分享</string>
-    <string name="shareFrom">分享自SimpleNote</string>
+    <string name="shareFrom">分享自SimpleNote(Simple备忘录)</string>
     <string name="shareApp">我发现了个好玩的应用,你也来试试吧</string>
     <string name="shareTo">分享你的内容到....</string>
     <string name="shareImg">将内容截图分享给....</string>
@@ -96,5 +107,8 @@
     <string name="howShare">你想怎样分享你的备忘录</string>
     <string name="imgShare">截图分享</string>
     <string name="textShare">文字分享</string>
+
+    <string name="title_des">第一次使用Simple备忘录</string>
+    <string name="content_des">相逢即是缘,谢谢你的使用,哈哈!开启你的应用使用之旅吧!</string>
 
 </resources>

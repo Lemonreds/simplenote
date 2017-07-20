@@ -56,7 +56,7 @@ public class ChooseDialog extends Dialog {
                 if (listener_1 != null) {
                     listener_1.onClick();
                 }
-                    dismiss();//若没有新设置事件,则默认关闭Dialog
+                dismiss();//若没有新设置事件,则默认关闭Dialog
 
             }
         });
@@ -67,7 +67,7 @@ public class ChooseDialog extends Dialog {
                 if (listener_2 != null) {
                     listener_2.onClick();
                 }
-                    dismiss();//若没有新设置事件,则默认关闭Dialog
+                dismiss();//若没有新设置事件,则默认关闭Dialog
 
             }
         });
@@ -78,7 +78,7 @@ public class ChooseDialog extends Dialog {
                 if (listener_3 != null) {
                     listener_3.onClick();
                 }
-                    dismiss();//若没有新设置事件,则默认关闭Dialog
+                dismiss();//若没有新设置事件,则默认关闭Dialog
 
             }
         });
@@ -108,7 +108,6 @@ public class ChooseDialog extends Dialog {
         if(StringUtil.isEmpty(choose3))this.choose3.setVisibility(View.GONE);
         this.choose3.setText(choose3);
     }
-
 
 
     public void setListener_1(MyOnClickListener listener_1) {

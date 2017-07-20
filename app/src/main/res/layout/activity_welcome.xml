@@ -48,15 +48,5 @@
         adroid:layout_centerHorizontal="true"
         adroid:layout_marginTop="187dp" />
 
-    <Button
-        adroid:id="@+id/firstButton"
-        adroid:layout_width="wrap_content"
-        adroid:layout_height="35dp"
-        adroid:layout_alignParentBottom="true"
-        adroid:layout_marginBottom="20dp"
-        adroid:layout_centerInParent="true"
-        adroid:background="@color/blue"
-        adroid:text="开始使用"
-        adroid:textColor="@color/white"
-        />
+
 </RelativeLayout>

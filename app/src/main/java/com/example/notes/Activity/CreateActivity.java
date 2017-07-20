@@ -57,6 +57,8 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
     //编辑的Note
     private Note edit_Note;
 
+    //隐藏其他组件
+    private Boolean hide = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +123,6 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
         Button btn_green = (Button) findViewById(R.id.btn_green);
         btn_green.setOnClickListener(this);
 
-        init_fab();
         init_bottom();
     }
 
@@ -138,7 +139,30 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             }
         });
 
-        ImageView  reBack = (ImageView)findViewById(R.id.reback_bottom_create);
+
+
+        findViewById(R.id.reBack_bottom_create).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(hide){
+
+                    findViewById(R.id.toolbar).setVisibility(View.VISIBLE);
+                    findViewById(R.id.second).setVisibility(View.VISIBLE);
+                    findViewById(R.id.third).setVisibility(View.VISIBLE);
+                }else{
+                    findViewById(R.id.toolbar).setVisibility(View.GONE);
+                    findViewById(R.id.second).setVisibility(View.GONE);
+                    findViewById(R.id.third).setVisibility(View.GONE);
+                }
+                hide = !hide;
+
+
+            }
+        });
+
+        // ImageView  reBack = (ImageView)findViewById(R.id.reback_bottom_create);
+        /**
 
         if(!model) {//编辑模式
             reBack.setOnClickListener(new View.OnClickListener() {
@@ -170,12 +194,11 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
         }else{
             reBack.setVisibility(View.GONE);
         }
+         **/
 
         findViewById(R.id.hide_bottom_create).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                findViewById(R.id.fab_create).setVisibility(View.VISIBLE);
                 findViewById(R.id.editor_bottom).setVisibility(View.GONE);
                 findViewById(R.id.bottom_create).setVisibility(View.GONE);
             }
@@ -210,21 +233,6 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
         level=Note.GRE_LEVEL;
     }
 
-    /**
-     * fab的初始化
-     */
-    private void init_fab(){
-
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_create);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                findViewById(R.id.editor_bottom).setVisibility(View.VISIBLE);
-                findViewById(R.id.bottom_create).setVisibility(View.VISIBLE);
-                fab.setVisibility(View.GONE);
-            }
-        });
-    }
 
     /**
      * 获取定位
@@ -263,8 +271,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
         mEditor.setFontSize(14);
         mEditor.setPlaceholder("在这里写下内容");
 
-
-        findViewById(R.id.action_hide).setOnClickListener(new View.OnClickListener() {
+                findViewById(R.id.action_hide).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 findViewById(R.id.bottom_create).setVisibility(View.VISIBLE);
@@ -272,11 +279,11 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             }
         });
 
-
         findViewById(R.id.action_bold).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mEditor.setBold();
+                MsgToast.showToast(CreateActivity.this,"粗体");
             }
         });
 
@@ -285,12 +292,14 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 mEditor.setItalic();
+                MsgToast.showToast(CreateActivity.this,"斜体");
             }
         });
         findViewById(R.id.action_underline).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mEditor.setUnderline();
+                MsgToast.showToast(CreateActivity.this,"下划线");
             }
         });
 
@@ -298,6 +307,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 mEditor.setStrikeThrough();
+                MsgToast.showToast(CreateActivity.this,"删除线");
             }
         });
 
@@ -306,6 +316,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 mEditor.insertTodo();
+                MsgToast.showToast(CreateActivity.this,"复选框");
             }
         });
 
@@ -314,6 +325,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 mEditor.setNumbers();
+                MsgToast.showToast(CreateActivity.this,"有序列表");
             }
         });
 
@@ -322,6 +334,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 mEditor.setBullets();
+                MsgToast.showToast(CreateActivity.this,"无序列表");
             }
         });
 
@@ -329,6 +342,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 mEditor.setAlignLeft();
+                MsgToast.showToast(CreateActivity.this,"左对齐");
             }
         });
 
@@ -337,12 +351,14 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
            @Override
            public void onClick(View v) {
                mEditor.setAlignCenter();
+               MsgToast.showToast(CreateActivity.this,"居中");
            }
        });
         findViewById(R.id.action_right).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mEditor.setAlignRight();
+                MsgToast.showToast(CreateActivity.this,"右对齐");
             }
         });
     }

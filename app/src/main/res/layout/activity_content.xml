@@ -12,10 +12,20 @@
         adroid:id="@+id/title_content"
         adroid:layout_width="match_parent"
         adroid:layout_height="wrap_content">
-
     <include layout="@layout/title_content"/>
-
     </LinearLayout>
+
+
+
+    <LinearLayout
+        adroid:id="@+id/bottom_content"
+        adroid:layout_width="match_parent"
+        adroid:layout_height="wrap_content"
+        adroid:layout_alignParentBottom="true"
+        >
+        <include layout="@layout/bottom_content"/>
+    </LinearLayout>
+
 
 
 
@@ -24,10 +34,9 @@
         adroid:layout_height="match_parent"
         adroid:orientation="vertical"
         adroid:layout_below="@+id/title_content"
+        adroid:layout_above="@id/bottom_content"
         adroid:layout_alignParentLeft="true"
         adroid:layout_alignParentStart="true">
-
-
      <RelativeLayout
             adroid:id="@+id/third"
             adroid:layout_below="@+id/second"
@@ -53,7 +62,6 @@
              adroid:layout_gravity="end"
              adroid:layout_alignParentRight="true"
              adroid:layout_marginRight="10dp">
-
              <Button
                  adroid:id="@+id/level_content"
                  adroid:layout_width="18dp"
@@ -63,8 +71,6 @@
                  adroid:layout_marginRight="2dp"
                  />
          </LinearLayout>
-
-
      </RelativeLayout>
 
 
@@ -93,39 +99,18 @@
             adroid:layout_marginRight="10dp"
             adroid:hint="@string/number_create"
             />
-
-
         </RelativeLayout>
 
+        <jp.wasabeef.richeditor.RichEditor
+            adroid:layout_marginTop="14dp"
+            adroid:scrollbars="vertical"
+            adroid:id="@+id/editor"
+            adroid:layout_width="match_parent"
+            adroid:layout_height="match_parent"
+            adroid:layout_margin="10dp"
+            adroid:gravity="top"
+            />
 
-
-
-            <jp.wasabeef.richeditor.RichEditor
-                adroid:layout_marginTop="16dp"
-                adroid:background="@null"
-
-                adroid:scrollbars="vertical"
-                adroid:id="@+id/editor"
-                adroid:layout_width="match_parent"
-                adroid:layout_height="500dp"
-                adroid:layout_marginLeft="10dp"
-                adroid:layout_marginRight="10dp"
-                adroid:gravity="top"
-                adroid:layout_alignParentTop="true"
-                />
-
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        adroid:id="@+id/bottom_content"
-        adroid:layout_width="match_parent"
-        adroid:layout_height="wrap_content"
-        adroid:layout_alignParentBottom="true"
-        >
-        <include layout="@layout/bottom_content"/>
     </LinearLayout>
 
 

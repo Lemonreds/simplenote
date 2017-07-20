@@ -15,7 +15,6 @@
         android:background="@drawable/border_bottom"
         >
 
-
         <TextView
             android:id="@+id/title_toolbar"
             android:layout_width="wrap_content"

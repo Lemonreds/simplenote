@@ -51,6 +51,20 @@ public class NoteManager{
     }
 
     /**
+     * 新建说明
+     */
+    public void addDescription(){
+    // public Note(String name, Date date,   String location, String text, String folderName
+      // add（Note）
+
+        Note description = new Note(mContext.getResources().getString(R.string.title_des),new Date(),
+                mContext.getResources().getString(R.string.app_name),
+                mContext.getResources().getString(R.string.content_des),
+                currentFolderName);
+        add(description);
+    }
+
+    /**
      * listView的短点击事件
      * @param position
      */
@@ -76,28 +90,8 @@ public class NoteManager{
 
 
     public void editClick(int position){
-/**
-        final InfoDialog dialog = new InfoDialog(mContext);
-        dialog.show();
 
-        final Note select_item = list.get(position);
-        dialog.setEnableEdit(true);
-        dialog.setTitle("修改标题");
-        dialog.setInfo(select_item.getName());
 
-        dialog.setYesListener(new MyOnClickListener() {
-            @Override
-            public void onClick() {
-                String newName = dialog.getInfo();
-                if(StringUtil.isEmpty(newName.trim())){
-                    MsgToast.showToast(mContext,"名字不能为空");
-                }else if(!newName.equals(select_item.getName())){
-                    update(select_item,newName);
-                }
-                dialog.dismiss();
-            }
-        });
- **/
         final EditDialog dialog = new EditDialog(mContext);
         dialog.show();
 
@@ -133,7 +127,6 @@ public class NoteManager{
 
     public void add(Note note){
         dbManager.insert(currentFolderName,note);
-
     }
 
     public void add(){
@@ -153,23 +146,11 @@ public class NoteManager{
                     final Note note = new Note(dialog.getInfo(),
                             new Date(), null,"",
                             currentFolderName,dialog.getLevel());
-
                     list.add(note);
                     adapter.notifyDataSetChanged();
                     dbManager.insert(currentFolderName,note);
 
 
-                    final InfoDialog confirm =  new InfoDialog(mContext);
-                    confirm.show();
-                    confirm.setInfo("是否打开 "+note.getName()+" ?");
-                    confirm.setEnableEdit(false);
-                    confirm.setYesListener(new MyOnClickListener() {
-                        @Override
-                        public void onClick() {
-                            ItemClick(note);
-                            confirm.dismiss();
-                        }
-                    });
                 }else {
                     MsgToast.showToast(mContext,"不能为空哟");
                 }
@@ -192,20 +173,7 @@ public class NoteManager{
     public void deleteNote(Note note) {
 
         final Note note1 = note;
-       /** final InfoDialog warnDialog = new InfoDialog(mContext);
-
-        warnDialog.show();
-        warnDialog.setTitle("提示");
-        warnDialog.setEnableEdit(false);
-        warnDialog.setInfo("是否确认删除!");
-        warnDialog.setYesListener(new MyOnClickListener() {
-            @Override
-            public void onClick() {
-                **/
-                dbManager.delete(currentFolderName,note1);
-               // warnDialog.dismiss();
-          //  }
-        //});
+        dbManager.delete(currentFolderName,note1);
 
     }
 
@@ -230,18 +198,6 @@ public class NoteManager{
         }
     }
 
-
-    public Note updateContent(Note note ,String content){
-
-        Note newNote = note.getClone();
-        newNote.setText(content);
-
-
-        dbManager.upDate(currentFolderName,note,newNote);
-        return newNote;
-    }
-
-
     public Note updateLocation(Note note ,String location){
 
 
@@ -253,12 +209,4 @@ public class NoteManager{
         return newNote;
     }
 
-     public Note updateLevel(Note note ,int level){
-
-        Note newNote =note.getClone();
-        newNote.setLevel(level);
-
-        dbManager.upDate(currentFolderName,note,newNote);
-         return  newNote;
-    }
 }

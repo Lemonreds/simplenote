@@ -3,50 +3,39 @@
 
     >
 
-    <group android:checkableBehavior="none">
+    <item android:title="@string/all_nav">
+    <menu>
     <item
-        android:id="@+id/nav_folder"
-        android:title="@string/folder"
-        
+        android:title="@string/folder_nav"
         android:icon="@drawable/pic_addquick"
 
         />
-    </group>
 
-    <group android:checkableBehavior="none"
-        >
 
     <item
-        android:id="@+id/nav_recycle"
-        android:title="@string/recycle"
+        android:title="@string/recycle_nav"
         android:icon="@drawable/pic_delete"
         />
-    </group>
-
-
-    <group android:checkableBehavior="none">
-    <item
-        android:id="@+id/nav_security"
-        android:title="@string/security"
+       <item
+        android:title="@string/security_nav"
         android:icon="@drawable/pic_security"
         />
+    </menu>
+    </item>
 
-    </group>
+    <item android:title="@string/other_nav">
 
-
-    <group android:checkableBehavior="none">
-
-    </group>
-
-
+        <menu>
         <item
-            android:id="@+id/nav_about"
-            android:icon="@null"
-            android:title="@string/about"/>
+            android:title="@string/about_nav"/>
         <item
-            android:id="@+id/nav_exit"
-            android:icon="@null"
-            android:title="@string/exit"
+            android:title="@string/exit_nav"
             />
+        </menu>
+    </item>
+
+
+
+
 
 </menu>

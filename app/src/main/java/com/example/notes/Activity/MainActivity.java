@@ -30,6 +30,7 @@ import com.example.notes.Dialog.MyOnClickListener;
 import com.example.notes.Manager.DBManager;
 
 import com.example.notes.Manager.NoteManager;
+import com.example.notes.Util.AppUtil;
 import com.example.notes.View.MainCreator;
 
 import com.example.notes.View.MainScrollview;
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     private CircleImageView dialogIcon;
     private Uri pic_uri;
 
-        @Override
+    @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
@@ -152,30 +153,33 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
 
-                switch (item.getItemId()){
-                    case R.id.nav_folder:
+
+                switch ( item.getTitle().toString() ){
+                    case "所有分类":
                         Intent intent = new Intent(MainActivity.this,FilesActivity.class);
                         startActivityForResult(intent,1);
                         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                         break;
-                    case R.id.nav_recycle:
+                    case "最近删除":
                         Intent intent1 = new Intent(MainActivity.this,RecycleActivity.class);
                         startActivity(intent1);
                         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                         break;
-                   case R.id.nav_security:
+                   case "隐私安全":
                        Intent intent2 = new Intent(MainActivity.this,SecurityActivity.class);
                        intent2.putExtra("model",SecurityActivity.MODEL_EDIT);
                        startActivity(intent2);
                        overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
                      break;
-                    case R.id.nav_about:
-                        Intent intent11 = new Intent(MainActivity.this,AboutActivity.class);
-                        startActivity(intent11);
+
+                    case "关于":
+                       Intent intent11 = new Intent(MainActivity.this,AboutActivity.class);
+                       startActivity(intent11);
                         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                         break;
-                    case R.id.nav_exit:
+                    case "退出 SimpleNote":
                         System.exit(0);
+                    default:
                         break;
                 }
                 mDrawer.closeDrawers();
@@ -229,7 +233,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void personalSet(final View view){
 
         final PersonalManager personal = new PersonalManager( this);
@@ -256,7 +259,6 @@ public class MainActivity extends AppCompatActivity {
                 if(headImg!=null) dialog.setImg(headImg);
 
 
-                
                 dialog.setImgListener(new MyOnClickListener() {
                    @Override
                    public void onClick() {
@@ -338,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 2);
             }
         });
-        dialog.setChoose3("取消");
+        dialog.setChoose3("什么也不做");
     }
 
 
@@ -401,8 +403,6 @@ public class MainActivity extends AppCompatActivity {
 
         hide_fabMenu();
 
-
-
         mData = new DBManager(this).search(currentFolderName);
 
         Collections.sort(mData, new ComparatorUtil());
@@ -430,11 +430,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        setDescription();
         view_Listener();
         emptyListCheck();
-
     }
 
+    private void setDescription(){
+        if(AppUtil.haveDescription(this)){
+            noteManager.addDescription();
+        }
+    }
 
     private void fab_setting(){
 
@@ -550,7 +555,6 @@ public class MainActivity extends AppCompatActivity {
             number=mData.size();
         }
 
-
         if(number == 0) {
             //hide and show
             mListView.setVisibility(View.GONE);
@@ -565,8 +569,6 @@ public class MainActivity extends AppCompatActivity {
             empty.setVisibility(View.GONE);
         }
     }
-
-
 
 
     @Override

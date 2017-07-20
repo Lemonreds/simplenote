@@ -47,15 +47,11 @@ public class MainSwipeAdapter extends BaseAdapter {
         date.setText(note.getDate().getEasyDate());
 
 
-
-
         TextView month = (TextView) convertView.findViewById(R.id.month_item);
         TextView day = (TextView) convertView.findViewById(R.id.day_item);
 
         month.setText(note.getDate().getMonthString());
         day.setText(note.getDate().getDayString());
-
-
 
 
         StringBuilder sb= new StringBuilder();
@@ -75,7 +71,7 @@ public class MainSwipeAdapter extends BaseAdapter {
             }
         }
 
-        content.setText(sb.toString());
+        content.setText(StringUtil.clearEnter(sb.toString()));
 
 
         View view = convertView.findViewById(R.id.level_item);

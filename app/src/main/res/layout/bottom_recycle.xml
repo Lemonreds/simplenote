@@ -19,8 +19,6 @@
         android:layout_margin="3dp"
         />
 
-
-
     <TextView
         android:id="@+id/text_bottom"
         android:layout_margin="5dp"

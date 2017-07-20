@@ -110,12 +110,10 @@ public class ContentActivity extends BaseActivity  {
 
 
         //toolbar上的标题
-        TextView   mTitle = (TextView) findViewById(R.id.title_toolbar);
+        TextView  mTitle = (TextView) findViewById(R.id.title_toolbar);
         mTitle.setText(note.getName());
 
     }
-
-
 
 
 
@@ -142,7 +140,6 @@ public class ContentActivity extends BaseActivity  {
         RichEditor content = (RichEditor)findViewById(R.id.editor);
         content.setHtml(note.getText());
         content.setInputEnabled(false);
-
 
         TextView numberFollow = (TextView)findViewById(R.id.numberFollow_content);
          numberFollow.setText(" "+StringUtil.clearHtml(content.getHtml()).length()+" ");

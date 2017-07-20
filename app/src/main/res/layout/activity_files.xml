@@ -19,7 +19,7 @@
             adroid:layout_height="wrap_content"
             adroid:layout_gravity="center"
             adroid:textColor="@color/black"
-            adroid:text="@string/folder"
+            adroid:text="@string/folder_nav"
             adroid:textSize="18sp" />
 
     </android.support.v7.widget.Toolbar>

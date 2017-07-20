@@ -53,16 +53,18 @@ public class AboutActivity extends BaseActivity {
             }
         });
 
-/**
+        //histroy
         findViewById(R.id.t2_table).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MsgToast.showToast(AboutActivity.this,"现在还不能反馈");
+                Intent intent = new Intent(AboutActivity.this, UpdateActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
             }
         });
 
 
-
+/**
         findViewById(R.id.t3_table).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:id="@+id/bottom_create"
-    android:visibility="gone"
     android:background="@drawable/border"
     >
 
@@ -26,7 +25,7 @@
             />
 
         <ImageView
-            android:id="@+id/reback_bottom_create"
+            android:id="@+id/reBack_bottom_create"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -53,7 +52,6 @@
             android:src="@drawable/pic_open"
             android:layout_margin="5dp"
             />
-
 
     </LinearLayout>
 
