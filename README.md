@@ -9,7 +9,9 @@
 
 * Icon: https://material.io/icons
 
-* 获取apk: http://pan.baidu.com/s/1kV83Yyr (可以到酷安市场获取最新的版本)
+* 获取apk: 
+http://www.coolapk.com/apk/com.example.notes
+http://pan.baidu.com/s/1kV83Yyr 
 
 * 作者邮箱: lemonreds@163.com
 
