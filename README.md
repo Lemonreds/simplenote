@@ -44,5 +44,5 @@
 ![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/8.png)
 ![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/9.png)
 ![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/10.png)
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/11.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/11png.png)
 
