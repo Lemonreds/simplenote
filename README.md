@@ -9,12 +9,15 @@
 
 * Icon: https://material.io/icons
 
-* 获取apk: 
+* 联系邮箱: lemonreds@163.com
+
+
+## 获取apk: 
+
 http://www.coolapk.com/apk/com.example.notes
+
+
 http://pan.baidu.com/s/1kV83Yyr 
-
-* 作者邮箱: lemonreds@163.com
-
 ## 使用到的开源
        
     
