@@ -9,10 +9,15 @@
 
 * Icon: https://material.io/icons
 
-* 获取apk: http://pan.baidu.com/s/1kV83Yyr
+* 联系邮箱: lemonreds@163.com
 
-* 作者邮箱: lemonreds@163.com
 
+## 获取apk: 
+
+http://www.coolapk.com/apk/com.example.notes
+
+
+http://pan.baidu.com/s/1kV83Yyr 
 ## 使用到的开源
        
     
@@ -34,35 +39,15 @@
 ## 部分运行截图
 
 
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514101955.png)
-
-
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514102014.png)
-
-
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514102020.png)
-
-
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514102028.png)
-
-
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514102034.png)
-
-
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514102037.png)
-
-
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514102040.png)
-
-
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514102043.png)
-
-
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514102047.png)
-
-
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514102054.png)
-
-
-![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/run-image/MuMu20170514102129.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/1.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/2.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/3.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/4.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/5.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/6.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/7.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/8.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/9.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/10.png)
+![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/11png.png)
 
