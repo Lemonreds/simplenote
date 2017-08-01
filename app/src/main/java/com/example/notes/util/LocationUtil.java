@@ -7,9 +7,8 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 
-
 /**
- * Created by 阿买 on 2017/4/4.
+ * 地图工具类
  */
 
 public class LocationUtil {
@@ -19,7 +18,6 @@ public class LocationUtil {
     private AMapLocationClient mLocationClient = null;
     //声明AMapLocationClientOption对象
     private AMapLocationClientOption mLocationOption = null;
-
 
     private static StringBuilder location;
 
@@ -86,9 +84,6 @@ public class LocationUtil {
         return "神秘地区";
 
     }
-
-
-
 
 
     public void stop(){

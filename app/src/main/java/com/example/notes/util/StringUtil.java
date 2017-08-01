@@ -4,11 +4,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
+/**
+ * 字符串工具
+ */
 public class StringUtil {
 
-
-
-
+    /**
+     * 是否是空串
+     * @param str
+     * @return
+     */
     public static boolean isEmpty(String str){
         if(str==null || str.trim().equals("") )
             return true;

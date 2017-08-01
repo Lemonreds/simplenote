@@ -591,10 +591,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyUp(keyCode, event);
     }
 
-
-
-
-
 }
 
 

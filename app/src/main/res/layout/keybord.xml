@@ -3,8 +3,6 @@
      adroid:layout_width="match_parent"
     adroid:layout_height="match_parent"
     adroid:orientation="vertical"
-    adroid:layout_marginLeft="20dp"
-    adroid:layout_marginRight="20dp"
     adroid:gravity="center"
     >
 

@@ -54,8 +54,6 @@ public class NoteManager{
      * 新建说明
      */
     public void addDescription(){
-    // public Note(String name, Date date,   String location, String text, String folderName
-      // add（Note）
 
         Note description = new Note(mContext.getResources().getString(R.string.title_des),new Date(),
                 mContext.getResources().getString(R.string.app_name),

@@ -24,7 +24,7 @@
         android:scrollbars="none"
         android:layout_alignParentBottom="true"
         android:visibility="gone"
-        android:background="@drawable/border">
+        android:background="@drawable/border_top">
 
         <LinearLayout
 

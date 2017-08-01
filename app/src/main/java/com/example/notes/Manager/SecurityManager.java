@@ -34,11 +34,8 @@ public class SecurityManager {
      */
 
     public void clearPassWord(){
-
         setPassWord("");
     }
-
-
 
     /**
      * 设置密码
@@ -67,6 +64,10 @@ public class SecurityManager {
     }
 
 
+    /**
+     * 是否有密码
+     * @return
+     */
     public boolean isHavePassWord(){
         return !StringUtil.isEmpty(getPassWord());
     }

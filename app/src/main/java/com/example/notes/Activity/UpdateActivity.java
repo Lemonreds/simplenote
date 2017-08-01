@@ -12,7 +12,6 @@ public class UpdateActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-
     }
 
 

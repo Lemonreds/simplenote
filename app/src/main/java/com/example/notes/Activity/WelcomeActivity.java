@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-import com.example.notes.Util.AppUtil;
-import com.example.notes.View.MsgToast;
 import com.example.ui.R;
+
+/**
+ * 欢迎界面
+ */
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -20,14 +20,16 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         init();
-
     }
 
 
+    /**
+     * 初始化
+     */
     private void init(){
 
-        Handler handler = new Handler();
         //当计时结束,跳转至主界面
+        Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -36,13 +38,17 @@ public class WelcomeActivity extends AppCompatActivity {
                 WelcomeActivity.this.finish();
                 checkHavePassWord();
             }
-        }, 3000);
+        }, 2500);
     }
 
+    /**
+     * 检查是否已设置密码
+     */
     private  void checkHavePassWord(){
+
         Intent intent1 = new Intent(WelcomeActivity.this, SecurityActivity.class);
+        //MODEL_VERIFY 验证密码模式
         intent1.putExtra("model",SecurityActivity.MODEL_VERIFY);
         startActivity(intent1);
     }
-
 }

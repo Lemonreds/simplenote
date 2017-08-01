@@ -24,12 +24,14 @@ import com.example.ui.R;
 
 import java.util.List;
 
+/**
+ * 文件夹
+ */
 
 public class FilesActivity extends BaseActivity implements View.OnClickListener {
 
     private List<String> folderName;
     private SwipeMenuListView mListView;
-
 
     private boolean addFolder;//记录是否打开了新建窗口 true为打开
 
@@ -59,10 +61,6 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
             }
         });
 
-        //right
-       // TextView right = (TextView) findViewById(R.id.right_bottom);
-       // right.setText("新的分类");
-       // right.setOnClickListener(this);
 
         findViewById(R.id.add_file).setOnClickListener(this);
         viewUpdate();
@@ -79,12 +77,6 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
             text.setVisibility(View.VISIBLE);
             text.setText("将备忘录 " + moveNote.getName() + " 移动到...");
 
-
-            //
-
-
-
-            //
 
             // list 的点击监听
             mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -206,13 +198,6 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
             case R.id.add_file:
                 add();
                 break;
-          //  case R.id.back_title:
-                //获取点击的文件夹名字返回给主界面
-           //     Intent intent = new Intent();
-           //     intent.putExtra("currentFolderName","Notes");
-            //    setResult(RESULT_OK,intent);
-            //    finish();
-            //    overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
             default:
                 break;
 
@@ -296,7 +281,6 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
         adapter.notifyDataSetChanged();
         //setAdapter
         mListView.setAdapter(adapter);
-
         //botton
         TextView bottom= (TextView)findViewById(R.id.text_bottom);
         bottom.setText(" "+folderName.size()+" ");
@@ -308,9 +292,6 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
         folderName.remove("Notes");
         folderName.add(0,"Notes");
     }
-
-
-
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
@@ -324,5 +305,4 @@ public class FilesActivity extends BaseActivity implements View.OnClickListener 
         }
         return super.onKeyUp(keyCode, event);
     }
-
 }

@@ -57,7 +57,7 @@
 
         adroid:layout_width="match_parent"
         adroid:layout_height="wrap_content"
-        adroid:layout_marginTop="39dp"
+        adroid:layout_marginTop="49dp"
         adroid:layout_below="@+id/password_security"
         adroid:layout_alignParentLeft="true"
         adroid:layout_alignParentStart="true">

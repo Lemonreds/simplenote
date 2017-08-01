@@ -5,6 +5,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,13 +19,28 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         />
+
+    <TextView
+        android:id="@+id/info_about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        android:text="@string/info_about"/>
+
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_margin="5dp"
         android:background="#38ADFF"/>
 
+
     <TextView
+        android:id="@+id/content_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -55,7 +74,7 @@
             android:layout_width="fill_parent"
             android:layout_marginLeft="2.0dip"
             android:layout_marginRight="2.0dip"
-            android:background="@drawable/border"
+            android:background="@drawable/border_top"
             android:paddingBottom="16.0dip"
             android:paddingTop="16.0dip" >
 
@@ -85,7 +104,7 @@
             android:layout_width="fill_parent"
             android:layout_marginLeft="2.0dip"
             android:layout_marginRight="2.0dip"
-            android:background="@drawable/border"
+            android:background="@drawable/border_top"
             android:paddingBottom="16.0dip"
             android:paddingTop="16.0dip" >
 

@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:id="@+id/bottom_create"
-    android:background="@drawable/border"
     >
 
     <LinearLayout
@@ -15,14 +14,6 @@
         android:layout_margin="8dp">
 
 
-        <ImageView
-            android:id="@+id/hide_bottom_create"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:src="@drawable/pic_deleteall"
-            android:layout_margin="5dp"
-            />
 
         <ImageView
             android:id="@+id/reBack_bottom_create"

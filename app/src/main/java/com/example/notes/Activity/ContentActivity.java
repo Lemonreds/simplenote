@@ -115,8 +115,6 @@ public class ContentActivity extends BaseActivity  {
 
     }
 
-
-
     /**
      * view的初始化
      */
@@ -160,9 +158,8 @@ public class ContentActivity extends BaseActivity  {
     }
 
     /**
-     * 底部栏的初始化
+     * 底部栏的初始化 注册监听
      */
-
     private void init_bottom() {
 
         //编辑

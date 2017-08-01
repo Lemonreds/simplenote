@@ -21,7 +21,10 @@ import java.io.IOException;
 public class ShareUtil {
 
 
-
+    /**
+     * 分享图片
+     * @param activity
+     */
     public  static  void shareImg(Activity activity){
 
 
@@ -38,6 +41,12 @@ public class ShareUtil {
         }
     }
 
+
+    /**
+     * 分享文字
+     * @param activity
+     * @param text
+     */
     public static  void shareText(Activity activity,String text){
 
         Intent intent=new Intent(Intent.ACTION_SEND);
@@ -52,7 +61,6 @@ public class ShareUtil {
         activity.startActivity(Intent.createChooser(intent,activity.getResources().getString(R.string.shareTo)));
 
     }
-
 
     /**
      * 分享截图
@@ -70,7 +78,6 @@ public class ShareUtil {
      * @param activity
      * @return
      */
-
     private static Bitmap takeScreenShot(Activity activity) {
         // View是你需要截图的View
         View view = activity.getWindow().getDecorView();
@@ -104,11 +111,9 @@ public class ShareUtil {
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(strFileName);
-           // if (null != fos) {
-                b.compress(Bitmap.CompressFormat.PNG, 90, fos);
-                fos.flush();
-                fos.close();
-           // }
+            b.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            fos.flush();
+            fos.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

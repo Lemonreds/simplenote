@@ -5,10 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by 阿买 on 2017/3/21.
- */
-
 public class DBHelper extends SQLiteOpenHelper {
 
 
@@ -49,6 +45,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    /**
+     * 新建文件夹
+     * @param name
+     */
 
     public void add_table(String name) {
 
@@ -106,6 +107,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * 文件夹更新
+     * @param oldName
+     * @param newName
+     */
     public void update_table(String oldName, String newName) {
 
         String update = " alter table " + oldName + " rename to " + newName;
@@ -115,7 +121,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(update);
     }
 
-
+    /**
+     * 文件夹是否存在
+     * @param name
+     * @return
+     */
     public boolean folderIsExist(String name) {
 
         boolean result = false;

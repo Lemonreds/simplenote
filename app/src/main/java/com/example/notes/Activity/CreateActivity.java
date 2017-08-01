@@ -35,8 +35,6 @@ import jp.wasabeef.richeditor.RichEditor;
 
 public class CreateActivity extends BaseActivity implements View.OnClickListener {
 
-   // private TextView model_title;
-
     //题目
     private EditText title;
     //内容
@@ -54,6 +52,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
 
     //模式
     private boolean model; // (false 新建模式   true 编辑模式)
+
     //编辑的Note
     private Note edit_Note;
 
@@ -64,31 +63,40 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+        init();
 
+    }
 
+    /**
+     * 初始化
+     */
+    private void init(){
         TextView  model_title = (TextView) findViewById(R.id.title_toolbar);
+        Intent intent = this.getIntent();
 
-        Intent intent = this.getIntent();//新建模式
+        //是否带有文件夹名
         currentFolderName = intent.getStringExtra("currentFolderName");
-        model_title.setText("新备忘录");
 
         if(currentFolderName == null){//编辑模式
             model_title.setText("编辑备忘录");
             model = true;//更改状态
             edit_Note = (Note) intent.getSerializableExtra("note");//获取编辑的note
             currentFolderName = edit_Note.getFolderName();
+        }else{
+            //新建模式
+            model_title.setText("新备忘录");
+
         }
 
         init_NoteEditor();
         init_view();
         init_Toolbar();
 
-
         if(model){//编辑模式
             init_edit();
         }
-    }
 
+    }
 
     /**
      * 编辑初始化
@@ -160,50 +168,6 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
 
             }
         });
-
-        // ImageView  reBack = (ImageView)findViewById(R.id.reback_bottom_create);
-        /**
-
-        if(!model) {//编辑模式
-            reBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (!model) {//编辑模式
-                        if (isEdit()) {
-                            MsgToast.showToast(CreateActivity.this, "还没开始编辑呢");
-                        } else {
-
-                            final InfoDialog warnDialog = new InfoDialog(CreateActivity.this);
-                            warnDialog.show();
-                            warnDialog.setTitle("提示");
-                            warnDialog.setEnableEdit(false);
-                            warnDialog.setInfo("将所编辑内容全部清空吗？");
-                            warnDialog.setYesListener(new MyOnClickListener() {
-                                @Override
-                                public void onClick() {
-                                    warnDialog.dismiss();
-                                    reset();
-                                }
-                            });
-
-                        }
-                    }
-                }
-            });
-        }else{
-            reBack.setVisibility(View.GONE);
-        }
-         **/
-
-        findViewById(R.id.hide_bottom_create).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                findViewById(R.id.editor_bottom).setVisibility(View.GONE);
-                findViewById(R.id.bottom_create).setVisibility(View.GONE);
-            }
-        });
-
         findViewById(R.id.location_bottom_create).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,25 +177,6 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-    /**
-     * 是否进行了编辑
-     * @return
-     */
-    private  boolean isEdit(){
-        return StringUtil.isEmpty(title.getText().toString()) &&
-                StringUtil.isEmpty(mEditor.getHtml());
-    }
-
-    /**
-     * 重置
-     */
-    private void reset(){
-
-        title.setText("");
-        mEditor.setHtml("");
-        location.setText("未定位");
-        level=Note.GRE_LEVEL;
-    }
 
 
     /**

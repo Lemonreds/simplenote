@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">SimpleNote</string>
-    <string name="app_version">版本:1.1</string>
+    <string name="app_version">版本:1.1.01</string>
 
     <string name="empty_info">空空如也</string>
     <string name="main_empty_info">还没有任何备忘录</string>
@@ -29,7 +29,6 @@
     <string name="move_recycle">已移至 最近删除</string>
     <string name="info_recycle">备忘录将在30天后永久删除</string>
     <string name='recovery_recycle'>恢复后才能打开</string>
-
 
     <string name="title_create">标题</string>
     <string name="content_share">分享</string>
@@ -68,7 +67,6 @@
     <string name="diffrent_sec">两次输入不一致</string>
     <string name="input_sec">输入密码</string>
 
-
     <string name="hint_quick">突然想写点什么..</string>
     <string name="location_quick">你在哪里?</string>
 
@@ -79,20 +77,20 @@
     <string name="t1_table">分享此应用给朋友</string>
     <string name="t2_table">查看更新历史</string>
 
+    <string name="info_about">点击内容或我可以复制联系方式</string>
     <string name="more_about">如果你有什么更好的建议和改进需求,或者是发现BUG,欢迎联系我!\n\n邮箱:\nlemonreds@163.com\n\nQQ:\n792277840\n\n获取代码和更多信息:\nhttps://github.com/Lemonreds/SimpleNote</string>
-    <string name="bottom_about">For Fun</string>
-
+    <string name="bottom_about"> </string>
 
     <string name="update_his">更新历史</string>
     <string name="content_his">
         -20170720   v1.1\n
         1.修复一些重要bug\n
-        2.优化UI\n
+        2.优化UI和其他细节\n
+        3.丰富关于界面\n
         \n
         -20170719   v1.0\n
         正式版\n
     </string>
-
 
     <string name="back_wel">欢迎回来</string>
     <string name="info_wel"> </string>
@@ -100,7 +98,7 @@
 
     <string name="share">分享</string>
     <string name="shareFrom">分享自SimpleNote(Simple备忘录)</string>
-    <string name="shareApp">我发现了个好玩的应用,你也来试试吧</string>
+    <string name="shareApp">我发现了个好玩的应用,你也来下载试试吧</string>
     <string name="shareTo">分享你的内容到....</string>
     <string name="shareImg">将内容截图分享给....</string>
 
@@ -109,6 +107,6 @@
     <string name="textShare">文字分享</string>
 
     <string name="title_des">第一次使用Simple备忘录</string>
-    <string name="content_des">相逢即是缘,谢谢你的使用,哈哈!开启你的应用使用之旅吧!</string>
+    <string name="content_des">相逢是缘,谢谢你的使用,哈哈!</string>
 
 </resources>

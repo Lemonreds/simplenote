@@ -13,9 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-/**
- * Created by 阿买 on 2017/3/21.
- */
+
 
 public class DBManager {
 

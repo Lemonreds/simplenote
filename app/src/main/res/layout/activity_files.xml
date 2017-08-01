@@ -37,7 +37,7 @@
             adroid:layout_height="42dp"
             adroid:orientation="horizontal"
             adroid:layout_alignParentBottom="true"
-            adroid:background="@drawable/border"
+            adroid:background="@drawable/border_top"
             >
             <include layout="@layout/bottom_file"
                  />

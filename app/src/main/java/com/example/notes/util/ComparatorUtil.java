@@ -5,9 +5,9 @@ import com.example.notes.Model.Note;
 import java.util.*;
 
 /**
- * Created by 阿买 on 2017/3/26.
+ * 比较工具类
+ * 排序
  */
-
 public class ComparatorUtil implements Comparator<Note> {
 
     @Override

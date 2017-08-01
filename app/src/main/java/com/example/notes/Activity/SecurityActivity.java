@@ -11,13 +11,18 @@ import com.example.notes.Manager.SecurityManager;
 import com.example.notes.View.MsgToast;
 import com.example.ui.R;
 
+/**
+ * 密码
+ */
 public class SecurityActivity extends AppCompatActivity implements View.OnClickListener{
 
-    public final static int MODEL_VERIFY = 0;
-    public final static int MODEL_EDIT = 1;
+
+    public final static int MODEL_VERIFY = 0;  //验证密码模式
+    public final static int MODEL_EDIT = 1; //设置密码模式
 
     private SecurityManager sManager;
 
+    //视图显示
     private TextView title;
     private TextView info;
     private TextView passWord;
@@ -32,10 +37,10 @@ public class SecurityActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security);
+
         sManager= new SecurityManager(this);
-
-
         initView();
+
         modelSetting();
         reset();
     }
@@ -52,7 +57,6 @@ public class SecurityActivity extends AppCompatActivity implements View.OnClickL
                 title.setText(getResources().getString(R.string.comfirm_t_sec));
             }
         }
-
 
         if(model == MODEL_EDIT){
 
@@ -129,8 +133,8 @@ public class SecurityActivity extends AppCompatActivity implements View.OnClickL
             hideChar.append('○');
         }
         passWord.setText(hideChar.toString());
-
     }
+
 
     @Override
     public void onClick(View v) {
@@ -213,7 +217,6 @@ public class SecurityActivity extends AppCompatActivity implements View.OnClickL
         inputPassWord = new StringBuilder();
         passWordNumber = 0;
         setPassWord();
-
     }
 
 }

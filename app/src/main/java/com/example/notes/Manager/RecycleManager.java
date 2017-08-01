@@ -11,10 +11,12 @@ import com.example.notes.Model.Note;
 
 import java.util.List;
 
-
+/**
+ * 回收站管理
+ */
 public class RecycleManager {
-    private Context mContext;
 
+    private Context mContext;
     private List<Note> mData;
     private String currentFolderName;
     private BaseAdapter adapter;
@@ -82,9 +84,6 @@ public class RecycleManager {
                 ((RecycleActivity)mContext).finish();
             }
         });
-
-
-
     }
 
     private  void update_bottom(int position){
