@@ -12,13 +12,13 @@
 * 联系邮箱: lemonreds@163.com
 
 
-## 获取apk: 
+## 获取apk 
 
 http://www.coolapk.com/apk/com.example.notes
 
 http://pan.baidu.com/s/1i4LRybN 
 
-## 目录说明:
+## 目录说明
 
  >> src/java/com.example.notes
  * Activity 活动包
