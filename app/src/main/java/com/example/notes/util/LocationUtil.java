@@ -9,6 +9,7 @@ import com.amap.api.location.AMapLocationListener;
 
 /**
  * 地图工具类
+ * From 高德地图
  */
 
 public class LocationUtil {
