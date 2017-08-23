@@ -5,9 +5,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * 数据库工具类
+ */
+
 public class DBHelper extends SQLiteOpenHelper {
 
-
+    //默认建表语句 默认文件夹 回收站
+    //使用blob类型存对象 有点偷懒..
     private static final String CREATE_NOTE =
 
             "create table Notes ("
@@ -19,13 +24,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private Context mContext;
 
+
     private static DBHelper dbHelper = null;
 
+
     private DBHelper(Context context) {
+        //数据库名
         super(context, "Notes.db", null, 1);
         this.mContext = context;
     }
 
+    /**
+     * 单例模式
+     * @param context
+     * @return
+     */
     public static DBHelper getInstance(Context context) {
         if (dbHelper == null) {
             dbHelper = new DBHelper(context);
@@ -33,24 +46,26 @@ public class DBHelper extends SQLiteOpenHelper {
         return dbHelper;
     }
 
-
+    /**
+     * 初始化
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_NOTE);
         db.execSQL(CREATE_RECYCLE);
-       // MsgToast.showToast(mContext, "谢谢你的使用!");
+       //MsgToast.showToast(mContext, "谢谢你的使用!");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        //TO DO
     }
 
     /**
      * 新建文件夹
      * @param name
      */
-
     public void add_table(String name) {
 
         String create =
@@ -59,7 +74,6 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL(create);
     }
-
 
     /**
      * 完全删除
@@ -73,7 +87,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
     /**
-     * 部分删除
+     * 部分删除 移动内容到回收站
      * @param name
      */
 
@@ -145,7 +159,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 cursor.close();
 
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         }
         return result;

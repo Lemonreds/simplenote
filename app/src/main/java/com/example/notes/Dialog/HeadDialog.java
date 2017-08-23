@@ -14,7 +14,7 @@ import com.example.ui.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by 阿买 on 2017/4/8.
+ * 个人信息对话框
  */
 
 public class HeadDialog extends  android.app.Dialog {

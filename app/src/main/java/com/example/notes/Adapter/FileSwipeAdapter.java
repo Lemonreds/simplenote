@@ -13,7 +13,7 @@ import com.example.ui.R;
 import java.util.List;
 
 /**
- * Created by 阿买 on 2017/3/27.
+ * 文件夹管理的菜单
  */
 
 public class FileSwipeAdapter extends BaseAdapter {
@@ -27,6 +27,7 @@ public class FileSwipeAdapter extends BaseAdapter {
         this.mData = mData;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -34,7 +35,7 @@ public class FileSwipeAdapter extends BaseAdapter {
             convertView = View.inflate(mContext, R.layout.item, null);
         }
 
-        String str=(String)getItem(position);
+        String str=(String) getItem(position);
 
         int length = getFolderLength(str);
 
@@ -51,13 +52,11 @@ public class FileSwipeAdapter extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-        // menu type count
         return 2;
     }
 
     @Override
     public int getItemViewType(int position) {
-
         return position;
     }
 

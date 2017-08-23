@@ -1,7 +1,7 @@
 package com.example.notes.View;
 
 /**
- * Created on 2017/3/26.
+ * Toast剧中提示
  */
 
 import android.content.Context;
@@ -17,8 +17,12 @@ import com.example.ui.R;
 
 public class MsgToast {
 
-
-        public static void showToast(Context context, String message) {
+    /**
+     * 提示信息
+     * @param context
+     * @param message
+     */
+    public static void showToast(Context context, String message) {
 
             TextView mTextView;
 

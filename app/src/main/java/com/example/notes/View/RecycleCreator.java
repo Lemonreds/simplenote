@@ -9,7 +9,7 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.example.ui.R;
 
 /**
- * Created by 阿买 on 2017/4/1.
+ * 回收站的侧滑菜单设置
  */
 
 public class RecycleCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator {
@@ -45,8 +45,6 @@ public class RecycleCreator implements com.baoyz.swipemenulistview.SwipeMenuCrea
         menu.addMenuItem(deleteItem);
 
     }
-
-
 
 
     // 将dp转换为px

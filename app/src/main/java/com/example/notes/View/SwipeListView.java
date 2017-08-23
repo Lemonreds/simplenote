@@ -5,9 +5,7 @@ import android.util.AttributeSet;
 
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 
-/**
- * Created by 阿买 on 2017/4/13.
- */
+
 
 public class SwipeListView extends SwipeMenuListView {
 

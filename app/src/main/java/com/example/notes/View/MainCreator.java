@@ -8,6 +8,9 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.example.ui.R;
 
+/**
+ * 主界面侧滑菜单
+ */
 
 public class MainCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator {
 
@@ -20,6 +23,10 @@ public class MainCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator
         this.mContext = mContext;
     }
 
+    /**
+     * 初始化且创建菜单
+     * @param menu
+     */
     @Override
     public void create(SwipeMenu menu) {
 
@@ -55,9 +62,6 @@ public class MainCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator
         menu.addMenuItem(deleteItem);
 
         }
-
-
-
 
     // 将dp转换为px
     private int dp2px(int value) {

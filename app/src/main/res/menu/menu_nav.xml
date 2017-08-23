@@ -26,6 +26,8 @@
     <item android:title="@string/other_nav">
 
         <menu>
+
+
         <item
             android:title="@string/about_nav"/>
         <item

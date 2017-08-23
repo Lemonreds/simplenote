@@ -14,7 +14,7 @@ import com.example.ui.R;
 import java.util.List;
 
 /**
- * Created by 阿买 on 2017/5/12.
+ * 搜索历史适配器
  */
 
 public class HistoryAdapter extends ArrayAdapter<String> {

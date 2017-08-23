@@ -10,7 +10,7 @@ import com.example.notes.Util.StringUtil;
 import com.example.ui.R;
 
 /**
- * Created by 阿买 on 2017/4/14.
+ * 多选对话框
  */
 
 public class ChooseDialog extends Dialog {

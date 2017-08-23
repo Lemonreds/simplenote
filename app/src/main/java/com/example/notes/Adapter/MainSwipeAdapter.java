@@ -14,7 +14,7 @@ import com.example.ui.R;
 import java.util.List;
 
 /**
- * Created by 阿买 on 2017/3/27.
+ * 主菜单适配器
  */
 
 public class MainSwipeAdapter extends BaseAdapter {

@@ -13,7 +13,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-
+/**
+ * 数据库管理类
+ */
 
 public class DBManager {
 
@@ -23,10 +25,14 @@ public class DBManager {
         mContext=context;
     }
 
-
+    /**
+     * 插入一个Note
+     * @param folderName
+     * @param note
+     */
     public void insert(String folderName,Note note) {
 
-
+        //对象转换成用二进制数组处理
         ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(arrayOutputStream);
@@ -50,6 +56,11 @@ public class DBManager {
         }
     }
 
+    /**
+     * 删除一个Note
+     * @param folderName
+     * @param note
+     */
 
     public void delete(String folderName,Note note){
 
@@ -72,11 +83,10 @@ public class DBManager {
 
             if( !folderName.equals("recycle")){
                 Note note1 = note.getClone();
-                note = null;
+                //设置删除日期
                 note1.setDeleteDate(new Date());
                 insert("recycle",(note1));
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,7 +96,11 @@ public class DBManager {
         database.close();
     }
 
-
+    /**
+     * 移动到其他文件夹
+     * @param toFolder
+     * @param note
+     */
     public void moveToFolder(String toFolder,Note note){
 
         Note notClone = note.getClone();
@@ -100,6 +114,11 @@ public class DBManager {
 
     }
 
+    /**
+     * 查询某一文件夹下的Note
+     * @param folderName
+     * @return
+     */
     public ArrayList<Note> search(String folderName) {
 
 
@@ -133,6 +152,12 @@ public class DBManager {
         return list;
     }
 
+    /**
+     * 更新Note
+     * @param folderName
+     * @param preNote
+     * @param newNote
+     */
     public void upDate(String folderName,Note preNote,Note newNote){
 
         byte[] pre_data = getData(preNote);
@@ -147,9 +172,11 @@ public class DBManager {
     }
 
 
-
-
-
+    /**
+     * Note转化为二进制数组
+     * @param note
+     * @return
+     */
     private byte[] getData(Note note){
 
         byte [] data = null;
@@ -167,6 +194,10 @@ public class DBManager {
         return  data;
     }
 
+    /**
+     * 获取表名
+     * @return
+     */
     public ArrayList<String> getTableName(){
 
         ArrayList<String>  tableName = new ArrayList<>();
@@ -191,6 +222,11 @@ public class DBManager {
         return tableName;
     }
 
+    /**
+     * 获取表的长度
+     * @param tableName
+     * @return
+     */
     public int getTableLength(String tableName){
 
 
@@ -208,6 +244,10 @@ public class DBManager {
         return (int)count;
     }
 
+    /**
+     * 恢复
+     * @param note
+     */
     public void recovery(Note note){
 
         String belongFolder = note.getFolderName();
@@ -223,6 +263,11 @@ public class DBManager {
         delete("recycle",note);
     }
 
+    /**
+     * 清空文件夹
+     * @param folderName
+     * @return
+     */
     public int clearAllFolder(String folderName){
         DBHelper dbHelper = DBHelper.getInstance(mContext);
         SQLiteDatabase database = dbHelper.getReadableDatabase();

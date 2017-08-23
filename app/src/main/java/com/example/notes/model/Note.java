@@ -122,11 +122,5 @@ public class Note extends Item implements Serializable ,Comparable{
         this.level = level;
     }
 
-/**
-    public static Note getFirstStart(){
-        Note note  =  new Note("Something",new Date(),"null","Thanks for your ues","Notes");
-        return note;
 
-    }
- **/
 }

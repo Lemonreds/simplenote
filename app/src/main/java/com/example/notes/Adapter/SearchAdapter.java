@@ -14,7 +14,7 @@ import com.example.ui.R;
 import java.util.List;
 
 /**
- * Created by 阿买 on 2017/5/12.
+ * 搜索界面适配器
  */
 
 public class SearchAdapter  extends ArrayAdapter<Note> {
@@ -49,7 +49,6 @@ public class SearchAdapter  extends ArrayAdapter<Note> {
         }else{
             content.setText(simpleContent.substring(0,49));
         }
-
 
         return view;
 

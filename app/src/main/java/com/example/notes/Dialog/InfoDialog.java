@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.ui.R;
 
 /**
- * Created by 阿买 on 2017/4/18.
+ * 提示框
  */
 
 public class InfoDialog extends android.app.Dialog {

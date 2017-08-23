@@ -12,7 +12,7 @@ import com.example.notes.View.MsgToast;
 import com.example.ui.R;
 
 /**
- * Created by 阿买 on 2017/4/18.
+ * 编辑对话框
  */
 
 public class EditDialog extends android.app.Dialog implements View.OnClickListener{

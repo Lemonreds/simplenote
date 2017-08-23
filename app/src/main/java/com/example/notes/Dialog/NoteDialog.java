@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.notes.Model.Note;
 import com.example.ui.R;
 /**
- * Created by 阿买 on 2017/4/13.
+ * Note对话框
  */
 
 public class NoteDialog  extends  android.app.Dialog implements View.OnClickListener{

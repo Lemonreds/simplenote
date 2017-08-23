@@ -22,7 +22,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecycleActivity extends BaseActivity implements View.OnClickListener{
+public class RecycleActivity extends BaseActivity{
 
     private SwipeMenuListView mListView;
     private List<Note> mData;
@@ -35,8 +35,6 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_recycle);
 
 
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.pic_back);//设置导航栏图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -46,7 +44,6 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
             }
         });
-
 
                 CircleImageView deleteAll =(CircleImageView) findViewById(R.id.deleteAll);
                 deleteAll.setVisibility(View.VISIBLE);
@@ -77,6 +74,9 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
 
 
         mData = new DBManager(this).search("recycle");
+
+
+
         RecycleSwipeAdapter adapter = new RecycleSwipeAdapter(this,mData);
 
 
@@ -97,26 +97,11 @@ public class RecycleActivity extends BaseActivity implements View.OnClickListene
             }
         });
 
-
-
         view_Listener();
         update_bottom();
 
     }
 
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-
-           // case R.id.back_title:
-           //     finish();
-           //     break;
-            default:
-                break;
-
-        }
-    }
 
 
 

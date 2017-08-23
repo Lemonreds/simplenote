@@ -13,7 +13,7 @@ import com.example.ui.R;
 import java.util.List;
 
 /**
- * Created by 阿买 on 2017/4/6.
+ * 回收站适配器
  */
 
 public class RecycleSwipeAdapter extends BaseAdapter {

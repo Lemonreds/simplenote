@@ -21,9 +21,8 @@ import com.example.ui.R;
 
 import java.util.List;
 
-
 /**
- * Created by 阿买 on 2017/1/18.
+ * Note管理类
  */
 
 public class NoteManager{
@@ -31,9 +30,9 @@ public class NoteManager{
     private Context mContext;
     private List<Note> list;
 
-    private String currentFolderName;
-    private BaseAdapter adapter;
-    private  DBManager dbManager;
+    private String currentFolderName;//Note的所属文件夹
+    private BaseAdapter adapter; //适配器
+    private DBManager dbManager;//数据库管理类
 
 
 
@@ -51,7 +50,7 @@ public class NoteManager{
     }
 
     /**
-     * 新建说明
+     * 第一次使用说明
      */
     public void addDescription(){
 
@@ -86,7 +85,10 @@ public class NoteManager{
         ((Activity) mContext).overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
 
-
+    /**
+     * 编辑操作
+     * @param position
+     */
     public void editClick(int position){
 
 
@@ -113,7 +115,10 @@ public class NoteManager{
         });
     }
 
-
+    /**
+     * 点击了删除
+     * @param position
+     */
     public void deleteClick(int position){
 
 
@@ -123,43 +128,19 @@ public class NoteManager{
 
     }
 
+    /**
+     * 新建Note
+     * @param note
+     */
     public void add(Note note){
         dbManager.insert(currentFolderName,note);
     }
 
-    public void add(){
-
-
-        final NoteDialog dialog = new NoteDialog(mContext);
-        dialog.show();
-        dialog.setTitle("新的备忘录");
-        dialog.setInfo("建立一个名字");
-        dialog.setEnableEdit(true);
-
-        dialog.setYesListener(new MyOnClickListener() {
-            @Override
-            public void onClick() {
-                if(!StringUtil.isEmpty(dialog.getInfo())){
-
-                    final Note note = new Note(dialog.getInfo(),
-                            new Date(), null,"",
-                            currentFolderName,dialog.getLevel());
-                    list.add(note);
-                    adapter.notifyDataSetChanged();
-                    dbManager.insert(currentFolderName,note);
-
-
-                }else {
-                    MsgToast.showToast(mContext,"不能为空哟");
-                }
-                dialog.dismiss();
-            }
-        });
-
-    }
-
-
-    public void delete(Note note) {
+    /**
+     * 数据库交互
+     * @param note
+     */
+    private void delete(Note note) {
         list.remove(note);
 
         adapter.notifyDataSetChanged();
@@ -167,7 +148,10 @@ public class NoteManager{
         dbManager.delete(currentFolderName,note);
     }
 
-
+    /**
+     * 删除Note
+     * @param note
+     */
     public void deleteNote(Note note) {
 
         final Note note1 = note;
@@ -175,12 +159,22 @@ public class NoteManager{
 
     }
 
+    /**
+     * 数据库更新
+     * @param preNote
+     * @param newNote
+     */
     public void update(Note preNote,Note newNote){
         dbManager.upDate(currentFolderName,preNote,newNote);
     }
 
-
-    public void update(Note note,String newName,int newLevel){
+    /**
+     * 更新名字/level
+     * @param note
+     * @param newName
+     * @param newLevel
+     */
+    private void update(Note note,String newName,int newLevel){
 
         Note newNote = note.getClone();
         newNote.setName(newName);
@@ -196,6 +190,12 @@ public class NoteManager{
         }
     }
 
+    /**
+     * 更新地理位置
+     * @param note
+     * @param location
+     * @return
+     */
     public Note updateLocation(Note note ,String location){
 
 

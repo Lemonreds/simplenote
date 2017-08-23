@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.ui.R;
 
 /**
- * Created by 阿买 on 2017/4/6.
+ * 进度框
  */
 
 public class ProDialog extends ProgressDialog{

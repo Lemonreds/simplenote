@@ -9,7 +9,7 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.example.ui.R;
 
 /**
- * Created by 阿买 on 2017/3/28.
+ * 分类管理侧滑
  */
 
 public class FileCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator {
@@ -21,15 +21,18 @@ public class FileCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator
         this.mContext = mContext;
     }
 
+    /**
+     * 默认文件夹不可删除 所以创建2种菜单
+     * @param menu
+     */
     @Override
     public void create(SwipeMenu menu) {
 
-
         switch (menu.getViewType()) {
+
             case 0:
                 create_0(menu);
                 break;
-
             default:
                 create_1(menu);
                 break;
@@ -37,7 +40,10 @@ public class FileCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator
 
     }
 
-
+    /**
+     * 默认文件夹菜单
+     * @param menu
+     */
 
     private void create_0(SwipeMenu menu){
         SwipeMenuItem openItem = new SwipeMenuItem(mContext.getApplicationContext());
@@ -50,6 +56,11 @@ public class FileCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator
         menu.addMenuItem(openItem);
 
     }
+
+    /**
+     * 其他文件夹菜单
+     * @param menu
+     */
     private void create_1(SwipeMenu menu){
         SwipeMenuItem openItem = new SwipeMenuItem(mContext.getApplicationContext());
         openItem.setBackground(R.color.light_blue);
@@ -69,7 +80,6 @@ public class FileCreator implements com.baoyz.swipemenulistview.SwipeMenuCreator
         deleteItem.setIcon(R.drawable.pic_delete);
         menu.addMenuItem(deleteItem);
     }
-
 
 
 

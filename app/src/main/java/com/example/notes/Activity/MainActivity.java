@@ -171,8 +171,6 @@ public class MainActivity extends AppCompatActivity {
                        startActivity(intent2);
                        overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
                      break;
-
-
                     case "关于":
                        Intent intent11 = new Intent(MainActivity.this,AboutActivity.class);
                        startActivity(intent11);
@@ -195,6 +193,9 @@ public class MainActivity extends AppCompatActivity {
         View view = navigation.inflateHeaderView(R.layout.nav_head);
         personalSet(view);
     }
+
+
+
 
 
     public void actionbarReset(){

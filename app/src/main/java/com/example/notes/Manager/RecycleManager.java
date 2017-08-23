@@ -1,5 +1,6 @@
 package com.example.notes.Manager;
 
+
 import android.content.Context;
 import android.widget.BaseAdapter;
 
@@ -8,6 +9,7 @@ import com.example.notes.Dialog.MyOnClickListener;
 import com.example.notes.View.MsgToast;
 import com.example.notes.Activity.RecycleActivity;
 import com.example.notes.Model.Note;
+
 
 import java.util.List;
 
@@ -31,13 +33,21 @@ public class RecycleManager {
         this.adapter = adapter;
     }
 
-
+    /**
+     * 删除
+     * @param position
+     */
     public void delete(int position){
 
         dbManager.delete(currentFolderName,mData.get(position));
         update_bottom(position);
 
     }
+
+    /**
+     * 恢复
+     * @param position
+     */
 
     public  void recovery(int position){
 
@@ -46,6 +56,10 @@ public class RecycleManager {
         dbManager.recovery(note);
         update_bottom(position);
     }
+
+    /**
+     * 恢复所有
+     */
     public  void recoveryAll(){
 
         if(mData.size() == 0 ){
@@ -58,6 +72,9 @@ public class RecycleManager {
        }
     }
 
+    /**
+     * 删除所有
+     */
     public void clearAll(){
 
 
@@ -86,6 +103,10 @@ public class RecycleManager {
         });
     }
 
+    /**
+     * 底部栏更新
+     * @param position
+     */
     private  void update_bottom(int position){
 
         if(position!=-1) {
@@ -97,4 +118,6 @@ public class RecycleManager {
             ((RecycleActivity)mContext).finish();
         }
     }
+
+
 }

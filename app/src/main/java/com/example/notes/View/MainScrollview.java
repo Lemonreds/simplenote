@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.ScrollView;
 
 /**
- * Created by 阿买 on 2017/4/13.
+ * 主界面的滑动
  */
 
 public class MainScrollview extends ScrollView {

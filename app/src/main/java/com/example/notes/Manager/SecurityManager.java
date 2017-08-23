@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import com.example.notes.Util.StringUtil;
 
 /**
- * Created by 阿买 on 2017/4/27.
+ * 安全管理
  */
 
 public class SecurityManager {

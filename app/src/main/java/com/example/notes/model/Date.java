@@ -1,9 +1,5 @@
 package com.example.notes.Model;
 
-/**
- * Created by 阿买 on 2017/3/9.
- */
-
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
@@ -22,14 +18,6 @@ public class Date implements Serializable{
     private int hour;
     private int minute;
 
-    public Date(int year, int month, int day, int hour, int minute) {
-        this.year = year;
-        this.month = month;
-        this.minute = minute;
-        this.day = day;
-        this.hour = hour;
-    }
-
     public Date() {
 
         Calendar cal = Calendar.getInstance();
@@ -39,7 +27,6 @@ public class Date implements Serializable{
         day = cal.get(Calendar.DAY_OF_MONTH);
         hour = cal.get(Calendar.HOUR_OF_DAY);
         minute = cal.get(Calendar.MINUTE);
-
     }
 
 

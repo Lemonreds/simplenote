@@ -15,7 +15,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Created on 2017/5/12.
+ * 分享接口
  */
 
 public class ShareUtil {
