@@ -16,10 +16,31 @@
 
 http://www.coolapk.com/apk/com.example.notes
 
-
 http://pan.baidu.com/s/1i4LRybN 
+
+## 目录说明:
+
+ >> src/java/com.example.notes
+ * Activity 活动包
+ * Adapter 适配器包
+ * Dialog 对话框包
+ * Manager 管理类包
+ * Model 实体包
+ * Util 工具包
+ * View 视图包
+ 
+ >> src/res
+ * anim 活动滑入滑出动画
+ * color 色彩配置
+ * drawable 图形配置
+ * drawalbe-xxhdpi 图标
+ * layout 布局xml
+ * menu 菜单xml
+ * values 常量包
+ 
+
 ## 使用到的开源
-       
+ 
     
     compile 'me.imid.swipebacklayout.lib:library:1.0.0'
 
@@ -36,7 +57,7 @@ http://pan.baidu.com/s/1i4LRybN
     compile 'com.baoyz.swipemenulistview:library:1.3.0'
 
 
-## 部分运行截图
+## 运行截图
 
 
 ![Image text](https://github.com/Lemonreds/SimpleNote/blob/master/IMG/1.png)
