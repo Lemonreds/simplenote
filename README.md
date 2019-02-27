@@ -1,16 +1,5 @@
 # SimpleNote
 
-## 说明
-* Created on SCAU 
-
-* 这是一款安卓备忘录应用，大二时的课程设计。
-
-* 如果有空或者感兴趣会继续更新完善功能。
-
-* Icon: https://material.io/icons
-
-* 联系邮箱: lemonreds@163.com
-
 
 ## 获取apk 
 
